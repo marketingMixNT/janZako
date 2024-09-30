@@ -1,0 +1,59 @@
+@use "./hamburger.scss";
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+//links-hover
+.link-hover {
+    @apply relative w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-primary-400  after:w-[75%] after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left;
+}
+.link-hover--dark {
+    @apply relative w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-secondary-400  after:w-[75%] after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left;
+}
+.link-hover--accent {
+    @apply relative w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:bg-accent-100  after:w-[75%] after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left;
+}
+
+//btn
+.close:hover,
+.close:focus {
+    box-shadow: inset -10em 0 0 0 #f5f2ed, inset 10em 0 0 0 #f5f2ed;
+}
+.close--white:hover,
+.close--white:focus {
+    box-shadow: inset -10em 0 0 0 white, inset 10em 0 0 0 white;
+}
+//gallery-btns
+.gallery-btn {
+    @apply bg-accent-200 text-fontWhite;
+}
+
+// nav
+.nav-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+.nav-visible {
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+.nav-color {
+    @apply bg-accent-400 transition duration-300;
+}
+.nav-color--transparent {
+    @apply bg-transparent transition duration-300;
+}
+
+// menu
+.menu-open {
+    @apply transition ease-in-out duration-300 transform translate-x-0;
+}
+
+.menu-close {
+    @apply transition ease-in duration-300 transform translate-x-[110%];
+}
+
+

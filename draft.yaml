@@ -1,0 +1,51 @@
+models:
+  Apartment:
+    meta_title: json nullable
+    meta_desc: json nullable
+    title: json unique
+    slug: json unique
+    desc: json
+    equipment: json
+    thumbnail: text
+    gallery: text
+    sort: integer nullable
+
+  Room:
+    meta_title: json nullable
+    meta_desc: json nullable
+    title: json unique
+    slug: json unique
+    desc: json
+    equipment: json
+    thumbnail: text
+    gallery: text
+    sort: integer nullable
+    relationships:
+      belongsTo: Apartment
+
+  Slide:
+    image: text
+    alt: json
+    sort: integer nullable
+    relationships:
+      belongsTo: Apartment
+
+  Testimonial:
+    name: json
+    source: json
+    content: json
+    sort: integer nullable
+    relationships:
+      belongsTo: Apartment
+
+  LocalAttraction:
+    title: json
+    description: json
+    images: text
+    sort: integer nullable
+
+  PrivacyPolicy:
+    content: json
+
+  Regulations:
+    content: json

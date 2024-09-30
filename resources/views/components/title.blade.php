@@ -1,0 +1,1 @@
+<h2 class="text-4xl   tracking-wide leading-tight font-light">{{$slot}}</h2>

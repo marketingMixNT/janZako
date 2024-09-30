@@ -1,0 +1,30 @@
+created:
+    - database/factories/ApartmentFactory.php
+    - database/factories/RoomFactory.php
+    - database/factories/SlideFactory.php
+    - database/factories/TestimonialFactory.php
+    - database/factories/LocalAttractionFactory.php
+    - database/factories/PrivacyPolicyFactory.php
+    - database/factories/RegulationsFactory.php
+    - database/migrations/2024_09_30_102356_create_apartments_table.php
+    - database/migrations/2024_09_30_102357_create_rooms_table.php
+    - database/migrations/2024_09_30_102358_create_slides_table.php
+    - database/migrations/2024_09_30_102359_create_testimonials_table.php
+    - database/migrations/2024_09_30_102400_create_local_attractions_table.php
+    - database/migrations/2024_09_30_102401_create_privacy_policies_table.php
+    - database/migrations/2024_09_30_102402_create_regulations_table.php
+    - app/Models/Apartment.php
+    - app/Models/Room.php
+    - app/Models/Slide.php
+    - app/Models/Testimonial.php
+    - app/Models/LocalAttraction.php
+    - app/Models/PrivacyPolicy.php
+    - app/Models/Regulations.php
+models:
+    Apartment: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', desc: json, equipment: json, thumbnail: text, gallery: text, sort: 'integer nullable' }
+    Room: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', desc: json, equipment: json, thumbnail: text, gallery: text, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
+    Slide: { image: text, alt: json, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
+    Testimonial: { name: json, source: json, content: json, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
+    LocalAttraction: { title: json, description: json, images: text, sort: 'integer nullable' }
+    PrivacyPolicy: { content: json }
+    Regulations: { content: json }
