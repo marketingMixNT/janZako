@@ -16,9 +16,8 @@ class Slide extends Model
      * @var array
      */
     protected $fillable = [
-        'image',
-        'alt',
-        'sort',
+        'images',
+        'home_slider',
         'apartment_id',
     ];
 
@@ -29,8 +28,8 @@ class Slide extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'alt' => 'array',
         'apartment_id' => 'integer',
+        'images' => 'array',
     ];
 
     public function apartment(): BelongsTo

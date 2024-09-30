@@ -24,9 +24,8 @@ models:
       belongsTo: Apartment
 
   Slide:
-    image: text
-    alt: json
-    sort: integer nullable
+    images: text
+    home_slider: boolean 
     relationships:
       belongsTo: Apartment
 

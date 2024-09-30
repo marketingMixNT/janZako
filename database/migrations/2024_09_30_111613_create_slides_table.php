@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('slides', function (Blueprint $table) {
             $table->id();
-            $table->text('image');
-            $table->json('alt');
-            $table->integer('sort')->nullable();
-            $table->foreignId('apartment_id');
+            $table->text('images');
+            $table->boolean('home_slider')->default(false);
+            $table->foreignId('apartment_id')->nullable();
             $table->timestamps();
         });
     }

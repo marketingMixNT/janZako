@@ -6,13 +6,13 @@ created:
     - database/factories/LocalAttractionFactory.php
     - database/factories/PrivacyPolicyFactory.php
     - database/factories/RegulationsFactory.php
-    - database/migrations/2024_09_30_102356_create_apartments_table.php
-    - database/migrations/2024_09_30_102357_create_rooms_table.php
-    - database/migrations/2024_09_30_102358_create_slides_table.php
-    - database/migrations/2024_09_30_102359_create_testimonials_table.php
-    - database/migrations/2024_09_30_102400_create_local_attractions_table.php
-    - database/migrations/2024_09_30_102401_create_privacy_policies_table.php
-    - database/migrations/2024_09_30_102402_create_regulations_table.php
+    - database/migrations/2024_09_30_111611_create_apartments_table.php
+    - database/migrations/2024_09_30_111612_create_rooms_table.php
+    - database/migrations/2024_09_30_111613_create_slides_table.php
+    - database/migrations/2024_09_30_111614_create_testimonials_table.php
+    - database/migrations/2024_09_30_111615_create_local_attractions_table.php
+    - database/migrations/2024_09_30_111616_create_privacy_policies_table.php
+    - database/migrations/2024_09_30_111617_create_regulations_table.php
     - app/Models/Apartment.php
     - app/Models/Room.php
     - app/Models/Slide.php
@@ -21,9 +21,10 @@ created:
     - app/Models/PrivacyPolicy.php
     - app/Models/Regulations.php
 models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     Apartment: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', desc: json, equipment: json, thumbnail: text, gallery: text, sort: 'integer nullable' }
     Room: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', desc: json, equipment: json, thumbnail: text, gallery: text, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
-    Slide: { image: text, alt: json, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
+    Slide: { images: text, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
     Testimonial: { name: json, source: json, content: json, sort: 'integer nullable', relationships: { belongsTo: Apartment } }
     LocalAttraction: { title: json, description: json, images: text, sort: 'integer nullable' }
     PrivacyPolicy: { content: json }

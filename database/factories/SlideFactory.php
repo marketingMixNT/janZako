@@ -22,8 +22,7 @@ class SlideFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => $this->faker->text(),
-            'alt' => '{}',
+            'images' => $this->faker->text(),
             'sort' => $this->faker->numberBetween(-10000, 10000),
             'apartment_id' => Apartment::factory(),
         ];
