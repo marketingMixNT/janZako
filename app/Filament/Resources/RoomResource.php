@@ -3,12 +3,13 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\Room;
 use Filament\Tables;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
-use App\Models\Apartment;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+
 use Filament\Resources\Resource;
 use Awcodes\Shout\Components\Shout;
 use Livewire\Component as Livewire;
@@ -17,23 +18,26 @@ use Filament\Forms\Components\Component;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
-use App\Filament\Resources\ApartmentResource\Pages;
+
+use App\Filament\Resources\RoomResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ApartmentResource\RelationManagers;
+use App\Filament\Resources\RoomResource\RelationManagers;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
 
-class ApartmentResource extends Resource
+class RoomResource extends Resource
 {
+
     use Translatable;
 
     public static function getTranslatableLocales(): array
     {
         return ['pl', 'en'];
     }
-    protected static ?string $model = Apartment::class;
+    protected static ?string $model = Room::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Apartamenty';
 
     public static function form(Form $form): Form
@@ -211,6 +215,11 @@ class ApartmentResource extends Resource
                     ->url()
                     ->columns(1),
 
+                Forms\Components\Select::make('apartment_id')
+                    ->relationship('apartment', 'title')
+                    ->required(),
+
+
             ]);
     }
 
@@ -229,7 +238,7 @@ class ApartmentResource extends Resource
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')
-                    ->description(function (Apartment $record) {
+                    ->description(function (Room $record) {
                         return Str::limit(strip_tags($record->desc), 40);
                     })
                     ->searchable()
@@ -269,23 +278,23 @@ class ApartmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListApartments::route('/'),
-            'create' => Pages\CreateApartment::route('/create'),
-            'edit' => Pages\EditApartment::route('/{record}/edit'),
+            'index' => Pages\ListRooms::route('/'),
+            'create' => Pages\CreateRoom::route('/create'),
+            'edit' => Pages\EditRoom::route('/{record}/edit'),
         ];
     }
 
     public static function getNavigationLabel(): string
     {
-        return ('Apartamenty');
+        return ('Pokoje');
     }
     public static function getPluralLabel(): string
     {
-        return ('Apartamenty');
+        return ('Pokoje');
     }
 
     public static function getLabel(): string
     {
-        return ('Apartament');
+        return ('Pokój');
     }
 }
