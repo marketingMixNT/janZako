@@ -25,7 +25,7 @@ models:
 
   Slide:
     images: text
-    home_slider: boolean 
+    home: boolean 
     relationships:
       belongsTo: Apartment
 
@@ -33,6 +33,7 @@ models:
     name: json
     source: json
     content: json
+    home: boolean 
     sort: integer nullable
     relationships:
       belongsTo: Apartment

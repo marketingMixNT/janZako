@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Translatable\HasTranslations;
 
 class Testimonial extends Model
 {
+
+    use HasTranslations;
     use HasFactory;
 
     /**
@@ -40,4 +43,6 @@ class Testimonial extends Model
     {
         return $this->belongsTo(Apartment::class);
     }
+
+    public $translatable = ['name', 'source', 'content'];
 }
