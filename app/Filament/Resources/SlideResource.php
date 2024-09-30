@@ -72,18 +72,14 @@ class SlideResource extends Resource
                         }
                     }),
 
-                    Select::make('apartment_id')
+                Select::make('apartment_id')
                     ->relationship('apartment', 'title')
-                    ->disabled(fn ($get) => $get('home_slider') === true)
+                    ->disabled(fn($get) => $get('home_slider') === true)
                     ->options(function () {
                         $assignedApartments = Slide::pluck('apartment_id')->toArray();
-                
+
                         return Apartment::whereNotIn('id', $assignedApartments)->pluck('title', 'id');
                     }),
-
-
-
-
 
             ]);
     }
@@ -93,6 +89,11 @@ class SlideResource extends Resource
         return $table
 
             ->columns([
+                Tables\Columns\ImageColumn::make('images')
+                    ->label('Zdjęcia')
+                    ->stacked()
+                    ->limit(3)
+                    ->limitedRemainingText(),
 
                 Tables\Columns\TextColumn::make('apartment_id')
                     ->label('Położenie')
@@ -101,21 +102,12 @@ class SlideResource extends Resource
                         return $record->apartment->title ?? 'Strona Główna';
                     }),
 
-
-                Tables\Columns\ImageColumn::make('images')
-                    ->label('Zdjęcia')
-                    ->stacked()
-                    ->limit(3)
-                    ->limitedRemainingText(),
-
-
-
-
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data utworzenia')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->label('Data modyfikacji')
                     ->dateTime()

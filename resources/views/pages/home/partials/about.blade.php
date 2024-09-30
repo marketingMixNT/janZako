@@ -18,7 +18,7 @@
 
                 <div class="self-start">
 
-                    <x-ui.link href="{{route('about')}}" title="{{__('home.about.link')}}" />
+                    {{-- <x-ui.link href="{{route('about')}}" title="{{__('home.about.link')}}" /> --}}
                 </div>
 
             </div>
