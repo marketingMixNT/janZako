@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 class Apartment extends Model
@@ -58,22 +59,35 @@ class Apartment extends Model
         'reservation_link'
     ];
 
+    public function testimonials(): HasMany
+    {
+        return $this->hasMany(Testimonial::class);
+    }
+    public function rooms(): HasMany
+    {
+        return $this->hasMany(Room::class);
+    }
+
+    public function socials(): HasMany
+    {
+        return $this->hasMany(Social::class);
+    }
+
     public function getMetaTitle(): string
-{
-    if ($this->meta_title) {
-        return $this->meta_title ;
-    } else {
-        return str_replace(['"', "'"], '', $this->title) . " | Hotel Jan Kraków";
+    {
+        if ($this->meta_title) {
+            return $this->meta_title;
+        } else {
+            return str_replace(['"', "'"], '', $this->title) . " | Hotel Jan Kraków";
+        }
     }
-}
 
-public function getMetaDesc(): string
-{
-    if ($this->meta_desc) {
-        return $this->meta_desc;
-    } else {
-        return substr(strip_tags($this->desc), 0, 150);
-
+    public function getMetaDesc(): string
+    {
+        if ($this->meta_desc) {
+            return $this->meta_desc;
+        } else {
+            return substr(strip_tags($this->desc), 0, 150);
+        }
     }
-}
 }

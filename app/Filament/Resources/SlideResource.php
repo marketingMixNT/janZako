@@ -27,6 +27,8 @@ class SlideResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-photo';
 
+    protected static ?string $navigationGroup = 'Strona główna';
+
     public static function form(Form $form): Form
     {
         return $form

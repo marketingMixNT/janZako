@@ -4,11 +4,21 @@ models:
     meta_desc: json nullable
     title: json unique
     slug: json unique
+    map: text
+    booking_script: text
+    phone: text
+    mail: text
+    address: text
+    logo: text
     desc: json
-    equipment: json
     thumbnail: text
     gallery: text
     sort: integer nullable
+    slider_heading: json nullable
+    slider_images: text
+
+    relationships:
+      hasMany: Testimonial, Room, Slides, Social
 
   Room:
     meta_title: json nullable
@@ -24,16 +34,21 @@ models:
       belongsTo: Apartment
 
   Slide:
-    images: text
-    home: boolean 
-    relationships:
-      belongsTo: Apartment
+    image: text
+    sort: integer nullable
 
   Testimonial:
     name: json
     source: json
     content: json
-    home: boolean 
+    sort: integer nullable
+    relationships:
+      belongsTo: Apartment
+
+  TestimonialHome:
+    name: json
+    source: json
+    content: json
     sort: integer nullable
     relationships:
       belongsTo: Apartment
@@ -43,6 +58,12 @@ models:
     description: json
     images: text
     sort: integer nullable
+
+  Social:
+    name: text
+    link: text
+    relationships:
+      belongsTo: Apartment
 
   PrivacyPolicy:
     content: json

@@ -5,14 +5,19 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
+use App\Models\Apartment;
 use Filament\Tables\Table;
 use App\Models\Testimonial;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Awcodes\Shout\Components\Shout;
-use Filament\Forms\Components\Toggle;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Select;
 
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TestimonialResource\Pages;
@@ -34,36 +39,48 @@ class TestimonialResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-        
-                Forms\Components\TextInput::make('name')
-                    ->label('Imię i nazwisko/pseudonim')
-                    ->minLength(3)
-                    ->maxLength(255)
-                    ->required(),
+            ->schema(
+                [
+                    TextInput::make('name')
+                        ->label('Imię i nazwisko/pseudonim')
+                        ->minLength(3)
+                        ->maxLength(255)
+                        ->required(),
 
-                Forms\Components\TextInput::make('source')
-                    ->label('Źródło opini')
-                    ->minLength(3)
-                    ->maxLength(255)
-                    ->required(),
+                    TextInput::make('source')
+                        ->label('Źródło opini')
+                        ->minLength(3)
+                        ->maxLength(255)
+                        ->required(),
 
-                Forms\Components\Textarea::make('content')
-                    ->label('Treść opini')
-                    ->required()
-                    ->autosize()
-                    ->columnSpanFull(),
+                    Textarea::make('content')
+                        ->label('Treść opini')
+                        ->required()
+                        ->autosize()
+                        ->columnSpanFull(),
 
-                    Toggle::make('home')
-                    ->columnSpanFull()
-                    ->label('Slider strony głównej')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, $set) {
-                        if ($state) {
-                            $set('apartment_id', null);
-                        }
-                    }),
-            ]);
+
+                    Toggle::make('home_slider')
+                        ->columnSpanFull()
+                        ->label('Slider strony głównej')
+                        ->reactive()
+                        ->afterStateUpdated(function ($state, $set) {
+                            if ($state) {
+                                $set('apartment_id', null);
+                            }
+                        }),
+
+                    Select::make('apartment_id')
+                        ->relationship('apartment', 'title')
+                        ->disabled(fn($get) => $get('home_slider') === true)
+                        ->options(function () {
+                            $assignedApartments = Testimonial::pluck('apartment_id')->toArray();
+
+                            return Apartment::whereNotIn('id', $assignedApartments)->pluck('title', 'id');
+                        }),
+                ]
+
+            );
     }
 
     public static function table(Table $table): Table
