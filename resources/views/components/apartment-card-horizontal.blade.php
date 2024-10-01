@@ -13,7 +13,10 @@
     <div class="w-full lg:w-[45%] flex flex-col justify-between items-start py-8 gap-8 lg:gap-0">
 
         <h2 class=" text-4xl uppercase  font-heading font-light ">{{ $apartment->title }}</h2>
-        <div class="text 2xl:mr-12 leading-loose font-light text-[14px] 2xl:text-base">{!! $apartment->short_desc !!}</div>
+        {{-- <div class="text 2xl:mr-12 leading-loose font-light text-[14px] 2xl:text-base">{!! $apartment->short_desc !!}
+        </div> --}}
+        <div class="text 2xl:mr-12 leading-loose font-light text-[14px] 2xl:text-base">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere dolorum mollitia soluta quas deleniti sed enim. Error animi debitis doloremque magnam, sequi repellendus iure tempora qui dicta earum quod minus.
+        </div>
 
 
         <ul class="flex flex-wrap gap-12">
@@ -33,9 +36,11 @@
     <div class="w-full lg:w-[15%] flex justify-center items-start gap-6 flex-col">
 
 
-        <x-ui.link href="{{$apartment->reservation_link}}" target="_blank" title="{{(__('rooms.card.book'))}}" color="text-fontBlack " />
+        <x-ui.link href="{{$apartment->reservation_link}}" target="_blank" title="{{(__('rooms.card.book'))}}"
+            color="text-fontBlack " />
 
-        <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="{{((__('rooms.card.check')))}}" />
+        {{-- <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="{{((__('rooms.card.check')))}}" /> --}}
+        <x-ui.link href="/" title="{{((__('rooms.card.check')))}}" />
 
 
 

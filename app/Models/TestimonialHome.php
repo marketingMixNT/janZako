@@ -6,17 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-
-use Spatie\Translatable\HasTranslations;
-
-
-class Testimonial extends Model
+class TestimonialHome extends Model
 {
     use HasFactory;
-    use HasTranslations;
-
 
     /**
      * The attributes that are mass assignable.
@@ -48,31 +40,4 @@ class Testimonial extends Model
     {
         return $this->belongsTo(Apartment::class);
     }
-
-    public static function getForm(): array
-    {
-        return [
-            TextInput::make('name')
-            ->label('Imię i nazwisko/pseudonim')
-            ->minLength(3)
-            ->maxLength(255)
-            ->required(),
-
-        TextInput::make('source')
-            ->label('Źródło opini')
-            ->minLength(3)
-            ->maxLength(255)
-            ->required(),
-
-        Textarea::make('content')
-            ->label('Treść opini')
-            ->required()
-            ->autosize()
-            ->columnSpanFull(),
-        ];
-    }
-
-    public $translatable = ['content',];
-
 }
-

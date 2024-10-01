@@ -30,10 +30,10 @@
     <x-footer />
     {{-- <x-mobile-buttons /> --}}
 
-    <script
-        src="https://wis.upperbooking.com/aparthoteljan/be-panel?locale={{ str_replace('_', '-', app()->getLocale()) }}"
-        async></script>
 
+
+
+        <script src="https://wis.upperbooking.com/willajan/be-panel?locale={{ str_replace('_', '-', app()->getLocale()) }}" async=""></script>
 
 </body>
 

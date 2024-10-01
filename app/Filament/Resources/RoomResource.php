@@ -216,8 +216,7 @@ class RoomResource extends Resource
                     ->columns(1),
 
                 Forms\Components\Select::make('apartment_id')
-                    ->relationship('apartment', 'title')
-                    ->required(),
+                    ->relationship('apartment', 'title'),
 
 
             ]);

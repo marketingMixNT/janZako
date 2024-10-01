@@ -1,10 +1,11 @@
 <div class="swiper hero-carousel relative w-full h-[90vh]  md:h-screen  ">
     <div class="swiper-wrapper">
         {{-- HEADING --}}
+      
         <h1 class="absolute top-1/2 left-0 right-0 -translate-y-1/2 px-6 md:px-12 text-center text-5xl md:text-8xl 2xl:text-9xl    font-heading  text-fontWhite  tracking-wide z-50"
-            style="line-height: 1.3">
-            Pokoje i apartamenty <br> w Zakopanem</span>
-        </h1>
+        style="line-height: .6">
+        Apartamenty Jan <br> <span class=" text-xl sm:text-2xl font-text ">Pokoje i apartamenty w Zakopanem</span>
+    </h1>
 
         {{-- SLIDES --}}
         @foreach ($slides as $slide)

@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Slide extends Model
 {
@@ -17,8 +16,7 @@ class Slide extends Model
      */
     protected $fillable = [
         'images',
-        'home_slider',
-        'apartment_id',
+        'sort',
     ];
 
     /**
@@ -28,12 +26,6 @@ class Slide extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'apartment_id' => 'integer',
         'images' => 'array',
     ];
-
-    public function apartment(): BelongsTo
-    {
-        return $this->belongsTo(Apartment::class);
-    }
 }

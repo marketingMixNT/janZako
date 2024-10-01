@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Translatable\HasTranslations;
+
 
 class Room extends Model
 {
     use HasFactory;
+
+    use HasTranslations;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +24,7 @@ class Room extends Model
         'meta_desc',
         'title',
         'slug',
+        'short_desc',
         'desc',
         'equipment',
         'thumbnail',
@@ -39,13 +44,17 @@ class Room extends Model
         'meta_desc' => 'array',
         'title' => 'array',
         'slug' => 'array',
+        'short_desc' => 'array',
         'desc' => 'array',
         'equipment' => 'array',
         'apartment_id' => 'integer',
+        'gallery'=>"array"
     ];
 
     public function apartment(): BelongsTo
     {
         return $this->belongsTo(Apartment::class);
     }
+
+    public $translatable = ['meta_title', 'meta_desc','title', 'slug', 'desc', 'equipment','short_desc'];
 }

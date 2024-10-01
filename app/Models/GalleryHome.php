@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PrivacyPolicy extends Model
+class GalleryHome extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,8 @@ class PrivacyPolicy extends Model
      * @var array
      */
     protected $fillable = [
-        'content',
+        'category',
+        'images',
     ];
 
     /**
@@ -25,6 +26,6 @@ class PrivacyPolicy extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'content' => 'array',
+        'category' => 'array',
     ];
 }

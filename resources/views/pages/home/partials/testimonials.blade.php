@@ -2,8 +2,8 @@
 
     <x-container class="max-w-screen-xl mx-auto space-y-20">
 
-        <x-heading-horizontal title="{{__('home.testimonials.heading')}}">
-            <x-text>{{__('home.testimonials.text')}}</x-text>
+        <x-heading-horizontal title="Słowa naszych gości mówią wszystko">
+            <x-text>Naszym priorytetem jest zapewnienie komfortu i wyjątkowych wrażeń. Z dumą dzielimy się opiniami osób, które odwiedziły nasz hotel i doświadczyły naszej gościnności. Przeczytaj, co o nas mówią, i przekonaj się, dlaczego warto nas odwiedzić!</x-text>
            
             <x-rating source="google" rate="4.60" href="https://www.google.com/maps/place/Hotel+Jan/@50.0596807,19.9350756,17z/data=!3m1!4b1!4m9!3m8!1s0x47165b1270181b39:0x464594929c77cd02!5m2!4m1!1i2!8m2!3d50.0596807!4d19.9376505!16s%2Fg%2F1tt1rfhd?entry=ttu&g_ep=EgoyMDI0MDkxOC4xIKXMDSoASAFQAw%3D%3D" reviews="580 {{__('home.testimonials.reviews')}}" />
             <x-rating source="tripAdvisor" rate="4.50" href="https://www.tripadvisor.com/Hotel_Review-g274772-d519743-Reviews-Hotel_Jan-Krakow_Lesser_Poland_Province_Southern_Poland.html" reviews="660 {{__('home.testimonials.reviews')}}" />

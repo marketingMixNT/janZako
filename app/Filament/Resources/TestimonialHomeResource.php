@@ -5,25 +5,18 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
-use App\Models\Apartment;
 use Filament\Tables\Table;
-use App\Models\Testimonial;
-use Illuminate\Support\Str;
+use App\Models\TestimonialHome;
 use Filament\Resources\Resource;
-use Awcodes\Shout\Components\Shout;
-use Filament\Forms\Components\Select;
-
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\TestimonialResource\Pages;
-use App\Filament\Resources\TestimonialResource\RelationManagers;
+use App\Filament\Resources\TestimonialHomeResource\Pages;
+use App\Filament\Resources\TestimonialHomeResource\RelationManagers;
+use Filament\Resources\Concerns\Translatable;
 
-class TestimonialResource extends Resource
+
+class TestimonialHomeResource extends Resource
 {
 
     use Translatable;
@@ -32,55 +25,35 @@ class TestimonialResource extends Resource
     {
         return ['pl', 'en'];
     }
-    protected static ?string $model = Testimonial::class;
+    protected static ?string $model = TestimonialHome::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-oval-left';
+
+    protected static ?string $navigationGroup = 'Strona główna';
+
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema(
-                [
-                    TextInput::make('name')
-                        ->label('Imię i nazwisko/pseudonim')
-                        ->minLength(3)
-                        ->maxLength(255)
-                        ->required(),
+            ->schema([
+                Forms\Components\TextInput::make('name')
+                ->label('Imię i nazwisko/pseudonim')
+                ->minLength(3)
+                ->maxLength(255)
+                ->required(),
 
-                    TextInput::make('source')
-                        ->label('Źródło opini')
-                        ->minLength(3)
-                        ->maxLength(255)
-                        ->required(),
+            Forms\Components\TextInput::make('source')
+                ->label('Źródło opini')
+                ->minLength(3)
+                ->maxLength(255)
+                ->required(),
 
-                    Textarea::make('content')
-                        ->label('Treść opini')
-                        ->required()
-                        ->autosize()
-                        ->columnSpanFull(),
-
-
-                    Toggle::make('home_slider')
-                        ->columnSpanFull()
-                        ->label('Slider strony głównej')
-                        ->reactive()
-                        ->afterStateUpdated(function ($state, $set) {
-                            if ($state) {
-                                $set('apartment_id', null);
-                            }
-                        }),
-
-                    Select::make('apartment_id')
-                        ->relationship('apartment', 'title')
-                        ->disabled(fn($get) => $get('home_slider') === true)
-                        ->options(function () {
-                            $assignedApartments = Testimonial::pluck('apartment_id')->toArray();
-
-                            return Apartment::whereNotIn('id', $assignedApartments)->pluck('title', 'id');
-                        }),
-                ]
-
-            );
+            Forms\Components\Textarea::make('content')
+                ->label('Treść opini')
+                ->required()
+                ->autosize()
+                ->columnSpanFull(),
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -122,7 +95,6 @@ class TestimonialResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -141,9 +113,9 @@ class TestimonialResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTestimonials::route('/'),
-            'create' => Pages\CreateTestimonial::route('/create'),
-            'edit' => Pages\EditTestimonial::route('/{record}/edit'),
+            'index' => Pages\ListTestimonialHomes::route('/'),
+            'create' => Pages\CreateTestimonialHome::route('/create'),
+            'edit' => Pages\EditTestimonialHome::route('/{record}/edit'),
         ];
     }
 

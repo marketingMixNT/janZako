@@ -1,6 +1,7 @@
 @props(['apartment','size'=>''])
 
-<a href={{route('apartment.show',$apartment->slug)}} class="group {{$size}}">
+{{-- <a href={{route('apartment.show',$apartment->slug)}} class="group {{$size}}"> --}}
+<a href="/"  class="group {{$size}}">
 
     <img src="{{ asset('storage/' . $apartment->thumbnail) }}" alt="zdjęcie przedstawiające {{ $apartment->title }} w Hotelu Jan w Krakowie"
         loading="lazy" 

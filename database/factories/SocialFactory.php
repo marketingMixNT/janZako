@@ -4,16 +4,17 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Slide;
+use App\Models\Apartment;
+use App\Models\Social;
 
-class SlideFactory extends Factory
+class SocialFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Slide::class;
+    protected $model = Social::class;
 
     /**
      * Define the model's default state.
@@ -21,8 +22,9 @@ class SlideFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => $this->faker->text(),
-            'sort' => $this->faker->numberBetween(-10000, 10000),
+            'name' => $this->faker->name(),
+            'link' => $this->faker->text(),
+            'apartment_id' => Apartment::factory(),
         ];
     }
 }

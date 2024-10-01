@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slides', function (Blueprint $table) {
+        Schema::create('gallery_homes', function (Blueprint $table) {
             $table->id();
+            $table->json('category');
             $table->text('images');
-            $table->boolean('home_slider')->default(false);
-            $table->foreignId('apartment_id')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('gallery_homes');
     }
 };

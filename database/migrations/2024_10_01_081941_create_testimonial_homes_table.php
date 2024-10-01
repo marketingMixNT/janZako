@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('testimonial_homes', function (Blueprint $table) {
             $table->id();
-            $table->json('meta_title')->nullable();
-            $table->json('meta_desc')->nullable();
-            $table->json('title')->unique();
-            $table->json('slug')->unique();
-            $table->json('desc');
-            $table->json('equipment');
-            $table->text('thumbnail');
-            $table->text('gallery');
+            $table->json('name');
+            $table->json('source');
+            $table->json('content');
             $table->integer('sort')->nullable();
             $table->foreignId('apartment_id');
             $table->timestamps();
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('testimonial_homes');
     }
 };

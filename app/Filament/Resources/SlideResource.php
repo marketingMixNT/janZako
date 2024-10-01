@@ -64,24 +64,7 @@ class SlideResource extends Resource
                     ->required()
                     ->columnSpanFull(),
 
-                Toggle::make('home_slider')
-                    ->columnSpanFull()
-                    ->label('Slider strony głównej')
-                    ->reactive()
-                    ->afterStateUpdated(function ($state, $set) {
-                        if ($state) {
-                            $set('apartment_id', null);
-                        }
-                    }),
-
-                Select::make('apartment_id')
-                    ->relationship('apartment', 'title')
-                    ->disabled(fn($get) => $get('home_slider') === true)
-                    ->options(function () {
-                        $assignedApartments = Slide::pluck('apartment_id')->toArray();
-
-                        return Apartment::whereNotIn('id', $assignedApartments)->pluck('title', 'id');
-                    }),
+                
 
             ]);
     }

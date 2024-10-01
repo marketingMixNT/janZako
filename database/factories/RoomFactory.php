@@ -26,6 +26,7 @@ class RoomFactory extends Factory
             'meta_desc' => '{}',
             'title' => '{}',
             'slug' => '{}',
+            'short_desc' => '{}',
             'desc' => '{}',
             'equipment' => '{}',
             'thumbnail' => $this->faker->text(),

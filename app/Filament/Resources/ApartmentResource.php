@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Social;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use App\Models\Apartment;
@@ -23,11 +24,12 @@ use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\ApartmentResource\Pages;
+
+
+
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-
-
-
 use App\Filament\Resources\ApartmentResource\RelationManagers;
+use App\Models\Gallery;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
 
@@ -53,6 +55,130 @@ class ApartmentResource extends Resource
                     ->columnSpanFull()
                     ->tabs([
 
+
+
+                        // MAIN INFO
+                        Tabs\Tab::make('Główne informacje')
+                            ->icon('heroicon-o-information-circle')
+                            ->columns()
+                            ->schema([
+
+                                Forms\Components\FileUpload::make('logo')
+                                    ->label('Logo')
+                                    ->directory('apartments-logos')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn(TemporaryUploadedFile $file): string => 'apartament-logo' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                    )
+                                    ->image()
+                                    ->maxSize(8192)
+                                    ->optimize('webp')
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        null,
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->columnSpanFull()
+                                    ->required(),
+
+
+                                Forms\Components\TextInput::make('title')
+                                    ->label('Nazwa Apartamentu')
+                                    ->unique(ignoreRecord: true)
+                                    ->placeholder('Apartament MarketingMix')
+                                    ->minLength(3)
+                                    ->maxLength(255)
+                                    ->required()
+                                    ->live(debounce: 1000)
+                                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+
+                                Forms\Components\TextInput::make('slug')
+                                    ->label('Slug')
+                                    ->required()
+                                    ->hint('Przyjazny adres url który wygeneruje się automatycznie')
+                                    ->readOnly(),
+
+                                    RichEditor::make('short_desc')
+                                    ->label('Krótki opis')
+                                    ->toolbarButtons([
+                                        'bold',
+                                        'italic',
+                                    ])
+                                    ->required()
+                                    ->placeholder('Pojawi się na stronie głównej oraz stronie apartamentów')
+                                    ->columnSpanFull(),
+
+                                Forms\Components\TextInput::make('booking_script')
+                                    ->label('Link do skryptu')
+                                    ->hint("Wpisz tylko link z src. Pamiętaj o usunięciu 'pl' tak jak w przykładzie poniżej. ")
+                                    ->placeholder("https://wis.upperbooking.com/aparthoteljan/be-panel?locale=")
+                                    ->minLength(3)
+                                    ->maxLength(255)
+                                    ->columnSpanFull()
+                                    ->required(),
+
+
+
+                                Forms\Components\Textarea::make('map')
+                                    ->label('Google Maps iFrame')
+                                    ->placeholder("<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.547169189393!2d20.00688517730142!3d49.474170357174515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715e5905e21c0ed%3A0x159c133ae9b83572!2sMarketingMix!5e0!3m2!1spl!2spl!4v1727760651042!5m2!1spl!2spl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade' title='hotelMarketingMix'></iframe>")
+                                    ->autosize()
+                                    ->required()
+
+                                    ->columnSpanFull(),
+
+                                Shout::make('so-important')
+                                    ->content('W celu poprawy SEO dodaj do mapy tag title="" , jak w przykładzie powyżej')
+                                    ->color('warning')
+                                    ->columnSpanFull(),
+
+
+                            ]),
+
+                        // CONTACT
+                        Tabs\Tab::make('Dane kontaktowe')
+                            ->icon('heroicon-o-phone')
+                            ->columns()
+                            ->schema([
+
+                                Forms\Components\TextInput::make('address')
+                                    ->label('Adres')
+                                    ->columnSpanFull()
+                                    ->placeholder("Testowa 123, 123-34 Test")
+                                    ->minLength(3)
+                                    ->maxLength(255)
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('phone')
+                                    ->label('Telefon')
+                                    ->prefix("+48")
+                                    ->placeholder("123-456-789")
+                                    ->numeric()
+                                    ->minLength(3)
+                                    ->maxLength(255)
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('mail')
+                                    ->label('Email')
+                                    ->placeholder("test@gmail.com")
+                                    ->minLength(3)
+                                    ->maxLength(255)
+                                    ->required(),
+
+                                Repeater::make('socials')
+                                    ->label('Social Media')
+                                    ->schema(Social::getForm())
+                                    ->relationship()
+                                    ->columnSpanFull()
+                                    ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
+                                    ->addActionLabel('Dodaj social')
+                                    ->collapsed()
+                                    ->collapsible()
+                                    ->grid(2)
+                                    ->defaultItems(0)
+                            ]),
+
                         // SLIDER
                         Tabs\Tab::make('Slider')
                             ->icon('heroicon-o-photo')
@@ -67,7 +193,7 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('slider_heading')
                                     ->label('Nagłówek')
                                     ->hint('Pojawi się pod nazwą apartamentu')
-                                    ->placeholder('np. Twój wymarzony pobyt zaczyna się tutaj')
+                                    ->placeholder('Twój wymarzony pobyt zaczyna się tutaj')
                                     ->unique(ignoreRecord: true)
                                     ->minLength(3)
                                     ->maxLength(255)
@@ -99,39 +225,6 @@ class ApartmentResource extends Resource
 
                             ]),
 
-                        // MAIN INFO
-                        Tabs\Tab::make('Główne informacje')
-                            ->icon('heroicon-o-information-circle')
-                            ->columns()
-                            ->schema([
-                                Forms\Components\TextInput::make('title')
-                                    ->label('Nazwa Apartamentu')
-                                    ->unique(ignoreRecord: true)
-                                    ->minLength(3)
-                                    ->maxLength(255)
-                                    ->required()
-                                    ->live(debounce: 1000)
-                                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
-
-                                Forms\Components\TextInput::make('slug')
-                                    ->label('Slug')
-                                    ->required()
-                                    ->placeholder('Przyjazny adres url który wygeneruje się automatycznie')
-                                    ->readOnly(),
-
-                                    // Repeater::make('socials')
-                                    // ->label('Social Media')
-                                    // // ->schema(Social::getForm())
-                                    // ->relationship()
-                                    // ->columnSpanFull()
-                                    // ->itemLabel(fn (array $state): ?string => $state['name'] ?? null)
-                                    // ->addActionLabel('Dodaj social')
-                                    // ->collapsed()
-                                    // ->collapsible()
-                                    // ->grid(2)
-                                    // ->defaultItems(0)
-                            ]),
-
                         // ABOUT
                         Tabs\Tab::make('O nas')
                             ->icon('heroicon-o-user')
@@ -146,32 +239,25 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('about_heading')
                                     ->label('Nagłówek')
                                     ->columnSpanFull()
-                                    ->placeholder('np. Gościnność i wygoda na starym mieście')
+                                    ->placeholder('Gościnność i wygoda na starym mieście')
                                     ->required(),
 
-                                Forms\Components\TextArea::make('about_text')
+                                Forms\Components\TextArea::make('about_text_first')
                                     ->label('Paragraf')
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
-                                    ->placeholder('np. Nasze apartamenty to połączenie elegancji i komfortu, zlokalizowane w samym sercu Krakowa. Każdy z nich urządzony jest z dbałością o szczegóły, aby zapewnić naszym gościom wyjątkowy pobyt. Z okien roztacza się widok na zabytkowe uliczki, a bliskość Rynku Głównego sprawia, że Kraków jest na wyciągnięcie ręki. Oferujemy przestrzeń do relaksu, nowoczesne udogodnienia oraz prawdziwą krakowską atmosferę.')
+                                    ->placeholder('Nasze apartamenty to połączenie elegancji i komfortu, zlokalizowane w samym sercu Krakowa. Każdy z nich urządzony jest z dbałością o szczegóły, aby zapewnić naszym gościom wyjątkowy pobyt. Z okien roztacza się widok na zabytkowe uliczki, a bliskość Rynku Głównego sprawia, że Kraków jest na wyciągnięcie ręki. Oferujemy przestrzeń do relaksu, nowoczesne udogodnienia oraz prawdziwą krakowską atmosferę.')
                                     ->required(),
 
-                                Forms\Components\TextArea::make('about_text')
+                                Forms\Components\TextArea::make('about_text_second')
                                     ->label('Paragraf 1')
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
-                                    ->placeholder('np. Hotel Jan to połączenie historii i nowoczesności. Mieści się w zabytkowej, 600-letniej kamienicy, oferując gościom wyjątkowy klimat Starego Miasta oraz wygodę dostosowaną do współczesnych potrzeb. Nasz hotel znajduje się zaledwie 50 metrów od Rynku Głównego.')
+                                    ->placeholder('Hotel Jan to połączenie historii i nowoczesności. Mieści się w zabytkowej, 600-letniej kamienicy, oferując gościom wyjątkowy klimat Starego Miasta oraz wygodę dostosowaną do współczesnych potrzeb. Nasz hotel znajduje się zaledwie 50 metrów od Rynku Głównego.')
                                     ->required(),
 
-                                Forms\Components\TextArea::make('about_text_second')
-                                    ->label('Paragraf 2')
-                                    ->columnSpanFull()
-                                    ->cols(5)
-                                    ->autosize()
-                                    ->placeholder('np. Oferujemy komfortowe pokoje, przestronne lobby i oranżerię, w której serwujemy śniadania. Nasza obsługa działa 24/7, aby zapewnić naszym gościom pełną satysfakcję i komfortowy pobyt w samym sercu Krakowa.')
-                                    ->required(),
 
                                 Forms\Components\FileUpload::make(name: 'about_images')
                                     ->label('Zdjęcia')
@@ -201,42 +287,11 @@ class ApartmentResource extends Resource
 
                             ]),
 
-                        // CONTENT
-                        Tabs\Tab::make('Opis')
-                            ->icon('heroicon-o-pencil-square')
-                            ->columns()
-                            ->schema([
-
-                                RichEditor::make('desc')
-                                    ->label('Opis główny')
-                                    ->toolbarButtons([
-                                        'bold',
-                                        'italic',
-                                        'h2',
-                                        'h3',
-                                        'italic',
-                                        'bulletList',
-                                        'orderedList',
-                                        'redo',
-                                        'strike',
-                                        'underline',
-                                        'undo',
-                                    ])
-                                    ->required()
-                                    ->placeholder('Pojawi się na stronie apartamentu')
-                                    ->columnSpanFull(),
-                            ]),
-
                         // PHOTOS
                         Tabs\Tab::make('Zdjęcia')
                             ->icon('heroicon-o-camera')
                             ->columns()
                             ->schema([
-                                Shout::make('info')
-                                    ->content('Tytuł oraz opis zostaną uzupełnione automatycznie jezeli ich nie podasz. Zachecamy jednak do zrobienia tego w celu lepszej optymalizacji')
-                                    ->type('info')
-                                    ->color('success')
-                                    ->columnSpanFull(),
 
                                 Forms\Components\FileUpload::make('thumbnail')
                                     ->label('Miniaturka')
@@ -256,32 +311,19 @@ class ApartmentResource extends Resource
                                     ])
                                     ->required()
                                     ->columnSpanFull(),
-                                Forms\Components\FileUpload::make('gallery')
-                                    ->label('Galeria')
-                                    ->directory('apartments-galleries')
-                                    ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartament-galeria-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
-                                    )
-                                    ->multiple()
-                                    ->appendFiles()
-                                    ->image()
-                                    ->reorderable()
-                                    ->hint('Galeria musi mieć co najmniej 4 zdjęcia')
-                                    ->maxSize(8192)
-                                    ->optimize('webp')
-                                    ->imageEditor()
-                                    ->minFiles(4)
-                                    ->maxFiles(16)
-                                    ->panelLayout('grid')
-                                    ->imageEditorAspectRatios([
-                                        null,
-                                        '16:9',
-                                        '4:3',
-                                        '1:1',
-                                    ])
-                                    ->required()
 
-                                    ->columnSpanFull(),
+                                Repeater::make('galleries')
+                                    ->label('Galeria')
+                                    ->schema(Gallery::getForm())
+                                    ->relationship()
+                                    ->columnSpanFull()
+                                    ->itemLabel(fn(array $state): ?string => $state['category'] ?? null)
+                                    ->addActionLabel('Dodaj do galerii')
+                                    ->collapsed()
+                                    ->collapsible()
+                                    ->reorderable()
+                                    ->grid(1)
+                                    ->defaultItems(0)
                             ]),
 
                         // ROOMS
@@ -290,7 +332,7 @@ class ApartmentResource extends Resource
                             ->columns()
                             ->schema([
                                 Shout::make('info')
-                                    ->content('Dodaj nagłówek, paragraf oraz przypisz pokoje.')
+                                    ->content('Dodaj nagłówek, paragraf oraz przypisz pokoje. Jeżeli chcesz stworzyć nowy pokój, odwiedź dedykowaną zakładkę.')
                                     ->type('info')
                                     ->color('info')
                                     ->columnSpanFull(),
@@ -298,7 +340,7 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('rooms_heading')
                                     ->label('Nagłówek')
                                     ->columnSpanFull()
-                                    ->placeholder('np. Gościnność i wygoda na starym mieście')
+                                    ->placeholder('Gościnność i wygoda na starym mieście')
                                     ->required(),
 
                                 Forms\Components\TextArea::make('rooms_text')
@@ -306,7 +348,7 @@ class ApartmentResource extends Resource
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
-                                    ->placeholder('np. Nasze apartamenty to połączenie elegancji i komfortu, zlokalizowane w samym sercu Krakowa. Każdy z nich urządzony jest z dbałością o szczegóły, aby zapewnić naszym gościom wyjątkowy pobyt. Z okien roztacza się widok na zabytkowe uliczki, a bliskość Rynku Głównego sprawia, że Kraków jest na wyciągnięcie ręki. Oferujemy przestrzeń do relaksu, nowoczesne udogodnienia oraz prawdziwą krakowską atmosferę.')
+                                    ->placeholder('Nasze apartamenty to połączenie elegancji i komfortu, zlokalizowane w samym sercu Krakowa. Każdy z nich urządzony jest z dbałością o szczegóły, aby zapewnić naszym gościom wyjątkowy pobyt. Z okien roztacza się widok na zabytkowe uliczki, a bliskość Rynku Głównego sprawia, że Kraków jest na wyciągnięcie ręki. Oferujemy przestrzeń do relaksu, nowoczesne udogodnienia oraz prawdziwą krakowską atmosferę.')
                                     ->required(),
 
                                 Select::make('apartment_id')
@@ -315,14 +357,13 @@ class ApartmentResource extends Resource
                                     ->multiple()
                                     ->preload()
                                     ->searchable()
-                                    ->required()
                                     ->columnSpanFull()
-                                    ->placeholder('Mozesz wybrac kilka'),
+                                    ->placeholder('Możesz wybrać kilka i tutaj.'),
 
 
                             ]),
 
-                        // TESTIMONIALS
+                        //TESTIMONIALS
                         Tabs\Tab::make('Opinie')
                             ->icon('heroicon-o-chat-bubble-oval-left')
                             ->columns()
@@ -332,6 +373,46 @@ class ApartmentResource extends Resource
                                     ->type('info')
                                     ->color('info')
                                     ->columnSpanFull(),
+
+                                Forms\Components\TextInput::make('google_reviews')
+                                    ->label('Liczba opini w google')
+                                    ->placeholder('452')
+                                    ->numeric()
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('google_reviews_average')
+                                    ->label('Średnia ocen')
+                                    ->placeholder('4.6')
+                                    ->numeric()
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('google_reviews_link')
+                                    ->label('Link do wizytówki google')
+                                    ->placeholder('https://maps.app.goo.gl/J68keyMP4o8iAR1C6')
+                                    ->url()
+                                    ->columnSpanFull()
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('tripadvisor_reviews')
+                                    ->label('Liczba opini w Trip Advisor')
+                                    ->placeholder('452')
+                                    ->numeric()
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('tripadvisor_reviews_average')
+                                    ->label('Średnia ocen')
+                                    ->placeholder('4.6')
+                                    ->numeric()
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('tripadvisor_reviews_link')
+                                    ->label('Link do Trip Advisor')
+                                    ->placeholder('https://www.tripadvisor.com/Hotel_Review-g274772-d519743-Reviews-Hotel_Jan-Krakow_Lesser_Poland_Province_Southern_Poland.html')
+                                    ->url()
+                                    ->columnSpanFull()
+                                    ->required(),
+
+
                                 Repeater::make('testimonials')
                                     ->label('Opinie')
                                     ->schema(Testimonial::getForm())
