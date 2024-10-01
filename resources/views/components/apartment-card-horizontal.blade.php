@@ -39,8 +39,8 @@
         <x-ui.link href="{{$apartment->reservation_link}}" target="_blank" title="{{(__('rooms.card.book'))}}"
             color="text-fontBlack " />
 
-        {{-- <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="{{((__('rooms.card.check')))}}" /> --}}
-        <x-ui.link href="/" title="{{((__('rooms.card.check')))}}" />
+        <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="{{((__('rooms.card.check')))}}" />
+        {{-- <x-ui.link href="/" title="{{((__('rooms.card.check')))}}" /> --}}
 
 
 

@@ -1,4 +1,4 @@
-<x-layouts.app title="Apartamenty Jan - Wygodne noclegi w Zakopanem" description="Zarezerwuj komfortowy apartament w Zakopanem! Apartamenty Jan to idealne miejsce na wypoczynek w sercu Tatr. Odkryj magię gór już dziś!">
+<x-layouts.home title="Apartamenty Jan - Wygodne noclegi w Zakopanem" description="Zarezerwuj komfortowy apartament w Zakopanem! Apartamenty Jan to idealne miejsce na wypoczynek w sercu Tatr. Odkryj magię gór już dziś!">
 
     
     @include('pages.home.partials.header')
@@ -8,4 +8,4 @@
     @include('pages.home.partials.cta')
     @include('pages.home.partials.testimonials')
     @include('pages.home.partials.local-attractions')
-</x-layouts.app>
+</x-layouts.home>

@@ -35,8 +35,8 @@
         <div id="nav-links" class="max-w-screen-xl mx-auto py-3.5 hidden lg:block ">
             <ul class="flex gap-6 xl:gap-12">
 
-                <x-nav.menu-item href="/">O nas</x-nav.menu-item>
-                <x-nav.menu-item href="/">Nasze obiekty</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('home')}}/#o-nas">O nas</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('apartment.index')}}">Nasze obiekty</x-nav.menu-item>
                 <x-nav.menu-item href="/">Lokalizacja</x-nav.menu-item>
                 <x-nav.menu-item href="/">Kontakt</x-nav.menu-item>
                 <x-nav.menu-item href="/">Hotel w Krakowie</x-nav.menu-item>

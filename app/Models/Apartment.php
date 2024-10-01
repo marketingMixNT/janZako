@@ -94,6 +94,25 @@ class Apartment extends Model
         return $this->hasMany(Gallery::class);
     }
 
+    public function getMetaTitle(): string
+{
+    if ($this->meta_title) {
+        return $this->meta_title ;
+    } else {
+        return str_replace(['"', "'"], '', $this->title) . " | Apartamenty Jan";
+    }
+}
+
+public function getMetaDesc(): string
+{
+    if ($this->meta_desc) {
+        return $this->meta_desc;
+    } else {
+        return substr(strip_tags($this->desc), 0, 150);
+
+    }
+}
+
 
     public $translatable = [
         'meta_title',
