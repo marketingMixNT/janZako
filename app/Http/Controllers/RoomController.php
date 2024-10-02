@@ -26,8 +26,14 @@ class RoomController extends Controller
 
         $room = Room::where('apartment_id', $apartment->id)->where('slug->pl', $roomSlug)->firstOrFail();
 
+        $otherRooms = Room::select('title','slug','thumbnail')
+        ->where('id', '!=', $apartment->id)
+        ->orderBy('sort')
+        ->take(3) 
+        ->get();
+
        
 
-        return view('pages.room.show', compact('apartment', 'room'));
+        return view('pages.room.show', compact('apartment', 'room','otherRooms'));
     }
 }
