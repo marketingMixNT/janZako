@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Regulations extends Model
 {
+    use HasTranslations;
     use HasFactory;
 
     /**
@@ -26,5 +28,9 @@ class Regulations extends Model
     protected $casts = [
         'id' => 'integer',
         'content' => 'array',
+    ];
+
+    public $translatable = [
+        'content'
     ];
 }

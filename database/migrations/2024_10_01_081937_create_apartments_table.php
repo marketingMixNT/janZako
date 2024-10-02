@@ -13,27 +13,44 @@ return new class extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
+
+            // Meta
             $table->json('meta_title')->nullable();
             $table->json('meta_desc')->nullable();
             $table->json('title')->unique();
             $table->json('slug')->unique();
-            $table->text('map');
-            $table->text('booking_script');
+
+            // Contact Information
             $table->text('phone');
             $table->text('mail');
             $table->text('address');
+            $table->text('city');
+
+            // Booking Information
+            $table->text('booking_link');
+            $table->text('booking_script');
+
+            // Images
             $table->text('logo');
             $table->text('thumbnail');
+            $table->text('about_images');
+            $table->text('banner_rooms');
+            $table->text('banner_gallery');
+            $table->text('banner_contact');
+
+            // Descriptions
             $table->json('short_desc');
             $table->json('about_heading');
             $table->json('about_text_first');
             $table->json('about_text_second');
-            $table->text('about_images');
             $table->json('rooms_heading');
             $table->json('rooms_text');
-            $table->integer('sort')->nullable();
-            $table->json('slider_heading')->nullable();
-            $table->text('slider_images');
+
+            // Map
+            $table->text('map');
+            $table->text('map_link');
+
+            // Reviews
             $table->integer('google_reviews');
             $table->integer('google_reviews_average');
             $table->text('google_reviews_link');
@@ -41,11 +58,11 @@ return new class extends Migration
             $table->integer('tripadvisor_reviews_average');
             $table->text('tripadvisor_reviews_link');
 
-            $table->text('booking_link');
-            $table->text('map_link');
-            $table->text('banner_rooms');
-            $table->text('banner_gallery');
-            $table->text('banner_contact');
+            // Slider
+            $table->json('slider_heading')->nullable();
+            $table->text('slider_images');
+
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }

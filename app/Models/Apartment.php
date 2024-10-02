@@ -21,40 +21,56 @@ class Apartment extends Model
      * @var array
      */
     protected $fillable = [
+        // Meta
         'meta_title',
         'meta_desc',
         'title',
         'slug',
-        'map',
-        'booking_script',
+
+        // Contact Information
         'phone',
         'mail',
         'address',
+        'city',
+
+        // Booking Information
+        'booking_link',
+        'booking_script',
+
+        // Images
         'logo',
-        'gallery',
-        'sort',
         'thumbnail',
-        "short_desc",
-        "about_heading",
-        "about_text_first",
-        "about_text_second",
-        "about_images",
-        "about_heading",
-        "rooms_heading",
-        "rooms_text",
-        'slider_heading',
-        'slider_images',
+        'about_images',
+        'banner_rooms',
+        'banner_gallery',
+        'banner_contact',
+
+        // Descriptions
+        'short_desc',
+        'about_heading',
+        'about_text_first',
+        'about_text_second',
+        'rooms_heading',
+        'rooms_text',
+
+        // Map
+        'map',
+        'map_link',
+
+        // Reviews
         'google_reviews',
         'google_reviews_average',
         'google_reviews_link',
         'tripadvisor_reviews',
         'tripadvisor_reviews_average',
         'tripadvisor_reviews_link',
-        'booking_link',
-        'map_link',
-        'banner_rooms',
-        'banner_gallery',
-        'banner_contact'
+
+        // Slider
+        'slider_heading',
+        'slider_images',
+
+        // Others
+        'sort',
     ];
 
     /**
@@ -68,10 +84,15 @@ class Apartment extends Model
         'meta_desc' => 'array',
         'title' => 'array',
         'slug' => 'array',
-        'slider_heading' => 'array',
-        'slider_images' => 'array',
+
+        "about_heading" => "array",
+        "about_text_first" => "array",
+        "about_text_second" => "array",
         'about_images' => 'array',
         "short_desc" => "array",
+
+        'slider_heading' => 'array',
+        'slider_images' => 'array',
     ];
 
     public function testimonials(): HasMany
@@ -83,14 +104,6 @@ class Apartment extends Model
     {
         return $this->hasMany(Room::class);
     }
-
-
-
-    public function slides(): HasMany
-    {
-        return $this->hasMany(Slides::class);
-    }
-
     public function socials(): HasMany
     {
         return $this->hasMany(Social::class);
@@ -125,12 +138,12 @@ class Apartment extends Model
         'meta_desc',
         'title',
         'slug',
+        'short_desc',
+        'about_heading',
+        'about_text_first',
+        'about_text_second',
+        'rooms_heading',
+        'rooms_text',
         'slider_heading',
-        "about_heading",
-        "about_text_first",
-        "about_text_second",
-        "rooms_heading",
-        "rooms_text",
-        "short_desc",
     ];
 }

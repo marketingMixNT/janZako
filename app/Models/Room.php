@@ -50,9 +50,9 @@ class Room extends Model
         'desc' => 'array',
         'equipment' => 'array',
         'apartment_id' => 'integer',
-        'gallery' => "array",
         'beds' => "array",
         'bathroom' => 'array',
+        'gallery' => "array",
     ];
 
     public function apartment(): BelongsTo
@@ -86,8 +86,8 @@ class Room extends Model
         'title',
         'slug',
         'desc',
-        'equipment',
         'short_desc',
+        'equipment',
         'beds',
         'bathroom',
     ];

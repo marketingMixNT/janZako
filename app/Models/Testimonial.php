@@ -39,8 +39,6 @@ class Testimonial extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'array',
-        'source' => 'array',
         'content' => 'array',
         'apartment_id' => 'integer',
     ];
@@ -75,5 +73,5 @@ class Testimonial extends Model
         ];
     }
 
-    public $translatable = ['content',];
+    public $translatable = ['content'];
 }
