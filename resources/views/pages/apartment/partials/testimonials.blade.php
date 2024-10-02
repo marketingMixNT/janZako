@@ -9,12 +9,12 @@
 
             <x-rating source="google" rate="{{$apartment->google_reviews_average}}"
                 href="{{$apartment->google_reviews_link}}"
-                reviews="{{$apartment->google_reviews}} {{__('home.testimonials.reviews')}}" />
+                reviews="{{$apartment->google_reviews}} opinii" />
 
 
             <x-rating source="tripAdvisor" rate="{{$apartment->tripadvisor_reviews_average}}"
                 href="{{$apartment->tripadvisor_reviews_link}}"
-                reviews="{{$apartment->tripadvisor_reviews}} {{__('home.testimonials.reviews')}}" />
+                reviews="{{$apartment->tripadvisor_reviews}} opinii" />
         </x-heading-horizontal>
 
 

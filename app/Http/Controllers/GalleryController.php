@@ -13,7 +13,7 @@ class GalleryController extends Controller
     public function __invoke($apartmentSlug)
     {
 
-        $apartment = Apartment::with('galleries')->select('id', 'title', 'slug', 'logo')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::with('galleries','socials')->select('id', 'title', 'slug', 'logo','phone','mail','address','map_link','banner_gallery')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
 
 

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->json('slug')->unique();
             $table->json('short_desc');
             $table->json('desc');
+            $table->json('beds');
+            $table->json('bathroom');
             $table->json('equipment');
             $table->text('thumbnail');
             $table->text('gallery');

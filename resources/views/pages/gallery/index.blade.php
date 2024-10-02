@@ -1,10 +1,10 @@
-<x-layouts.app title="{{__('gallery.meta_title')}}"
-    description="{{__('gallery.meta_desc')}}">
+<x-layouts.app title="Galeria Apartamentów Jan - Zobacz Nasze Komfortowe Wnętrza"
+    description="Zobacz galerię Apartamentów Jan w Zakopanem! Odkryj nasze eleganckie wnętrza i przytulne pokoje, idealne na wypoczynek w sercu Tatr. Sprawdź zdjęcia i zainspiruj się!">
 
-    <x-nav.navbar-rooms :apartment="$apartment"  />
+    <x-layouts.app-wrapper :apartment="$apartment">
 
     {{-- HEADER --}}
-    <x-header title="{{__('gallery.header-heading')}}"  bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-17.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-17.webp')]" />
+    <x-header subtitle="{{$apartment->title}}" title="Galeria" bgi="{{asset('storage/' . $apartment->banner_gallery)}}" />
 
     {{-- MAIN --}}
     <section class="py-20">
@@ -16,7 +16,7 @@
                 <button
                     class="border   px-8 py-3 uppercase text-xs duration-300   gallery-btn filter-btn"
                     data-title="">
-                    {{__('gallery.all')}}
+                    Wszystkie
                 </button>
 
              
@@ -50,8 +50,6 @@
         </x-container>
     </section>
 
-    {!!$apartment->map!!}
-
-    <x-footer-apartment :apartment="$apartment" />
+    </x-layouts.app-wrapper>
 
 </x-layouts.app>

@@ -115,7 +115,7 @@ class Apartment extends Model
         if ($this->meta_desc) {
             return $this->meta_desc;
         } else {
-            return substr(strip_tags($this->desc), 0, 150);
+            return substr(strip_tags($this->short_desc), 0, 150);
         }
     }
 

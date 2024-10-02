@@ -12,7 +12,7 @@ class ContactController extends Controller
      */
     public function __invoke($apartmentSlug)
     {
-        $apartment = Apartment::with('socials')->select('id', 'title', 'slug', 'logo','address','phone','mail')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::with('socials')->select('id', 'title', 'slug', 'logo','address','phone','mail','banner_contact')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
 
 

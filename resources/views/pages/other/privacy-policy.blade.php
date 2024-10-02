@@ -1,4 +1,4 @@
-<x-layouts.app title="{{__('privacy-policy.meta_title')}}"
+<x-layouts.home title="{{__('privacy-policy.meta_title')}}"
     description="{{__('privacy-policy.meta_desc')}}">
 
     {{-- HEADER --}}
@@ -18,4 +18,4 @@
 
 
 
-</x-layouts.app>
+</x-layouts.home>

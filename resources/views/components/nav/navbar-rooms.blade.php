@@ -18,14 +18,13 @@
                 </div>
             </div>
 
-            <a href="{{ route('home') }}"
+            <a href="{{ route('apartment.show',$apartment->slug) }}"
                 class="lg:absolute lg:left-1/2 transform lg:-translate-x-1/2 flex flex-col justify-center items-center gap-1 ">
                 <img src="{{asset('storage/' . $apartment->logo)}}" alt="logo {{$apartment->title}}" width="96"
                     height="50" class=" w-24 " />
             </a>
-            <x-ui.link-button id="nav-booking--light" type="primary"
-                href="https://booking.profitroom.com/{{ str_replace('_', '-', app()->getLocale()) }}/aparthoteljan/home?currency=PLN"
-                aria-label="Rezerwuj" class="hidden lg:block" target="_blank">{{__('navbar.book')}}
+            <x-ui.link-button id="nav-booking--light" type="primary" href="{{$apartment->booking_link}}" target="_blank"
+                aria-label="Rezerwuj" class="hidden lg:block" target="_blank">Zarezerwuj
             </x-ui.link-button>
             <div class="lg:hidden ">
                 <x-nav.hamburger />
@@ -39,13 +38,13 @@
 
                 <x-nav.menu-item href="{{route('apartment.show',$apartment->slug)}}/#o-nas">O nas</x-nav.menu-item>
                 <x-nav.menu-item href="{{route('room.index',$apartment->slug)}}">Pokoje</x-nav.menu-item>
-                <x-nav.menu-item href="/">Oferty</x-nav.menu-item>
+                <x-nav.menu-item href="{{$apartment->booking_link}}" target="_blank" rel="noreferrer nofollow">Oferty</x-nav.menu-item>
                 <x-nav.menu-item href="{{route('attractions',$apartment->slug)}}">Lokalne atrakcje</x-nav.menu-item>
                 <x-nav.menu-item href="{{ route('gallery',$apartment->slug) }}">Galeria</x-nav.menu-item>
                 <x-nav.menu-item href="{{route('safety',$apartment->slug)}}">Bezpieczeństwo</x-nav.menu-item>
                 <x-nav.menu-item href="  {{ route('contact',$apartment->slug) }}">Kontakt</x-nav.menu-item>
-
-
+                <x-nav.menu-item href="  {{ route('home.index') }}">Pozostałe obiekty</x-nav.menu-item>
+                <x-nav.menu-item href="" target="_blank" role="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
 
             </ul>
 
@@ -58,4 +57,4 @@
 
 
 {{-- MOBILE MENU --}}
-<x-nav.menu />
+<x-nav.menu :apartment="$apartment" />

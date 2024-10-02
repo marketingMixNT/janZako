@@ -103,17 +103,17 @@ class RoomResource extends Resource
                             ->placeholder('Przyjazny adres url który wygeneruje się automatycznie')
                             ->readOnly(),
 
-                        Forms\Components\TextInput::make('beds')
-                            ->label('Liczba łóżek')
-                            ->required()
-                            ->placeholder('np. 1 podwójne')
-                            ->columns(1),
+                        // Forms\Components\TextInput::make('beds')
+                        //     ->label('Liczba łóżek')
+                        //     ->required()
+                        //     ->placeholder('np. 1 podwójne')
+                        //     ->columns(1),
 
-                        Forms\Components\TextInput::make('bathroom')
-                            ->label('Liczba łazienek')
-                            ->required()
-                            ->placeholder('np. 1 łazienka')
-                            ->columns(1),
+                        // Forms\Components\TextInput::make('bathroom')
+                        //     ->label('Liczba łazienek')
+                        //     ->required()
+                        //     ->placeholder('np. 1 łazienka')
+                        //     ->columns(1),
 
                         RichEditor::make('short_desc')
                             ->label('Krótki opis')

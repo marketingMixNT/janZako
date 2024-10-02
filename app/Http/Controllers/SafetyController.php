@@ -12,7 +12,7 @@ class SafetyController extends Controller
      */
     public function __invoke($apartmentSlug)
     {
-        $apartment = Apartment::select('id', 'title','slug','logo')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo','phone','mail','address','map_link','banner_gallery')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
         return view('pages.safety.index', compact("apartment"));
     }

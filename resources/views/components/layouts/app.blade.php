@@ -19,23 +19,23 @@
 <body class="overflow-x-hidden font-text bg-bgPrimary  ">
     @include('partials.gtm')
 
-    <x-preloader />
+    
 
 
-   
+
 
 
     {{ $slot }}
 
-   
-    
-    <x-mobile-buttons />
+
+
+    {{--
+    <x-mobile-buttons /> --}}
 
 
 
 
-    <script src="https://wis.upperbooking.com/willajan/be-panel?locale={{ str_replace('_', '-', app()->getLocale()) }}"
-        async=""></script>
+
 
 </body>
 

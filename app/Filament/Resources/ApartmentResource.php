@@ -132,7 +132,7 @@ class ApartmentResource extends Resource
 
                                         Forms\Components\Textarea::make('map')
                                             ->label('Google Maps iFrame')
-                                            ->placeholder("<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.547169189393!2d20.00688517730142!3d49.474170357174515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715e5905e21c0ed%3A0x159c133ae9b83572!2sMarketingMix!5e0!3m2!1spl!2spl!4v1727760651042!5m2!1spl!2spl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade' title:'apartament-willa' class:'w-full'></iframe>")
+                                            ->placeholder("<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.547169189393!2d20.00688517730142!3d49.474170357174515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715e5905e21c0ed%3A0x159c133ae9b83572!2sMarketingMix!5e0!3m2!1spl!2spl!4v1727760651042!5m2!1spl!2spl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade' title='apartament-willa' class='w-full'></iframe>")
                                             ->autosize()
                                             ->required()
 
@@ -141,7 +141,7 @@ class ApartmentResource extends Resource
 
 
                                         Shout::make('so-important')
-                                            ->content('Dodaj to mapy tagi: title:"nazwa-apartamentu" class:"w-full"')
+                                            ->content('Dodaj to mapy tagi:  title="nazwa-apartamentu" class="w-full"')
                                             ->color('warning')
                                             ->columnSpanFull(),
                                     ])
@@ -450,14 +450,14 @@ class ApartmentResource extends Resource
 
                                     ->required(),
 
-                                Select::make('rooms')
-                                    ->label('Pokoje')
-                                    ->relationship('rooms', 'title') // Use the relationship and display the room title
-                                    ->multiple() // Allows for multiple room selections
-                                    ->preload() // Preload all values
-                                    ->columnSpanFull()
-                                    ->options(Room::whereNotNull('apartment_id')->pluck('title', 'id')) // Show only rooms that are assigned to an apartment
-                                    ->disabled(), // Disable the select field to make it read-only
+                                // Select::make('rooms')
+                                //     ->label('Pokoje')
+                                //     ->relationship('rooms', 'title') // Use the relationship and display the room title
+                                //     ->multiple() // Allows for multiple room selections
+                                //     ->preload() // Preload all values
+                                //     ->columnSpanFull()
+                                //     ->options(Room::whereNotNull('apartment_id')->pluck('title', 'id')) // Show only rooms that are assigned to an apartment
+                                //     ->disabled(), // Disable the select field to make it read-only
 
 
                             ]),
