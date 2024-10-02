@@ -35,7 +35,7 @@
 
         <x-ui.link href="{{$apartmentLink}}" target="_blank" title="Zarezerwuj" color="text-fontBlack " />
 
-        <x-ui.link href="{{route('apartment.show',$room->slug)}}" title="Zobacz" />
+        <x-ui.link href="{{ route('room.show', ['apartmentSlug' => $testSlug, 'roomSlug' => $roomSlug]) }}" title="Zobacz" />
 
 
 

@@ -18,7 +18,7 @@
             </div>
 
             @foreach ($rooms as $room)
-            <x-room-card-horizontal :room='$room' :apartmentLink="$apartment->booking_link" :apartmentTitle="$apartment->title" />
+            <x-room-card-horizontal :room='$room' :apartmentLink="$apartment->booking_link" :apartmentTitle="$apartment->title" :testSlug="$apartment->slug" :roomSlug="$room->slug" />
             @endforeach
 
         </x-container>

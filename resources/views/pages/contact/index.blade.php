@@ -52,15 +52,7 @@
                         </x-contact-box>
 
                     </div>
-                    {{-- <div class="flex flex-col gap-2">
-
-                        <h3 class="text-lg font-light uppercase">{{__('contact.reception')}}</h3>
-                        <h3 class="text-lg font-light uppercase">{{__('contact.bank-account')}}</h3>
-                        <span class="font-light">bank: mBank</span>
-                        <span class="font-light">{{__('contact.bank-account-number')}}: 59 1140 2004 0000 3302 7685
-                            1219</span>
-                        <span class="font-light">SWIFT: BREX PL PW MBK</span>
-                    </div> --}}
+                  
 
                 </div>
 

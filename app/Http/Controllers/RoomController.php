@@ -10,26 +10,24 @@ class RoomController extends Controller
 
     public function index($apartmentSlug)
     {
-       
-        $apartment = Apartment::where('slug->pl', $apartmentSlug)->firstOrFail();
 
-      
-        $rooms = Room::where('apartment_id', $apartment->id)->get();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link','booking_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
+
+
+        $rooms = Room::select('id','title','thumbnail','short_desc','slug',)->where('apartment_id', $apartment->id)->get();
 
         return view('pages.room.index', compact('apartment', 'rooms'));
     }
 
     public function show($apartmentSlug, $roomSlug)
     {
-       
-        $apartment = Apartment::where('slug->pl', $apartmentSlug)->firstOrFail();
+
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
         $room = Room::where('apartment_id', $apartment->id)->where('slug->pl', $roomSlug)->firstOrFail();
 
-        dd($room);
+       
 
         return view('pages.room.show', compact('apartment', 'room'));
     }
-
-    
 }
