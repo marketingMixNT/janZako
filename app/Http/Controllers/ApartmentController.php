@@ -11,23 +11,15 @@ class ApartmentController extends Controller
 {
     public function index()
     {
-        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail',)->get();
+        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail','address',)->get();
 
         return view('pages.apartment.index', compact('apartments'));
     }
 
     public function show($slug)
     {
-        $apartment = Apartment::with('rooms','testimonials',)->where('slug->pl', $slug)->firstOrFail();
+        $apartment = Apartment::with('rooms', 'testimonials',)->where('slug->pl', $slug)->firstOrFail();
 
-        // $slides = Slide::orderBy('sort')->get();
-        // $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail',)->get();
-        // $testimonials = TestimonialHome::orderBy("sort")->get();
-
-
-
-        // return view('pages.home.index', compact("slides", "apartments", 'testimonials'));
-
-        return view('pages.apartment.show', compact('apartment', ));
+        return view('pages.apartment.show', compact('apartment',));
     }
 }

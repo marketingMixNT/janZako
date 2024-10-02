@@ -1,6 +1,9 @@
 <x-layouts.app title="{{__('local-attractions.meta_title')}}"
     description="{{__('local-attractions.meta_desc')}}">
 
+    <x-nav.navbar-rooms :apartment="$apartment" />
+
+
     {{-- HEADER --}}
     <x-header title="{{__('local-attractions.header-heading')}}" bgi="bg-[url('/public/assets/images/krakow/mobile/krakow-1.webp')] sm:bg-[url('/public/assets/images/krakow/krakow-1.webp')]" />
 
@@ -38,4 +41,8 @@
 
 
     </x-container>
+
+    {!!$apartment->map!!}
+
+    <x-footer-apartment :apartment="$apartment" />
 </x-layouts.app>

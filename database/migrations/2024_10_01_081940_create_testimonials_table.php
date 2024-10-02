@@ -17,7 +17,8 @@ return new class extends Migration
             $table->text('source');
             $table->json('content');
             $table->integer('sort')->nullable();
-            $table->foreignId('apartment_id');
+            $table->foreignId('apartment_id')->nullable();
+            $table->boolean('home')->default(false);
             $table->timestamps();
         });
     }

@@ -1,15 +1,15 @@
-<x-layouts.app title="{{__('rooms.meta_title')}}"
-    description="{{__('rooms.meta_desc')}}">
+<x-layouts.home title="Odkryj Apartamenty Jan - Komfort w Serce Tatr" description="Odkryj pełną ofertę apartamentów Jan w Zakopanem! Wybierz idealne miejsce na wypoczynek w sercu Tatr. Zarezerwuj już dziś i ciesz się niezapomnianym pobytem!">
 
     {{-- HEADER --}}
-    <x-header title="{{__('rooms.header-heading')}}" bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-17.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-17.webp')]" />
+    <x-header title="Nasze obiekty"
+        bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-17.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-17.webp')]" />
 
     {{-- MAIN --}}
     <section class="py-10 lg:py-20">
         <x-container class="max-w-screen-2xl">
             <div class="w-full mx-auto flex justify-center items-center lg:pb-20">
-                <x-heading-horizontal title="{{__('rooms.heading')}}">
-                    <x-text>{{__('rooms.text')}}</x-text>
+                <x-heading-horizontal title="Odkryj Nasze Apartamenty">
+                    <x-text>Zapraszamy do odkrywania naszej oferty apartamentów Jan, które zapewnią Ci niezapomniany pobyt w Zakopanem. Każdy z naszych apartamentów łączy w sobie nowoczesny design i przytulność, tworząc idealne miejsce do relaksu po dniu pełnym przygód. Niezależnie od tego, czy podróżujesz z rodziną, czy planujesz romantyczny wypad, w naszej ofercie znajdziesz coś dla siebie. Przeglądaj nasze apartamenty i wybierz idealne miejsce na swój wypoczynek!</x-text>
                 </x-heading-horizontal>
             </div>
 
@@ -19,4 +19,4 @@
 
         </x-container>
     </section>
-</x-layouts.app>
+</x-layouts.home>

@@ -19,28 +19,25 @@
         </div>
 
 
-        <ul class="flex flex-wrap gap-12">
+        <div class="flex flex-wrap gap-12">
 
-            <li class="flex justify-center items-center gap-3">
-                <x-lucide-bed-single class="size-6 text-accent-400" />
-                <span class="font-light">
-                    {{ $apartment->beds }} </span>
-            </li>
-            <li class="flex justify-center items-center gap-3">
-                <x-lucide-shower-head class="size-6 text-accent-400" />
-                <span class="font-light"> {{ $apartment->bathroom }} </span>
-            </li>
-        </ul>
+            <div class="flex justify-center items-center gap-3">
+                <x-lucide-map-pin class="size-6 text-accent-400" />
+                <a href="{{$apartment->map_link}}" target="_blank" rel="noreferrer nofollow" class="font-light link-hover--accent ">
+                    {{ $apartment->address }} </a>
+            </div>
+            
+        </div>
 
     </div>
     <div class="w-full lg:w-[15%] flex justify-center items-start gap-6 flex-col">
 
 
-        <x-ui.link href="{{$apartment->reservation_link}}" target="_blank" title="{{(__('rooms.card.book'))}}"
+        <x-ui.link href="{{$apartment->booking_link}}" target="_blank" title="Zarezerwuj"
             color="text-fontBlack " />
 
-        <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="{{((__('rooms.card.check')))}}" />
-        {{-- <x-ui.link href="/" title="{{((__('rooms.card.check')))}}" /> --}}
+        <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="Zobacz" />
+        
 
 
 

@@ -14,12 +14,14 @@
 
         {{-- <div class="flex flex-col pt-12 "> --}}
             <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-x-16 pt-20 px-2 sm:w-[90%] md:w-full mx-auto">
+              
+
+
 
                 @foreach ($apartment->rooms as $room)
-
-                <x-apartment-card :apartment="$room" />
-
-                @endforeach
+                <x-apartment-card :apartment="$room" :testSlug="$apartment->slug" :roomSlug="$room->slug" />
+            @endforeach
+            
 
             </div>
 

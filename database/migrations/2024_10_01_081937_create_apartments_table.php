@@ -40,6 +40,12 @@ return new class extends Migration
             $table->integer('tripadvisor_reviews');
             $table->integer('tripadvisor_reviews_average');
             $table->text('tripadvisor_reviews_link');
+
+            $table->text('booking_link');
+            $table->text('map_link');
+            $table->text('banner_rooms');
+            $table->text('banner_gallery');
+            $table->text('banner_contact');
             $table->timestamps();
         });
     }

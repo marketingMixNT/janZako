@@ -1,7 +1,11 @@
-<x-layouts.app title="{{ $apartment->getMetaTitle() }}" description="{{ $apartment->getMetaDesc() }}">
+<x-layouts.app title="{{ $room->getMetaTitle() }}" description="{{ $room->getMetaDesc() }}">
+
+    <x-nav.navbar-rooms :apartment="$apartment" />
+
+
 
     {{-- header --}}
-    <x-header-room title="{{$apartment->title}}" bgi="{{asset('/storage/' . $apartment->thumbnail)}}" />
+    <x-header-room title="{{$room->title}}" bgi="{{asset('/storage/' . $room->thumbnail)}}" />
 
     {{-- short_desc --}}
     <section class="pb-8 pt-20 lg:py-20">
@@ -41,12 +45,12 @@
                 {{-- <div class="xl:col-span-2 flex flex-col  gap-8 md:px-12"> --}}
                     <div class="xl:col-span-2 flex flex-col  gap-8 ">
 
-                        <div class="leading-loose font-light order-1 lg:order-none ">{!!$apartment->short_desc!!}</div>
+                        <div class="leading-loose font-light order-1 lg:order-none ">{!!$room->short_desc!!}</div>
 
 
 
-                        <img src="{{asset('/storage/' . $apartment->thumbnail)}}"
-                            alt="zdjęcie przedstawiające apartament {{$apartment->title}} w Hotelu Jan w Krakowie"
+                        <img src="{{asset('/storage/' . $room->thumbnail)}}"
+                            alt="zdjęcie przedstawiające apartament {{$room->title}} w Hotelu Jan w Krakowie"
                             loading="lazy" class="aspect-[3/2] shadow-md">
 
                     </div>
@@ -69,9 +73,9 @@
                 <div class="w-full lg:w-[55%] flex flex-col gap-y-12 relative lg:pr-12 ">
 
 
-                    @foreach (collect($apartment->gallery)->slice(0, 3) as $img)
+                    @foreach (collect($room->gallery)->slice(0, 3) as $img)
                     <img src="{{ asset('storage/' . $img) }}"
-                        alt="zdjęcie przedstawiające {{ $apartment->title }} w Hotelu Jan w Krakowie"
+                        alt="zdjęcie przedstawiające {{ $room->title }} w Hotelu Jan w Krakowie"
                         class="w-full  aspect-square max-h-[500px] object-cover shadow-md" loading="lazy">
                     @endforeach
 
@@ -80,11 +84,11 @@
 
                     <div class="prose max-w-full font-light">
 
-                        {!! $apartment->desc !!}
+                        {!! $room->desc !!}
                     </div>
                     <div class="prose font-light pt-3">
                         <x-title> {{__('room.equipment')}}:</x-title>
-                        {!! $apartment->equipment !!}
+                        {!! $room->equipment !!}
                     </div>
                 </div>
             </div>
@@ -107,11 +111,11 @@
         <div class="swiper attraction-gallery-swiper">
             <div class="py-10  swiper-wrapper">
 
-                @foreach ($apartment->gallery as $img)
+                @foreach ($room->gallery as $img)
                 <a href="{{ asset('storage/' . $img) }}" class=" swiper-slide glightbox">
 
                     <img src="{{ asset('storage/' . $img) }}"
-                        alt="zdjęcie przedstawiające  {{ $apartment->title }} w Hotelu Jan w Krakowie"
+                        alt="zdjęcie przedstawiające  {{ $room->title }} w Hotelu Jan w Krakowie"
                         class=" h-full w-full object-cover aspect-square shadow-md" loading="lazy">
                 </a>
                 @endforeach
@@ -170,11 +174,11 @@
             <div
                 class="flex flex-col lg:flex-row justify-center items-center gap-x-16 pt-20 px-2 sm:w-[90%] md:w-full mx-auto">
 
-                @foreach ($otherApartments as $apartment)
+                {{-- @foreach ($otherApartments as $room)
 
-                <x-apartment-card :apartment="$apartment" size="md:w-[80%] lg:w-1/3" />
+                <x-apartment-card :apartment="$room" size="md:w-[80%] lg:w-1/3" />
 
-                @endforeach
+                @endforeach --}}
 
             </div>
             <div class="flex justify-end items-center">
@@ -185,5 +189,7 @@
         </x-container>
     </section>
 
+    {!!$apartment->map!!}
 
+    <x-footer-apartment :apartment="$apartment" />
 </x-layouts.app>

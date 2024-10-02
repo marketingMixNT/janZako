@@ -6,7 +6,7 @@
     {{-- style="background-image: url({{$bgi}})" --}}
     >
     <!--HEADING-->
-    <span class="mb-4 text-sm 2xl:text-base font tracking-widest uppercase ">Hotel Jan</span>
+    <span class="mb-4 text-sm 2xl:text-base font tracking-widest uppercase ">Apartamenty Jan</span>
     <h1
         class="text-center text-4xl sm:text-5xl md:text-7xl  tracking-wider uppercase font-heading ">
         {{$title}}

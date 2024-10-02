@@ -50,6 +50,11 @@ class Apartment extends Model
         'tripadvisor_reviews',
         'tripadvisor_reviews_average',
         'tripadvisor_reviews_link',
+        'booking_link',
+        'map_link',
+        'banner_rooms',
+        'banner_gallery',
+        'banner_contact'
     ];
 
     /**
@@ -66,7 +71,7 @@ class Apartment extends Model
         'slider_heading' => 'array',
         'slider_images' => 'array',
         'about_images' => 'array',
-        "short_desc"=>"array",
+        "short_desc" => "array",
     ];
 
     public function testimonials(): HasMany
@@ -78,6 +83,8 @@ class Apartment extends Model
     {
         return $this->hasMany(Room::class);
     }
+
+
 
     public function slides(): HasMany
     {
@@ -95,23 +102,22 @@ class Apartment extends Model
     }
 
     public function getMetaTitle(): string
-{
-    if ($this->meta_title) {
-        return $this->meta_title ;
-    } else {
-        return str_replace(['"', "'"], '', $this->title) . " | Apartamenty Jan";
+    {
+        if ($this->meta_title) {
+            return $this->meta_title;
+        } else {
+            return str_replace(['"', "'"], '', $this->title) . " | Apartamenty Jan";
+        }
     }
-}
 
-public function getMetaDesc(): string
-{
-    if ($this->meta_desc) {
-        return $this->meta_desc;
-    } else {
-        return substr(strip_tags($this->desc), 0, 150);
-
+    public function getMetaDesc(): string
+    {
+        if ($this->meta_desc) {
+            return $this->meta_desc;
+        } else {
+            return substr(strip_tags($this->desc), 0, 150);
+        }
     }
-}
 
 
     public $translatable = [

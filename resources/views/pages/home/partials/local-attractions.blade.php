@@ -9,8 +9,8 @@
             <div class="flex flex-col justify-between items-start md:w-3/4 lg:w-full  mx-auto order-1 lg:order-none">
                 <div class="w-full lg:h-[60%] overflow-hidden ">
                     <div class="w-full h-full object-cover  ">
-                        <img src="https://images.unsplash.com/photo-1726231160459-308206afb13c?q=80&w=4470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="widok krakowskiej ulicy"
+                        <img src="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-1.webp')}}"
+                            alt="widok na Tatry"
                             class="w-full h-full object-cover shadow-md aspect-[3/2]" loading="lazy" width="420"
                             height="480">
                     </div>
@@ -20,7 +20,7 @@
                     class="pt-12 sm:mt-0 self-center sm:self-end flex flex-col justify-center sm:justify-end items-center sm:items-end gap-3 mb-12 sm:mb-24 lg:mb-12 ">
 
 
-                    {{-- <x-ui.link href="{{route('local-attractions')}}" title="{{__('home.local-attractions.link')}}" /> --}}
+                    <x-ui.link href="{{route('home.attractions')}}" title="zoacz więcej" />
                 </div>
             </div>
 
@@ -36,15 +36,15 @@
 
           
                 </div>
-                <img src="https://images.unsplash.com/photo-1726231160459-308206afb13c?q=80&w=4470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dwidok na krakowski diabelski młyn"
+                <img src="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-2.webp')}}" alt="Morskie Oko"
                     class=" w-full object-cover shadow-md  aspect-[3/2] " loading="lazy" width="430" height="320">
             </div>
             <div class="flex flex-col justify-start md:w-3/4 lg:w-full mx-auto ">
                 <div class="lg:h-[80%] w-full overflow-hidden lg:mt-6 shadow-md">
                     <div class="h-full w-full object-cover ">
-                        <img src="https://images.unsplash.com/photo-1726231160459-308206afb13c?q=80&w=4470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Kosciół Mariacki w Krakowie"
-                            class="w-full object-cover shadow-md  aspect-[3/2] lg:aspect-auto" loading="lazy">
+                        <img src="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-3.webp')}}"
+                            alt="Krupówki w Zakopanem"
+                            class="w-full lg:h-full object-cover shadow-md  aspect-[3/2] lg:aspect-auto" loading="lazy">
                     </div>
                 </div>
             </div>

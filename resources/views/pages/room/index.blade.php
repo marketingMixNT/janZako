@@ -1,6 +1,10 @@
 <x-layouts.app title="{{__('rooms.meta_title')}}"
     description="{{__('rooms.meta_desc')}}">
 
+
+    <x-nav.navbar-rooms :apartment="$apartment" />
+
+
     {{-- HEADER --}}
     <x-header title="{{__('rooms.header-heading')}}" bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-17.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-17.webp')]" />
 
@@ -13,10 +17,16 @@
                 </x-heading-horizontal>
             </div>
 
-            @foreach ($apartments as $apartment)
-            <x-apartment-card-horizontal :apartment='$apartment' />
+            @foreach ($rooms as $room)
+            <x-apartment-card-horizontal :apartment='$room' />
             @endforeach
 
         </x-container>
     </section>
+
+
+
+    {!!$apartment->map!!}
+
+    <x-footer-apartment :apartment="$apartment" />
 </x-layouts.app>

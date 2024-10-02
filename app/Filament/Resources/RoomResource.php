@@ -207,13 +207,6 @@ class RoomResource extends Resource
 
                     ]),
 
-                Forms\Components\TextInput::make('reservation_link')
-                    ->label('Link do rezerwacji')
-                    ->hint('Link do rezerwacji jest inny w wersji angielskiej!')
-                    ->placeholder('Podaj link z panelu rezerwacyjnego')
-                    ->required()
-                    ->url()
-                    ->columns(1),
 
                 Forms\Components\Select::make('apartment_id')
                     ->relationship('apartment', 'title'),
@@ -242,6 +235,11 @@ class RoomResource extends Resource
                     })
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('apartment.title') // Dodaj tę linię
+                    ->label('Apartament')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data utworzenia')
                     ->dateTime()

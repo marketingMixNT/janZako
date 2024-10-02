@@ -20,6 +20,12 @@
                 <x-nav.menu-item href="{{route('contact')}}">{{__('navbar.contact')}}</x-nav.menu-item>
                 <x-nav.menu-item href="{{route('other-apartments')}}">{{__('navbar.other-objects')}}</x-nav.menu-item> --}}
 
+                <x-nav.menu-item href="{{route('home.index')}}/#o-nas">O nas</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('apartment.index')}}">Nasze obiekty</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('home.location')}}">Lokalizacja</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('home.contact')}}">Kontakt</x-nav.menu-item>
+                <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" rel="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
+
             </ul>
 
             {{-- <img src="/assets/decor--light.png" alt="" class="w-16 md:w-18 2xl:w-20 2xl:my-6" /> --}}

@@ -56,7 +56,6 @@ class Social extends Model
                     'youtube' => 'YouTube',
                     'linkedin' => 'LinkedIn',
                     'tripadvisor' => 'TripAdvisor',
-                    'booking' => 'Booking',
                 ]),
 
 
@@ -66,7 +65,7 @@ class Social extends Model
                 ->minLength(3)
                 ->url()
                 
-                ->placeholder('np. https://www.instagram.com/marketingmix_pl/'),
+                ->placeholder('https://www.instagram.com/marketingmix_pl/'),
 
                
         ];

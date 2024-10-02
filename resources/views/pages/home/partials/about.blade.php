@@ -1,6 +1,6 @@
 <!--CONTAINER-->
 <section id="o-nas" class="pt-16 pb-8 ">
-    <x-container class="max-w-screen-xl ">
+    <x-container class="max-w-screen-xl  ">
 
 
 
@@ -11,17 +11,16 @@
             {{-- item --}}
             <div
                 class="flex flex-col justify-center md:w-[75%] lg:w-full mx-auto items-center lg:items-start gap-12 order-1 lg:order-none">
-                <img src="https://images.unsplash.com/photo-1726231160459-308206afb13c?q=80&w=4470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="wnętrze hotelu Jan w Krakowie"
-                    class="aspect-[4/3]  object-cover w-full  shadow-md order-1 lg:order-none" loading="lazy"
-                    width="500" height="500" />
-                <x-text class="lg:mr-20">Dodatkowym udogodnieniem jest sauna sucha oraz parowa, pozwalająca zregenerować
-                    siły po pieszej wędrówce lub białym szaleństwie na stoku narciarskim. W willi znajduje się także
-                    miejsce do zabaw dla dzieci. Zachęcamy do rezerwacji pokoi zarówno pary, grupy przyjaciół, samotnych
-                    podróżników, jak i rodziny z pociechami.
-
-                    Dla wygody Gości willa Jan oferuje możliwość rezerwacji pokoi z wykupionym śniadaniem, które
-                    podawane jest w jadalni w formie „szwedzkiego stołu” w godzinach porannych. Podpowiadamy! Rezerwując
-                    dłuższy pobyt zapłacicie mniej!</x-text>
+                <img src="{{asset('assets/images/apartamenty-jan-o-nas-2.webp')}}"
+                    alt="Krupówki w Zakopanem"
+                    class="aspect-[4/3]  object-cover w-full  shadow-md order-1 lg:order-none" loading="lazy"/>
+                <x-text class="lg:mr-20">Otoczeni malowniczymi krajobrazami, nasi goście mogą cieszyć się bliskością
+                    natury oraz dostępem do licznych atrakcji turystycznych. Zakopane to raj dla miłośników aktywnego
+                    wypoczynku — latem można wybierać spośród licznych szlaków pieszych i rowerowych, a zimą zjeżdżać na
+                    nartach lub snowboardzie. Dodatkowo, w okolicy znajdują się termalne baseny, które zapewnią relaks
+                    po dniu pełnym przygód. Apartamenty Jan to idealne miejsce dla każdego, kto pragnie odkryć piękno
+                    Tatr, delektować się lokalną kuchnią i spędzać czas w komfortowych warunkach, gdzie każdy dzień
+                    przynosi nowe możliwości odkrywania tego wyjątkowego regionu.</x-text>
 
                 <div class="self-start">
 
@@ -38,18 +37,17 @@
                     <x-title>Twoje wyjątkowe <br /> miejsce w Tatrach</x-title>
 
                     <x-text class="lg:mr-20">
-                        Z okien Willi Jan w Zakopanem rozpościera się widok na góry. Można nim się delektować niemal z
-                        każdego miejsca w rezydencji. Pokoje, wychodzące na Tatry, pozwalają w ciszy kontemplować tę
-                        malowniczą panoramę. Wymagający kustosze górskich pejzaży mogą zaś rozkoszować się tymi widokami
-                        pijąc rankiem kawę na swoim balkonie i spoglądając na szczyty gór. Willa oferuje aż 19 luksusowo
-                        urządzonych pokoi, wykończonych w drewnie z nutą lokalnego folkloru. Willa Jan znajduje się
-                        nieopodal stacji narciarskiej „Szymoszkowa” i w niewielkiej odległości od centrum. Z drugiej
-                        strony stoi na uboczu, dzięki czemu nie dociera tu gwar i hałas, co pozwala delektować się w
-                        pełni ciszą i spokojem.
+                        Zakopane to miejsce, gdzie magia gór łączy się z niezrównanym komfortem. Oferujemy trzy
+                        wyjątkowe obiekty, które stanowią idealną bazę wypadową do odkrywania uroków Tatr. Nasze
+                        apartamenty zostały zaprojektowane z myślą o komforcie i relaksie naszych gości, oferując
+                        przestronne wnętrza, nowoczesne udogodnienia oraz przytulną atmosferę. Każdy z naszych obiektów
+                        jest starannie urządzony, aby spełnić oczekiwania zarówno par szukających romantycznych chwil,
+                        jak i rodzin pragnących spędzić niezapomniane wakacje w górach.
                     </x-text>
                 </div>
-                <img src="https://images.unsplash.com/photo-1726231160459-308206afb13c?q=80&w=4470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="wnętrze w hotelu Jan w Krakowie"
-                    class="aspect-[4/3]  object-cover w-full shadow-md" loading="lazy" width="500" height="500" />
+                <img src="{{asset('assets/images/apartamenty-jan-o-nas-1.webp')}}"
+                    alt="stok w okolicach Zakopanego" class="aspect-[4/3]  object-cover w-full shadow-md"
+                    loading="lazy"  />
             </div>
         </div>
     </x-container>

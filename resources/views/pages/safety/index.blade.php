@@ -1,5 +1,7 @@
 <x-layouts.app title="{{__('safety.meta_title')}}" description="{{__('safety.meta_desc')}}">
 
+    <x-nav.navbar-rooms :apartment="$apartment" />
+
     <x-header title="{{__('safety.header-heading')}}"
         bgi="bg-[url('/public/assets/images/wspolne/mobile/wspolne-6.webp')] sm:bg-[url('/public/assets/images/wspolne/wspolne-6.webp')]" />
 
@@ -26,5 +28,11 @@
 
         </x-container>
     </section>
+
+
+
+    {!!$apartment->map!!}
+
+    <x-footer-apartment :apartment="$apartment" />
 
 </x-layouts.app>

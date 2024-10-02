@@ -3,8 +3,10 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use App\Models\Room;
 use Filament\Tables;
 use App\Models\Social;
+use App\Models\Gallery;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use App\Models\Apartment;
@@ -17,19 +19,19 @@ use Filament\Forms\Components\Tabs;
 use Livewire\Component as Livewire;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Component;
 use Filament\Support\Enums\IconPosition;
 use Filament\Forms\Components\RichEditor;
+
+
+
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\ApartmentResource\Pages;
-
-
-
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ApartmentResource\RelationManagers;
-use App\Models\Gallery;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
 
@@ -69,16 +71,9 @@ class ApartmentResource extends Resource
                                     ->getUploadedFileNameForStorageUsing(
                                         fn(TemporaryUploadedFile $file): string => 'apartament-logo' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
-                                    ->image()
+                                    
                                     ->maxSize(8192)
-                                    ->optimize('webp')
-                                    ->imageEditor()
-                                    ->imageEditorAspectRatios([
-                                        null,
-                                        '16:9',
-                                        '4:3',
-                                        '1:1',
-                                    ])
+                                  
                                     ->columnSpanFull()
                                     ->required(),
 
@@ -86,7 +81,6 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('title')
                                     ->label('Nazwa Apartamentu')
                                     ->unique(ignoreRecord: true)
-                                    ->placeholder('Apartament MarketingMix')
                                     ->minLength(3)
                                     ->maxLength(255)
                                     ->required()
@@ -99,7 +93,7 @@ class ApartmentResource extends Resource
                                     ->hint('Przyjazny adres url który wygeneruje się automatycznie')
                                     ->readOnly(),
 
-                                    RichEditor::make('short_desc')
+                                RichEditor::make('short_desc')
                                     ->label('Krótki opis')
                                     ->toolbarButtons([
                                         'bold',
@@ -109,29 +103,50 @@ class ApartmentResource extends Resource
                                     ->placeholder('Pojawi się na stronie głównej oraz stronie apartamentów')
                                     ->columnSpanFull(),
 
-                                Forms\Components\TextInput::make('booking_script')
-                                    ->label('Link do skryptu')
-                                    ->hint("Wpisz tylko link z src. Pamiętaj o usunięciu 'pl' tak jak w przykładzie poniżej. ")
-                                    ->placeholder("https://wis.upperbooking.com/aparthoteljan/be-panel?locale=")
-                                    ->minLength(3)
-                                    ->maxLength(255)
-                                    ->columnSpanFull()
-                                    ->required(),
+                                Fieldset::make('Rezerwacja')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('booking_link')
+                                            ->label('Link do panelu rezerwacji')
+                                            ->url()
+                                            ->columnSpanFull()
+                                            ->hint('Link jest inny dla wersji angielskiej!')
+                                            ->required(),
+
+                                        Forms\Components\TextInput::make('booking_script')
+                                            ->label('Link do skryptu rezerwacyjnego')
+                                            ->hint("Wpisz tylko link z src. Pamiętaj o usunięciu 'pl' tak jak w przykładzie poniżej. ")
+                                            ->placeholder("https://wis.upperbooking.com/aparthoteljan/be-panel?locale=")
+                                            ->minLength(3)
+                                            ->maxLength(255)
+                                            ->columnSpanFull()
+                                            ->required(),
+                                    ]),
+
+                                Fieldset::make('Mapa')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('map_link')
+                                            ->label('Link do mapy google')
+                                            ->url()
+                                            ->columnSpanFull()
+                                            ->required(),
+
+                                        Forms\Components\Textarea::make('map')
+                                            ->label('Google Maps iFrame')
+                                            ->placeholder("<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.547169189393!2d20.00688517730142!3d49.474170357174515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715e5905e21c0ed%3A0x159c133ae9b83572!2sMarketingMix!5e0!3m2!1spl!2spl!4v1727760651042!5m2!1spl!2spl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade' title:'apartament-willa' class:'w-full'></iframe>")
+                                            ->autosize()
+                                            ->required()
+
+                                            ->columnSpanFull(),
 
 
 
-                                Forms\Components\Textarea::make('map')
-                                    ->label('Google Maps iFrame')
-                                    ->placeholder("<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.547169189393!2d20.00688517730142!3d49.474170357174515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715e5905e21c0ed%3A0x159c133ae9b83572!2sMarketingMix!5e0!3m2!1spl!2spl!4v1727760651042!5m2!1spl!2spl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade' title='hotelMarketingMix'></iframe>")
-                                    ->autosize()
-                                    ->required()
+                                        Shout::make('so-important')
+                                            ->content('Dodaj to mapy tagi: title:"nazwa-apartamentu" class:"w-full"')
+                                            ->color('warning')
+                                            ->columnSpanFull(),
+                                    ])
 
-                                    ->columnSpanFull(),
 
-                                Shout::make('so-important')
-                                    ->content('W celu poprawy SEO dodaj do mapy tag title="" , jak w przykładzie powyżej')
-                                    ->color('warning')
-                                    ->columnSpanFull(),
 
 
                             ]),
@@ -153,8 +168,7 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('phone')
                                     ->label('Telefon')
                                     ->prefix("+48")
-                                    ->placeholder("123-456-789")
-                                    ->numeric()
+                                    ->placeholder("123456789")
                                     ->minLength(3)
                                     ->maxLength(255)
                                     ->required(),
@@ -166,17 +180,22 @@ class ApartmentResource extends Resource
                                     ->maxLength(255)
                                     ->required(),
 
-                                Repeater::make('socials')
-                                    ->label('Social Media')
-                                    ->schema(Social::getForm())
-                                    ->relationship()
-                                    ->columnSpanFull()
-                                    ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
-                                    ->addActionLabel('Dodaj social')
-                                    ->collapsed()
-                                    ->collapsible()
-                                    ->grid(2)
-                                    ->defaultItems(0)
+                                Fieldset::make('Social Media')
+                                    ->schema([
+                                        Repeater::make('socials')
+                                            ->schema(Social::getForm())
+                                            ->label('')
+                                            ->relationship()
+                                            ->columnSpanFull()
+                                            ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
+                                            ->addActionLabel('Dodaj social')
+                                            ->collapsed()
+                                            ->collapsible()
+                                            ->grid(2)
+                                            ->defaultItems(0)
+                                    ])
+
+
                             ]),
 
                         // SLIDER
@@ -184,11 +203,11 @@ class ApartmentResource extends Resource
                             ->icon('heroicon-o-photo')
                             ->columns()
                             ->schema([
-                                Shout::make('info')
-                                    ->content('Wybierz zdjęcia oraz nagłówek który pojawi się na głównej stronie apartamentu')
-                                    ->type('info')
-                                    ->color('info')
-                                    ->columnSpanFull(),
+                                // Shout::make('info')
+                                //     ->content('Wybierz zdjęcia oraz nagłówek który pojawi się na głównej stronie apartamentu')
+                                //     ->type('info')
+                                //     ->color('info')
+                                //     ->columnSpanFull(),
 
                                 Forms\Components\TextInput::make('slider_heading')
                                     ->label('Nagłówek')
@@ -199,29 +218,35 @@ class ApartmentResource extends Resource
                                     ->maxLength(255)
                                     ->required(),
 
-                                Forms\Components\FileUpload::make(name: 'slider_images')
-                                    ->label('Zdjęcia')
-                                    ->directory('slides')
-                                    ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartementy-jan-slide-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
-                                    )
-                                    ->multiple()
-                                    ->appendFiles()
-                                    ->image()
-                                    ->reorderable()
-                                    ->maxSize(8192)
-                                    ->optimize('webp')
-                                    ->imageEditor()
-                                    ->maxFiles(5)
-                                    ->panelLayout('grid')
-                                    ->imageEditorAspectRatios([
-                                        null,
-                                        '16:9',
-                                        '4:3',
-                                        '1:1',
+
+                                Fieldset::make('')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make(name: 'slider_images')
+                                            ->label('Zdjęcia')
+                                            ->directory('apartment-slides')
+                                            ->getUploadedFileNameForStorageUsing(
+                                                fn(TemporaryUploadedFile $file): string => 'apartementy-jan-slide-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                                            )
+                                            ->multiple()
+                                            ->appendFiles()
+                                            ->image()
+                                            ->reorderable()
+                                            ->maxSize(8192)
+                                            ->optimize('webp')
+                                            ->imageEditor()
+                                            ->maxFiles(5)
+                                            ->panelLayout('grid')
+                                            ->imageEditorAspectRatios([
+                                                null,
+                                                '16:9',
+                                                '4:3',
+                                                '1:1',
+                                            ])
+                                            ->required()
+                                            ->columnSpanFull(),
                                     ])
-                                    ->required()
-                                    ->columnSpanFull(),
+
+
 
                             ]),
 
@@ -239,7 +264,7 @@ class ApartmentResource extends Resource
                                 Forms\Components\TextInput::make('about_heading')
                                     ->label('Nagłówek')
                                     ->columnSpanFull()
-                                    ->placeholder('Gościnność i wygoda na starym mieście')
+
                                     ->required(),
 
                                 Forms\Components\TextArea::make('about_text_first')
@@ -247,7 +272,7 @@ class ApartmentResource extends Resource
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
-                                    ->placeholder('Nasze apartamenty to połączenie elegancji i komfortu, zlokalizowane w samym sercu Krakowa. Każdy z nich urządzony jest z dbałością o szczegóły, aby zapewnić naszym gościom wyjątkowy pobyt. Z okien roztacza się widok na zabytkowe uliczki, a bliskość Rynku Głównego sprawia, że Kraków jest na wyciągnięcie ręki. Oferujemy przestrzeń do relaksu, nowoczesne udogodnienia oraz prawdziwą krakowską atmosferę.')
+
                                     ->required(),
 
                                 Forms\Components\TextArea::make('about_text_second')
@@ -255,35 +280,40 @@ class ApartmentResource extends Resource
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
-                                    ->placeholder('Hotel Jan to połączenie historii i nowoczesności. Mieści się w zabytkowej, 600-letniej kamienicy, oferując gościom wyjątkowy klimat Starego Miasta oraz wygodę dostosowaną do współczesnych potrzeb. Nasz hotel znajduje się zaledwie 50 metrów od Rynku Głównego.')
+
                                     ->required(),
 
 
-                                Forms\Components\FileUpload::make(name: 'about_images')
-                                    ->label('Zdjęcia')
-                                    ->directory('apartment-about')
-                                    ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartementy-jan-o-nas-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
-                                    )
-                                    ->multiple()
-                                    ->appendFiles()
-                                    ->image()
-                                    ->reorderable()
-                                    ->hint("Dodaj dwa zdjęcia")
-                                    ->maxSize(8192)
-                                    ->optimize('webp')
-                                    ->imageEditor()
-                                    ->maxFiles(2)
-                                    ->minFiles(2)
-                                    ->panelLayout('grid')
-                                    ->imageEditorAspectRatios([
-                                        null,
-                                        '16:9',
-                                        '4:3',
-                                        '1:1',
+                                Fieldset::make('')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make(name: 'about_images')
+                                            ->label('Zdjęcia')
+                                            ->directory('apartment-about')
+                                            ->getUploadedFileNameForStorageUsing(
+                                                fn(TemporaryUploadedFile $file): string => 'apartementy-jan-o-nas-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                                            )
+                                            ->multiple()
+                                            ->appendFiles()
+                                            ->image()
+                                            ->reorderable()
+                                            ->hint("Dodaj dwa zdjęcia")
+                                            ->maxSize(8192)
+                                            ->optimize('webp')
+                                            ->imageEditor()
+                                            ->maxFiles(2)
+                                            ->minFiles(2)
+                                            ->panelLayout('grid')
+                                            ->imageEditorAspectRatios([
+                                                null,
+                                                '16:9',
+                                                '4:3',
+                                                '1:1',
+                                            ])
+                                            ->required()
+                                            ->columnSpanFull(),
                                     ])
-                                    ->required()
-                                    ->columnSpanFull(),
+
+
 
                             ]),
 
@@ -312,18 +342,87 @@ class ApartmentResource extends Resource
                                     ->required()
                                     ->columnSpanFull(),
 
-                                Repeater::make('galleries')
-                                    ->label('Galeria')
-                                    ->schema(Gallery::getForm())
-                                    ->relationship()
-                                    ->columnSpanFull()
-                                    ->itemLabel(fn(array $state): ?string => $state['category'] ?? null)
-                                    ->addActionLabel('Dodaj do galerii')
-                                    ->collapsed()
-                                    ->collapsible()
-                                    ->reorderable()
-                                    ->grid(1)
-                                    ->defaultItems(0)
+                                Fieldset::make('')
+                                    ->schema([
+                                        Repeater::make('galleries')
+                                            ->label('Galeria')
+                                            ->schema(Gallery::getForm())
+                                            ->relationship()
+                                            ->columnSpanFull()
+                                            ->itemLabel(fn(array $state): ?string => $state['category'] ?? null)
+                                            ->addActionLabel('Dodaj do galerii')
+                                            ->collapsed()
+                                            ->collapsible()
+                                            ->reorderable()
+                                            ->grid(1)
+                                            ->defaultItems(0)
+                                    ])
+
+
+                            ]),
+
+                        // BANNERS
+                        Tabs\Tab::make('Bannery')
+                            ->icon('heroicon-o-window')
+                            ->columns()
+                            ->schema([
+
+                                Forms\Components\FileUpload::make('banner_gallery')
+                                    ->label('Strona galeria')
+                                    ->directory('apartments-banners')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                    )
+                                    ->image()
+                                    ->maxSize(8192)
+                                    ->optimize('webp')
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        null,
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->required()
+                                    ->columnSpanFull(),
+
+                                Forms\Components\FileUpload::make('banner_contact')
+                                    ->label('Strona kontakt')
+                                    ->directory('apartments-banners')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                    )
+                                    ->image()
+                                    ->maxSize(8192)
+                                    ->optimize('webp')
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        null,
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->required()
+                                    ->columnSpanFull(),
+
+                                Forms\Components\FileUpload::make('banner_rooms')
+                                    ->label('Strona pokoje')
+                                    ->directory('apartments-banners')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                    )
+                                    ->image()
+                                    ->maxSize(8192)
+                                    ->optimize('webp')
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        null,
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->required()
+                                    ->columnSpanFull(),
                             ]),
 
                         // ROOMS
@@ -331,16 +430,16 @@ class ApartmentResource extends Resource
                             ->icon('heroicon-o-home')
                             ->columns()
                             ->schema([
-                                Shout::make('info')
-                                    ->content('Dodaj nagłówek, paragraf oraz przypisz pokoje. Jeżeli chcesz stworzyć nowy pokój, odwiedź dedykowaną zakładkę.')
-                                    ->type('info')
-                                    ->color('info')
-                                    ->columnSpanFull(),
+                                // Shout::make('info')
+                                //     ->content('Dodaj nagłówek, paragraf oraz przypisz pokoje. Jeżeli chcesz stworzyć nowy pokój, odwiedź dedykowaną zakładkę.')
+                                //     ->type('info')
+                                //     ->color('info')
+                                //     ->columnSpanFull(),
 
                                 Forms\Components\TextInput::make('rooms_heading')
                                     ->label('Nagłówek')
                                     ->columnSpanFull()
-                                    ->placeholder('Gościnność i wygoda na starym mieście')
+
                                     ->required(),
 
                                 Forms\Components\TextArea::make('rooms_text')
@@ -348,17 +447,17 @@ class ApartmentResource extends Resource
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
-                                    ->placeholder('Nasze apartamenty to połączenie elegancji i komfortu, zlokalizowane w samym sercu Krakowa. Każdy z nich urządzony jest z dbałością o szczegóły, aby zapewnić naszym gościom wyjątkowy pobyt. Z okien roztacza się widok na zabytkowe uliczki, a bliskość Rynku Głównego sprawia, że Kraków jest na wyciągnięcie ręki. Oferujemy przestrzeń do relaksu, nowoczesne udogodnienia oraz prawdziwą krakowską atmosferę.')
+
                                     ->required(),
 
-                                Select::make('apartment_id')
+                                Select::make('rooms')
                                     ->label('Pokoje')
-                                    ->relationship('rooms', 'title',)
-                                    ->multiple()
-                                    ->preload()
-                                    ->searchable()
+                                    ->relationship('rooms', 'title') // Use the relationship and display the room title
+                                    ->multiple() // Allows for multiple room selections
+                                    ->preload() // Preload all values
                                     ->columnSpanFull()
-                                    ->placeholder('Możesz wybrać kilka i tutaj.'),
+                                    ->options(Room::whereNotNull('apartment_id')->pluck('title', 'id')) // Show only rooms that are assigned to an apartment
+                                    ->disabled(), // Disable the select field to make it read-only
 
 
                             ]),
@@ -368,49 +467,56 @@ class ApartmentResource extends Resource
                             ->icon('heroicon-o-chat-bubble-oval-left')
                             ->columns()
                             ->schema([
-                                Shout::make('info')
-                                    ->content('Dodaj opinię zadowolonych gości.')
-                                    ->type('info')
-                                    ->color('info')
-                                    ->columnSpanFull(),
+                                // Shout::make('info')
+                                //     ->content('Dodaj opinię zadowolonych gości.')
+                                //     ->type('info')
+                                //     ->color('info')
+                                //     ->columnSpanFull(),
+                                Fieldset::make('google')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('google_reviews')
+                                            ->label('Liczba opini w google')
+                                            ->placeholder('452')
+                                            ->numeric()
+                                            ->required(),
 
-                                Forms\Components\TextInput::make('google_reviews')
-                                    ->label('Liczba opini w google')
-                                    ->placeholder('452')
-                                    ->numeric()
-                                    ->required(),
+                                        Forms\Components\TextInput::make('google_reviews_average')
+                                            ->label('Średnia ocen')
+                                            ->placeholder('4.6')
+                                            ->numeric()
+                                            ->required(),
 
-                                Forms\Components\TextInput::make('google_reviews_average')
-                                    ->label('Średnia ocen')
-                                    ->placeholder('4.6')
-                                    ->numeric()
-                                    ->required(),
+                                        Forms\Components\TextInput::make('google_reviews_link')
+                                            ->label('Link do wizytówki google')
+                                            ->placeholder('https://maps.app.goo.gl/J68keyMP4o8iAR1C6')
+                                            ->url()
+                                            ->columnSpanFull()
+                                            ->required(),
+                                    ]),
 
-                                Forms\Components\TextInput::make('google_reviews_link')
-                                    ->label('Link do wizytówki google')
-                                    ->placeholder('https://maps.app.goo.gl/J68keyMP4o8iAR1C6')
-                                    ->url()
-                                    ->columnSpanFull()
-                                    ->required(),
+                                Fieldset::make('TripAdvisor')
+                                    ->schema([
 
-                                Forms\Components\TextInput::make('tripadvisor_reviews')
-                                    ->label('Liczba opini w Trip Advisor')
-                                    ->placeholder('452')
-                                    ->numeric()
-                                    ->required(),
 
-                                Forms\Components\TextInput::make('tripadvisor_reviews_average')
-                                    ->label('Średnia ocen')
-                                    ->placeholder('4.6')
-                                    ->numeric()
-                                    ->required(),
+                                        Forms\Components\TextInput::make('tripadvisor_reviews')
+                                            ->label('Liczba opini w Trip Advisor')
+                                            ->placeholder('452')
+                                            ->numeric()
+                                            ->required(),
 
-                                Forms\Components\TextInput::make('tripadvisor_reviews_link')
-                                    ->label('Link do Trip Advisor')
-                                    ->placeholder('https://www.tripadvisor.com/Hotel_Review-g274772-d519743-Reviews-Hotel_Jan-Krakow_Lesser_Poland_Province_Southern_Poland.html')
-                                    ->url()
-                                    ->columnSpanFull()
-                                    ->required(),
+                                        Forms\Components\TextInput::make('tripadvisor_reviews_average')
+                                            ->label('Średnia ocen')
+                                            ->placeholder('4.6')
+                                            ->numeric()
+                                            ->required(),
+
+                                        Forms\Components\TextInput::make('tripadvisor_reviews_link')
+                                            ->label('Link do Trip Advisor')
+                                            ->placeholder('https://www.tripadvisor.com/Hotel_Review-g274772-d519743-Reviews-Hotel_Jan-Krakow_Lesser_Poland_Province_Southern_Poland.html')
+                                            ->url()
+                                            ->columnSpanFull()
+                                            ->required(),
+                                    ]),
 
 
                                 Repeater::make('testimonials')
@@ -425,6 +531,8 @@ class ApartmentResource extends Resource
                                     ->grid(1)
                                     ->reorderable()
                                     ->defaultItems(0)
+
+
                             ]),
 
                         // META
@@ -477,16 +585,22 @@ class ApartmentResource extends Resource
                     ->label('#')
                     ->sortable(),
 
-                Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Miniaturka'),
+                Tables\Columns\ImageColumn::make('logo')
+                    ->label('Logo'),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Nazwa')
                     ->description(function (Apartment $record) {
-                        return Str::limit(strip_tags($record->desc), 40);
+                        return Str::limit(strip_tags($record->short_desc), 40);
                     })
                     ->searchable()
                     ->sortable(),
+                 
+                    Tables\Columns\TextColumn::make('rooms_count')
+                    ->label('Liczba pokoi')
+                    ->counts('rooms')
+                    ->sortable(),
+                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data utworzenia')
                     ->dateTime()
