@@ -29,6 +29,7 @@ class Testimonial extends Model
         'source',
         'content',
         'sort',
+        'home',
         'apartment_id',
     ];
 

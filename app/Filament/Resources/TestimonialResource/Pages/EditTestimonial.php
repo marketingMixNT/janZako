@@ -1,22 +1,23 @@
 <?php
 
-namespace App\Filament\Resources\RoomResource\Pages;
+namespace App\Filament\Resources\TestimonialResource\Pages;
 
-use App\Filament\Resources\RoomResource;
+use App\Filament\Resources\TestimonialResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditRoom extends EditRecord
+class EditTestimonial extends EditRecord
 {
-
     use EditRecord\Concerns\Translatable;
-    protected static string $resource = RoomResource::class;
+
+    protected static string $resource = TestimonialResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
             Actions\LocaleSwitcher::make(),
+
         ];
     }
 }

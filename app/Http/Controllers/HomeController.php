@@ -15,8 +15,8 @@ class HomeController extends Controller
     {
         $slides = Slide::orderBy('sort')->get();
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address')->get();
-        // $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
-        $testimonials = Testimonial::orderBy("sort")->get();
+        $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
+     
 
 
 

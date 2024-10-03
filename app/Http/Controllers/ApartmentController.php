@@ -22,7 +22,7 @@ class ApartmentController extends Controller
     {
         $apartment =
             Apartment::with('rooms', 'testimonials')
-            ->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link', 'slider_images', 'slider_heading', 'about_images', 'about_heading', 'about_text_first', 'about_text_second', 'booking_link', 'booking_script', 'google_reviews', 'google_reviews_link', 'google_reviews_average', 'tripadvisor_reviews', 'tripadvisor_reviews_link', 'tripadvisor_reviews_average')
+            ->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link', 'slider_images', 'slider_heading', 'about_images', 'about_heading', 'about_text_first', 'about_text_second','rooms_heading',"rooms_text", 'booking_link', 'booking_script', 'google_reviews', 'google_reviews_link', 'google_reviews_average', 'tripadvisor_reviews', 'tripadvisor_reviews_link', 'tripadvisor_reviews_average',)
 
             ->where('slug->pl', $slug)
             ->firstOrFail();
