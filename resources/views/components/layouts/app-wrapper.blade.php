@@ -1,13 +1,13 @@
 @props(['apartment'])
 
 <x-preloader :logo="$apartment->logo" />
-<x-nav.navbar-rooms :apartment="$apartment" />
+<x-nav.navbar :apartment="$apartment" />
 
 {{$slot}}
 
 {!!$apartment->map!!}
 
-<x-footer-apartment :apartment="$apartment" />
+<x-footer :apartment="$apartment" />
 
 <x-mobile-buttons :apartment="$apartment" />
 

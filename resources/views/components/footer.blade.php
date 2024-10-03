@@ -6,32 +6,46 @@
             class="flex flex-col gap-10 sm:gap-0  s justify-center items-center sm:items-start sm:grid sm:grid-rows-2 lg:grid-rows-1 sm:grid-cols-3 lg:grid-cols-4 mx-4">
             <!--ONE-->
             <div class="flex items-center justify-center col-span-4 lg:col-span-1">
-                <a href="{{route('home.index')}}" aria-label="Logo Hotelu Jan w Krakowie">
-                    <img src="{{ asset('/assets/logo.svg') }}" alt="logo Apartamenty Jan" class="w-32 lg:ml-16"
-                        width="128" height="73" /></a>
+                <a href="{{route('apartment.show',$apartment->slug)}}" aria-label="Logo Hotelu Jan w Krakowie">
+                    <img src="{{asset('/storage/' . $apartment->logo)}}" alt="logo Hotel Jan" class="w-32 lg:ml-16"  width="128" height="73"/></a>
             </div>
             <!--TWO-->
             <div
                 class=" mx-4 md:mx-12 flex flex-col gap-6 justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
                 <div>
                     <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                        Zadzwoń do nas
+                     Zadzwoń do nas
                     </h2>
-                    <a href="tel:+48602512008" class="font-thin font-heading link-hover text-sm mb-2">+48 602-512-008</a>
-                    <a href="tel:+48182014207" class="font-thin font-heading link-hover text-sm">+48 18 201-42-07</a>
+                    <a href="tel:+48{{$apartment->phone}}" class="font-thin font-heading link-hover text-sm">+48 {{$apartment->phone}}</a>
                 </div>
-
+                <div>
+                    <h2 class="font-heading text-lg uppercase mb-2 font-light">
+                      Napisz do nas
+                    </h2>
+                    <a href="mailto:{{$apartment->phone}}"
+                        class="font-thin font-heading link-hover text-sm">{{$apartment->mail}}</a>
+                </div>
             </div>
             <!--THREE-->
-            <div>
-                <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                    Napisz do nas
-                </h2>
-                <a href="mailto:biuro@apartamenty-jan.com.pl"
-                    class="font-thin font-heading link-hover text-sm">biuro@apartamenty-jan.com.pl</a>
+            <div
+                class="mx-4 md:mx-12 flex flex-col justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
+                <h2 class="font-heading text-lg uppercase mb-2 font-light">   Adres</h2>
+                <a href="{{$apartment->map_link}}" target="_blank"
+                    class="font-thin font-heading link-hover text-sm">{{$apartment->address}}</a>
             </div>
             <!--FOUR-->
-            
+            <div class="mx-4  md:mx-12">
+                <h2 class="font-heading text-lg uppercase mb-2 font-light ">
+                    Social Media
+                </h2>
+                <div class="flex justify-center sm:justify-start items-center gap-3">
+                   
+                    @foreach ($apartment->socials as $social)
+                        <x-socials :social="$social" />
+                    @endforeach
+
+                </div>
+            </div>
 
         </div>
         <!--END GRID-->
@@ -41,27 +55,24 @@
             <hr class="opacity-40" />
             <ul class="flex justify-center items-center gap-8 text-xs py-4">
                 <li>
-                    <a href="{{route('home.privacy-policy')}}" class="link-hover font-light">
-                        Polityka Prywatności</a>
+                    <a href="{{route('home.privacy-policy')}}" class="link-hover font-light">Polityka Prywatności</a>
                 </li>
-                {{-- <li><a href="{{route('regulations')}}" class="link-hover font-light">
-                        {{__('footer.regulations')}}</a></li> --}}
+                {{-- <li><a href="{{route('regulations')}}" class="link-hover font-light">    {{__('footer.regulations')}}</a></li> --}}
             </ul>
             <hr class="opacity-40" />
         </div>
 
         <!--BOTTOM-->
         <div class="max-w-screen-lg mx-4 sm:mx-24 xl:mx-auto text-sm  flex justify-between items-center">
-            <a href="{{route('home.index')}}" class="flex gap-2 justify-start items-center link-hover font-light">
+            <a href="{{route('apartment.show',$apartment->slug)}}" class="flex gap-2 justify-start items-center link-hover font-light">
                 <span>© <span id="footerYear"></span></span>
                 <span>Apartamenty Jan</span>
             </a>
 
             <div>
-                <a href="https://marketingmix.pl" target="_blank" class="flex justify-center items-center"
-                    aria-label="Agencja MarketingMix"><img src="{{ asset('/assets/marketingmix-logo.svg') }}"
-                        class="w-32 hover:scale-105 duration-300" alt="logo wykonawcy - agencja MarketingMix"
-                        width="128" height="20" /></a>
+                <a href="https://marketingmix.pl" target="_blank" class="flex justify-center items-center" aria-label="Agencja MarketingMix"><img
+                        src="{{ asset('/assets/marketingmix-logo.svg') }}" class="w-32 hover:scale-105 duration-300"
+                        alt="logo wykonawcy - agencja MarketingMix" width="128" height="20"/></a>
             </div>
         </div>
     </div>

@@ -17,23 +17,24 @@
 
 
 <body class="overflow-x-hidden font-text bg-bgPrimary  ">
-@include('partials.gtm')
+    @include('partials.gtm')
 
     <x-preloader />
-    <x-nav.navbar />
+    <x-nav.navbar-home />
 
 
 
     {{ $slot }}
 
-    <x-map />
-    <x-footer />
-  
+    {{-- <x-map /> --}}
+    <x-footer-home />
 
 
 
 
-        <script src="https://wis.upperbooking.com/willajan/be-panel?locale={{ str_replace('_', '-', app()->getLocale()) }}" async=""></script>
+
+    <script src="https://wis.upperbooking.com/willajan/be-panel?locale={{ str_replace('_', '-', app()->getLocale()) }}"
+        async=""></script>
 
 </body>
 
