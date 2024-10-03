@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->json('category');
             $table->text('images');
-            $table->foreignId('apartment_id');
+            $table->foreignId('apartment_id')->nullable();
             $table->timestamps();
         });
     }

@@ -145,5 +145,6 @@ class Apartment extends Model
         'rooms_heading',
         'rooms_text',
         'slider_heading',
+        'booking_link',
     ];
 }

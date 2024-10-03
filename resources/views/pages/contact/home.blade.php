@@ -4,7 +4,7 @@
 
     {{-- HEADER --}}
     <x-header title="Kontakt"
-        bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-19.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-19.webp')]" />
+        bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy/apartamenty-jan-apartament-dwuosobowy7.webp')}}" />
 
     {{-- MAIN --}}
     <section class="py-20">

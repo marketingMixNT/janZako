@@ -2,7 +2,7 @@
 
     {{-- HEADER --}}
     <x-header title="Nasze obiekty"
-        bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-17.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-17.webp')]" />
+        bgi="{{asset('assets/images/apartamenty-jan/apartamenty-jan-5.webp')}}" />
 
     {{-- MAIN --}}
     <section class="py-10 lg:py-20">

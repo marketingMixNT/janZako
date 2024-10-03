@@ -14,9 +14,9 @@ class HomeController extends Controller
     public function index()
     {
         $slides = Slide::orderBy('sort')->get();
-        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address')->get();
+        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address',"city")->get();
         $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
-     
+
 
 
 
@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function location()
     {
 
-        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', 'phone', 'mail', 'short_desc')->get();
+        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city",'phone', 'mail', 'short_desc')->get();
 
         return view('pages.location.home', compact('apartments'));
     }

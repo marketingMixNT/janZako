@@ -31,7 +31,7 @@
                 class="mx-4 md:mx-12 flex flex-col justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
                 <h2 class="font-heading text-lg uppercase mb-2 font-light">   Adres</h2>
                 <a href="{{$apartment->map_link}}" target="_blank"
-                    class="font-thin font-heading link-hover text-sm">{{$apartment->address}}</a>
+                    class="font-thin font-heading link-hover text-sm">{{$apartment->address}} <br/> {{$apartment->city}}</a>
             </div>
             <!--FOUR-->
             <div class="mx-4  md:mx-12">

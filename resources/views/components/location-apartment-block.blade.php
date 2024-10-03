@@ -5,7 +5,7 @@
     <div class="space-y-2">
 
         <x-title>{{$apartment->title}}</x-title>
-        <x-text>{!!$apartment->short_desc!!}</x-text>
+        <div class="leading-loose font-light ">{!!$apartment->short_desc!!}</div>
     </div>
         
     <div class="space-y-4">
@@ -14,7 +14,7 @@
     <div class="flex justify-start items-center gap-3">
         <x-lucide-map-pin class="size-6 text-accent-400" />
         <a href="{{$apartment->map_link}}" target="_blank" rel="noreferrer nofollow" class="font-light link-hover--accent">
-            {{$apartment->address}}
+            {{$apartment->address}}, {{$apartment->city}}
         </a>
     </div>
     <div class="flex justify-start items-center gap-3">

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\RegulationsResource\Pages;
 
 use App\Filament\Resources\RegulationsResource;
+use App\Models\Regulations;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,10 +15,13 @@ class ListRegulations extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-            Actions\LocaleSwitcher::make(),
+        // Sprawdzanie, czy istnieje jakikolwiek rekord w tabeli Regulations
+        $regulationsExist = Regulations::exists();
 
-        ];
+        return array_filter([
+            // Tylko jeśli nie istnieje żaden rekord, wyświetlamy przycisk Create
+            !$regulationsExist ? Actions\CreateAction::make() : null,
+            Actions\LocaleSwitcher::make(),
+        ]);
     }
 }

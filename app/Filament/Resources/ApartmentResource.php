@@ -69,7 +69,7 @@ class ApartmentResource extends Resource
                                     ->label('Logo')
                                     ->directory('apartments-logos')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartament-logo' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartament-logo-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
                                     
                                     ->maxSize(8192)
@@ -158,9 +158,14 @@ class ApartmentResource extends Resource
                             ->schema([
 
                                 Forms\Components\TextInput::make('address')
-                                    ->label('Adres')
-                                    ->columnSpanFull()
-                                    ->placeholder("Testowa 123, 123-34 Test")
+                                    ->label('Ulica')
+                                    ->placeholder("Testowa 123")
+                                    ->minLength(3)
+                                    ->maxLength(255)
+                                    ->required(),
+                                Forms\Components\TextInput::make('city')
+                                    ->label('Kod pocztowy i miejscowość')
+                                    ->placeholder("123-34 Test")
                                     ->minLength(3)
                                     ->maxLength(255)
                                     ->required(),
@@ -322,12 +327,17 @@ class ApartmentResource extends Resource
                             ->icon('heroicon-o-camera')
                             ->columns()
                             ->schema([
+                                 Shout::make('info')
+                                    ->content('Aby zlokalizować nazwy kategorii w galerii przejdź do dedykowanej zakładki')
+                                    ->type('info')
+                                    ->color('info')
+                                    ->columnSpanFull(),
 
                                 Forms\Components\FileUpload::make('thumbnail')
                                     ->label('Miniaturka')
                                     ->directory('apartments-thumbnails')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-miniaturka' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-miniaturka-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -371,7 +381,7 @@ class ApartmentResource extends Resource
                                     ->label('Strona galeria')
                                     ->directory('apartments-banners')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -390,7 +400,7 @@ class ApartmentResource extends Resource
                                     ->label('Strona kontakt')
                                     ->directory('apartments-banners')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -409,7 +419,7 @@ class ApartmentResource extends Resource
                                     ->label('Strona pokoje')
                                     ->directory('apartments-banners')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -467,11 +477,11 @@ class ApartmentResource extends Resource
                             ->icon('heroicon-o-chat-bubble-oval-left')
                             ->columns()
                             ->schema([
-                                // Shout::make('info')
-                                //     ->content('Dodaj opinię zadowolonych gości.')
-                                //     ->type('info')
-                                //     ->color('info')
-                                //     ->columnSpanFull(),
+                                Shout::make('info')
+                                ->content('Aby dodać opinie przejdź do dedykowanej zakładki')
+                                ->type('info')
+                                ->color('info')
+                                ->columnSpanFull(),
                                 Fieldset::make('google')
                                     ->schema([
                                         Forms\Components\TextInput::make('google_reviews')
@@ -519,18 +529,18 @@ class ApartmentResource extends Resource
                                     ]),
 
 
-                                Repeater::make('testimonials')
-                                    ->label('Opinie')
-                                    ->schema(Testimonial::getForm())
-                                    ->relationship()
-                                    ->columnSpanFull()
-                                    ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
-                                    ->addActionLabel('Dodaj opinię')
-                                    ->collapsed()
-                                    ->collapsible()
-                                    ->grid(1)
-                                    ->reorderable()
-                                    ->defaultItems(0)
+                                // Repeater::make('testimonials')
+                                //     ->label('Opinie')
+                                //     ->schema(Testimonial::getForm())
+                                //     ->relationship()
+                                //     ->columnSpanFull()
+                                //     ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
+                                //     ->addActionLabel('Dodaj opinię')
+                                //     ->collapsed()
+                                //     ->collapsible()
+                                //     ->grid(1)
+                                //     ->reorderable()
+                                //     ->defaultItems(0)
 
 
                             ]),

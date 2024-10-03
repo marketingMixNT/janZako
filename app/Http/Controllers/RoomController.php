@@ -11,7 +11,7 @@ class RoomController extends Controller
     public function index($apartmentSlug)
     {
 
-        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link','booking_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link','booking_link','banner_rooms')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
 
         $rooms = Room::select('id','title','thumbnail','short_desc','slug',)->where('apartment_id', $apartment->id)->get();

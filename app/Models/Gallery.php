@@ -79,7 +79,7 @@ class Gallery extends Model
         ];
     }
 
-    public $translatable = ['category',];
+    public $translatable = ['category'];
 
 }
 

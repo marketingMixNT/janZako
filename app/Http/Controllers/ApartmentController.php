@@ -13,7 +13,7 @@ class ApartmentController extends Controller
 {
     public function index()
     {
-        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', 'booking_link', 'map_link')->get();
+        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address','city', 'booking_link', 'map_link')->get();
 
         return view('pages.apartment.index', compact('apartments'));
     }
@@ -22,7 +22,7 @@ class ApartmentController extends Controller
     {
         $apartment =
             Apartment::with('rooms', 'testimonials')
-            ->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link', 'slider_images', 'slider_heading', 'about_images', 'about_heading', 'about_text_first', 'about_text_second','rooms_heading',"rooms_text", 'booking_link', 'booking_script', 'google_reviews', 'google_reviews_link', 'google_reviews_average', 'tripadvisor_reviews', 'tripadvisor_reviews_link', 'tripadvisor_reviews_average',)
+            ->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address','city', 'map_link', 'slider_images', 'slider_heading', 'about_images', 'about_heading', 'about_text_first', 'about_text_second','rooms_heading',"rooms_text", 'booking_link', 'booking_script', 'google_reviews', 'google_reviews_link', 'google_reviews_average', 'tripadvisor_reviews', 'tripadvisor_reviews_link', 'tripadvisor_reviews_average',)
 
             ->where('slug->pl', $slug)
             ->firstOrFail();
@@ -32,7 +32,7 @@ class ApartmentController extends Controller
 
     public function attractions($apartmentSlug)
     {
-        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address','city', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
         $attractions = LocalAttraction::orderBy('sort')->get();
 
@@ -43,7 +43,7 @@ class ApartmentController extends Controller
 
     public function contact($apartmentSlug)
     {
-        $apartment = Apartment::with('socials')->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link','banner_contact')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::with('socials')->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address','city', 'map_link','banner_contact')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
 
 
@@ -52,7 +52,7 @@ class ApartmentController extends Controller
 
     public function gallery($apartmentSlug)
     {
-        $apartment = Apartment::with('galleries', 'socials')->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link', 'banner_gallery')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::with('galleries', 'socials')->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address','city', 'map_link', 'banner_gallery')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
 
 
@@ -60,7 +60,7 @@ class ApartmentController extends Controller
     }
 
     public function safety($apartmentSlug){
-        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address','city', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
         return view('pages.safety.index', compact("apartment"));
     }

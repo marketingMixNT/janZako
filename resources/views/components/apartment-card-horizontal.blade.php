@@ -24,7 +24,7 @@
             <div class="flex justify-center items-center gap-3">
                 <x-lucide-map-pin class="size-6 text-accent-400" />
                 <a href="{{$apartment->map_link}}" target="_blank" rel="noreferrer nofollow" class="font-light link-hover--accent ">
-                    {{ $apartment->address }} </a>
+                    {{ $apartment->address }}, {{$apartment->city}} </a>
             </div>
             
         </div>

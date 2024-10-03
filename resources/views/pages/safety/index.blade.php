@@ -1,10 +1,10 @@
-<x-layouts.app title="{Bezpieczeństwo w Apartamentach Jan - Twój Spokojny Pobyt w Zakopanem"
+<x-layouts.app title="Bezpieczeństwo w Apartamentach Jan - Twój Spokojny Pobyt w Zakopanem"
     description="Dbamy o Twoje bezpieczeństwo w Apartamentach Jan. Poznaj nasze standardy higieny i ochrony, aby cieszyć się spokojnym i bezpiecznym wypoczynkiem w Zakopanem.">
 
     <x-layouts.app-wrapper :apartment="$apartment">
 
-        <x-header subtitle="{{$apartment->title}}" title="Bezpieczeństwo"
-            bgi="{{asset('storage/' . $apartment->banner_rooms)}}" />
+        <x-header subtitle="{{$apartment->title}}" title="Bezpieczeństwo" bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem/apartamenty-jan-apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem-6.webp')}}" />
+
 
 
 

@@ -3,7 +3,7 @@
 
 
     {{-- HEADER --}}
-    <x-header title="Lokalizacja" bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-23.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-23.webp')]" />
+    <x-header title="Lokalizacja" bgi="{{asset('assets/images/willa-jan/willa-jan-2.webp')}}" />
 
     {{-- MAIN --}}
     <section class="py-20">

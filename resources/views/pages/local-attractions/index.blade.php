@@ -5,7 +5,7 @@
 
 
     {{-- HEADER --}}
-    <x-header subtitle="{{$apartment->title}}" title="Lokalne Atrakcje" bgi="" />
+    <x-header subtitle="{{$apartment->title}}" title="Lokalne Atrakcje" bgi="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-banner.webp')}}" />
 
     <x-container class="max-w-screen-xl pt-20 pb-28">
         <x-heading-horizontal title="Odkryj Zakopane i Okoliczne Atrakcje">

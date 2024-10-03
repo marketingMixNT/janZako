@@ -5,23 +5,15 @@
         <div
             class="flex flex-col gap-10 sm:gap-0  s justify-center items-center sm:items-start sm:grid sm:grid-rows-2 lg:grid-rows-1 sm:grid-cols-3 lg:grid-cols-4 mx-4">
             <!--ONE-->
+
             <div class="flex items-center justify-center col-span-4 lg:col-span-1">
                 <a href="{{route('home.index')}}" aria-label="Logo Hotelu Jan w Krakowie">
                     <img src="{{ asset('/assets/logo.svg') }}" alt="logo Apartamenty Jan" class="w-32 lg:ml-16"
                         width="128" height="73" /></a>
             </div>
             <!--TWO-->
-            <div
-                class=" mx-4 md:mx-12 flex flex-col gap-6 justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
-                <div>
-                    <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                        Zadzwoń do nas
-                    </h2>
-                    <a href="tel:+48602512008" class="font-thin font-heading link-hover text-sm mb-2">+48 602-512-008</a>
-                    <a href="tel:+48182014207" class="font-thin font-heading link-hover text-sm">+48 18 201-42-07</a>
-                </div>
+            <div class="hidden lg:block"></div>
 
-            </div>
             <!--THREE-->
             <div>
                 <h2 class="font-heading text-lg uppercase mb-2 font-light">
@@ -31,7 +23,18 @@
                     class="font-thin font-heading link-hover text-sm">biuro@apartamenty-jan.com.pl</a>
             </div>
             <!--FOUR-->
-            
+            <div
+                class=" mx-4 md:mx-12 flex flex-col gap-6 justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
+                <div>
+                    <h2 class="font-heading text-lg uppercase mb-2 font-light">
+                        Zadzwoń do nas
+                    </h2>
+                    <a href="tel:+48602512008" class="font-thin font-heading link-hover text-sm mb-2">+48
+                        602-512-008</a>
+                    <a href="tel:+48182014207" class="font-thin font-heading link-hover text-sm">+48 18 201-42-07</a>
+                </div>
+
+            </div>
 
         </div>
         <!--END GRID-->

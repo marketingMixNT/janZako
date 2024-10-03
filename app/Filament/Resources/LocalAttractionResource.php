@@ -31,7 +31,6 @@ class LocalAttractionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
 
-    protected static ?string $navigationGroup = 'Strona główna';
 
     public static function form(Form $form): Form
     {
