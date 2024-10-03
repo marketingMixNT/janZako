@@ -67,17 +67,8 @@ class Home extends Model
         '_id' => 'integer',
     ];
 
-    public function slides(): BelongsTo
-    {
-        return $this->belongsTo(Slide::class);
-    }
 
-  
-
-    public function phones(): HasMany
-    {
-        return $this->hasMany(Phone::class);
-    }
+   
 
 
     public $translatable = [
