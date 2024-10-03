@@ -1,3 +1,5 @@
+@props(['home'])
+
 <nav id="navbar"
     class=" fixed left-0 top-0 right-0 z-50 transition duration-500 text-white px-4 md:px-12 bg-transparent ">
 
@@ -9,10 +11,10 @@
                 <x-nav.language-switcher />
                 <div class="flex items-center gap-4">
 
-                    <a href="tel:+48124217640" aria-label="Telefon">
+                    <a href="tel:+48{{$home->phone}}" aria-label="Telefon">
                         <x-lucide-phone class="w-4 hover:scale-105 duration-300" />
                     </a>
-                    <a href="mailto:biuro@jan-krakow.pl" aria-label="Email">
+                    <a href="mailto:{{$home->mail}}" aria-label="Email">
                         <x-lucide-mail class="w-4  hover:scale-105 duration-300" />
                     </a>
                 </div>
@@ -20,11 +22,11 @@
 
             <a href="{{ route('home.index') }}"
                 class="lg:absolute lg:left-1/2 transform lg:-translate-x-1/2 flex flex-col justify-center items-center gap-1 ">
-                <img src="{{ asset('assets/logo.svg') }}" alt="logo Hotelu Jan w Krakowie" width="96" height="50"
+                <img src="{{ asset($home->logo) }}" alt="logo Apartamenty Jan" width="96" height="50"
                     class=" w-24 " />
             </a>
             <x-ui.link-button id="nav-booking--light" type="primary"
-                href="{{route('apartment.index')}}"
+                href="{{$home->booking_link}}"
                 aria-label="Rezerwuj" class="hidden lg:block" target="_blank">Zarezerwuj
             </x-ui.link-button>
             <div class="lg:hidden ">

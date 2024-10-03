@@ -1,86 +1,19 @@
 models:
-  Apartment:
+  HomeApartmentsPage:
     meta_title: json nullable
     meta_desc: json nullable
-    title: json unique
-    slug: json unique
-    map: text
-    booking_script: text
-    phone: text
-    mail: text
-    address: text
-    logo: text
-    gallery: text
-    sort: integer nullable
-    slider_heading: json nullable
-    slider_images: text
-    google_reviews: integer
-    google_reviews_average: integer
-    google_reviews_link: text
-    tripadvisor_reviews: integer
-    tripadvisor_reviews_average: integer
-    tripadvisor_reviews_link: text
-    relationships:
-      hasMany: Testimonial, Room, Slides, Social, Gallery
+    heading: json
+    text: json
+    banner: text
 
-  Room:
+  HomeLocationPage:
     meta_title: json nullable
     meta_desc: json nullable
-    title: json unique
-    slug: json unique
-    short_desc: json
-    desc: json
-    equipment: json
-    thumbnail: text
-    gallery: text
-    sort: integer nullable
-    relationships:
-      belongsTo: Apartment
+    heading: json
+    text: json
+    banner: text
 
-  Slide:
-    image: text
-    sort: integer nullable
-
-  Testimonial:
-    name: json
-    source: json
-    content: json
-    sort: integer nullable
-    relationships:
-      belongsTo: Apartment
-
-  TestimonialHome:
-    name: json
-    source: json
-    content: json
-    sort: integer nullable
-    relationships:
-      belongsTo: Apartment
-
-  LocalAttraction:
-    title: json
-    description: json
-    images: text
-    sort: integer nullable
-
-  Social:
-    name: text
-    link: text
-    relationships:
-      belongsTo: Apartment
-
-  Gallery:
-    category: json
-    images: text
-    relationships:
-      belongsTo: Apartment
-
-  GalleryHome:
-    category: json
-    images: text
-
-  PrivacyPolicy:
-    content: json
-
-  Regulations:
-    content: json
+  HomeContactPage:
+    meta_title: json nullable
+    meta_desc: json nullable
+    banner: text

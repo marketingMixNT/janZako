@@ -3,10 +3,12 @@
 
 
 
-        <x-heading-horizontal title="Wybierz swoje idealne miejsce">
+        {{-- <x-heading-horizontal title="Wybierz swoje idealne miejsce"> --}}
+        <x-heading-horizontal title="{{$home->rooms_heading}}">
 
 
-            <x-text>Odkryj naszą starannie wyselekcjonowaną ofertę apartamentów w Zakopanem, gdzie każdy detal został zaprojektowany z myślą o Twoim komforcie. Niezależnie od tego, czy planujesz romantyczny wypad, rodzinne wakacje, czy aktywny weekend w górach, mamy idealne miejsce, które spełni Twoje oczekiwania. Zarezerwuj już dziś i ciesz się niezapomnianym pobytem w sercu Tatr!</x-text>
+            {{-- <x-text>Odkryj naszą starannie wyselekcjonowaną ofertę apartamentów w Zakopanem, gdzie każdy detal został zaprojektowany z myślą o Twoim komforcie. Niezależnie od tego, czy planujesz romantyczny wypad, rodzinne wakacje, czy aktywny weekend w górach, mamy idealne miejsce, które spełni Twoje oczekiwania. Zarezerwuj już dziś i ciesz się niezapomnianym pobytem w sercu Tatr!</x-text> --}}
+            <x-text>{{$home->rooms_text}}</x-text>
 
 
         </x-heading-horizontal>

@@ -1,43 +1,41 @@
-<footer class="bg-secondary-200 py-12 text-fontWhite pb-24 lg:pb-12">
+@props(['home'])
+
+<footer class="bg-secondary-200 py-12 text-fontWhite pb-12">
     <!--CONTAINER-->
-    <div class="max-w-screen-xl mx-auto space-y-10">
+    <div class="max-w-screen-lg mx-auto space-y-10">
         <!--GRID-->
-        <div
-            class="flex flex-col gap-10 sm:gap-0  s justify-center items-center sm:items-start sm:grid sm:grid-rows-2 lg:grid-rows-1 sm:grid-cols-3 lg:grid-cols-4 mx-4">
-            <!--ONE-->
 
-            <div class="flex items-center justify-center col-span-4 lg:col-span-1">
+        <div class="max-w-screen-lg mx-4 sm:mx-24 xl:mx-auto text-sm  flex gap-6 flex-col lg:flex-row justify-between items-center">
+            <div class="flex items-start justify-start">
                 <a href="{{route('home.index')}}" aria-label="Logo Hotelu Jan w Krakowie">
-                    <img src="{{ asset('/assets/logo.svg') }}" alt="logo Apartamenty Jan" class="w-32 lg:ml-16"
-                        width="128" height="73" /></a>
+                    <img src="{{ asset($home->logo) }}" alt="logo Apartamenty Jan" class="w-32 lg:ml-16" width="128"
+                        height="73" /></a>
             </div>
-            <!--TWO-->
-            <div class="hidden lg:block"></div>
 
-            <!--THREE-->
-            <div>
-                <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                    Napisz do nas
-                </h2>
-                <a href="mailto:biuro@apartamenty-jan.com.pl"
-                    class="font-thin font-heading link-hover text-sm">biuro@apartamenty-jan.com.pl</a>
-            </div>
-            <!--FOUR-->
-            <div
-                class=" mx-4 md:mx-12 flex flex-col gap-6 justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
+            <div class="flex flex-col sm:flex-row justify-center items-start sm:items-center gap-12">
+
+                <div>
+                    <h2 class="font-heading text-lg uppercase mb-2 font-light">
+                        Napisz do nas
+                    </h2>
+                    <a href="mailto:{{$home->mail}}"
+                        class="font-thin font-heading link-hover text-sm">{{$home->mail}}</a>
+                </div>
                 <div>
                     <h2 class="font-heading text-lg uppercase mb-2 font-light">
                         Zadzwoń do nas
                     </h2>
-                    <a href="tel:+48602512008" class="font-thin font-heading link-hover text-sm mb-2">+48
-                        602-512-008</a>
-                    <a href="tel:+48182014207" class="font-thin font-heading link-hover text-sm">+48 18 201-42-07</a>
+                    <a href="tel:+48{{$home->phone}}"
+                        class="font-thin font-heading link-hover text-sm ">{{$home->phone}}</a>
+
                 </div>
 
-            </div>
 
+            </div>
         </div>
-        <!--END GRID-->
+
+       
+      
         <!--LINKS-->
         <div class="max-w-screen-lg mx-4 sm:mx-24 xl:mx-auto">
 

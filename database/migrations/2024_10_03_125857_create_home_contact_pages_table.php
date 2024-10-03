@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slides', function (Blueprint $table) {
+        Schema::create('home_contact_pages', function (Blueprint $table) {
             $table->id();
-            $table->text('images');
-            $table->integer('sort')->nullable();
+            $table->json('meta_title')->nullable();
+            $table->json('meta_desc')->nullable();
+            $table->text('banner');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('home_contact_pages');
     }
 };

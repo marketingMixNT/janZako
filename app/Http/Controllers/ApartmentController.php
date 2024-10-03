@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Slide;
 use App\Models\Apartment;
+use App\Models\Home;
+use App\Models\HomeApartmentsPage;
 use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
 use App\Models\LocalAttraction;
@@ -13,9 +15,13 @@ class ApartmentController extends Controller
 {
     public function index()
     {
+        $home = Home::firstOrFail();
+
+        $apartmentPage = HomeApartmentsPage::firstOrFail();
+
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address','city', 'booking_link', 'map_link')->get();
 
-        return view('pages.apartment.index', compact('apartments'));
+        return view('pages.apartment.index', compact('apartments','apartmentPage','home'));
     }
 
     public function show($slug)

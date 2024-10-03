@@ -218,9 +218,6 @@ class ApartmentResource extends Resource
                                     ->label('Nagłówek')
                                     ->hint('Pojawi się pod nazwą apartamentu')
                                     ->placeholder('Twój wymarzony pobyt zaczyna się tutaj')
-                                    ->unique(ignoreRecord: true)
-                                    ->minLength(3)
-                                    ->maxLength(255)
                                     ->required(),
 
 

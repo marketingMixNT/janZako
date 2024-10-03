@@ -1,10 +1,14 @@
-<x-layouts.home title="Kontakt z Apartamentami Jan - Skontaktuj się z Nami"
-    description="Masz pytania dotyczące naszych apartamentów w Zakopanem? Skontaktuj się z nami! Sprawdź nasze dane kontaktowe i uzyskaj wszystkie potrzebne informacje. Jesteśmy tutaj, aby Ci pomóc!">
+<x-layouts.home title="
+{{$contactPage->meta_title ? $contactPage->meta_title : 'Kontakt z Apartamentami Jan - Skontaktuj się z Nami'}}" description="
+{{$contactPage->meta_desc ? $contactPage->meta_desc : 'Masz pytania dotyczące naszych apartamentów w Zakopanem? Skontaktuj się z nami! Sprawdź nasze dane kontaktowe i uzyskaj wszystkie potrzebne informacje. Jesteśmy tutaj, aby Ci pomóc!'}}">
+
+<x-layouts.home-wrapper :home="$home">
 
 
     {{-- HEADER --}}
     <x-header title="Kontakt"
-        bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy/apartamenty-jan-apartament-dwuosobowy7.webp')}}" />
+        {{-- bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy/apartamenty-jan-apartament-dwuosobowy7.webp')}}" /> --}}
+        bgi="{{asset($contactPage->banner)}}" />
 
     {{-- MAIN --}}
     <section class="py-20">
@@ -52,6 +56,6 @@
     </section>
 
     </x-container>
-
+</x-layouts.home-wrapper>
 
     </x-layouts.app>

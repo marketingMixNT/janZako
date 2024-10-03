@@ -1,37 +1,13 @@
 created:
-    - database/factories/ApartmentFactory.php
-    - database/factories/RoomFactory.php
-    - database/factories/SlideFactory.php
-    - database/factories/TestimonialFactory.php
-    - database/factories/TestimonialHomeFactory.php
-    - database/factories/LocalAttractionFactory.php
-    - database/factories/SocialFactory.php
-    - database/factories/GalleryFactory.php
-    - database/factories/GalleryHomeFactory.php
-    - database/factories/PrivacyPolicyFactory.php
-    - database/factories/RegulationsFactory.php
-    - database/migrations/2024_10_01_081937_create_apartments_table.php
-    - database/migrations/2024_10_01_081938_create_rooms_table.php
-    - database/migrations/2024_10_01_081939_create_slides_table.php
-    - database/migrations/2024_10_01_081940_create_testimonials_table.php
-    - database/migrations/2024_10_01_081941_create_testimonial_homes_table.php
-    - database/migrations/2024_10_01_081942_create_local_attractions_table.php
-    - database/migrations/2024_10_01_081943_create_socials_table.php
-    - database/migrations/2024_10_01_081944_create_galleries_table.php
-    - database/migrations/2024_10_01_081945_create_gallery_homes_table.php
-    - database/migrations/2024_10_01_081946_create_privacy_policies_table.php
-    - database/migrations/2024_10_01_081947_create_regulations_table.php
-    - app/Models/Apartment.php
-    - app/Models/Room.php
-    - app/Models/Slide.php
-    - app/Models/Testimonial.php
-    - app/Models/TestimonialHome.php
-    - app/Models/LocalAttraction.php
-    - app/Models/Social.php
-    - app/Models/Gallery.php
-    - app/Models/GalleryHome.php
-    - app/Models/PrivacyPolicy.php
-    - app/Models/Regulations.php
+    - database/factories/HomeApartmentsPageFactory.php
+    - database/factories/HomeLocationPageFactory.php
+    - database/factories/HomeContactPageFactory.php
+    - database/migrations/2024_10_03_125855_create_home_apartments_pages_table.php
+    - database/migrations/2024_10_03_125856_create_home_location_pages_table.php
+    - database/migrations/2024_10_03_125857_create_home_contact_pages_table.php
+    - app/Models/HomeApartmentsPage.php
+    - app/Models/HomeLocationPage.php
+    - app/Models/HomeContactPage.php
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     Apartment: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', map: text, booking_script: text, phone: text, mail: text, address: text, logo: text, gallery: text, sort: 'integer nullable', slider_heading: 'json nullable', slider_images: text, google_reviews: integer, google_reviews_average: integer, google_reviews_link: text, tripadvisor_reviews: integer, tripadvisor_reviews_average: integer, tripadvisor_reviews_link: text, relationships: { hasMany: 'Testimonial, Room, Slides, Social, Gallery' } }
@@ -45,3 +21,10 @@ models:
     GalleryHome: { category: json, images: text }
     PrivacyPolicy: { content: json }
     Regulations: { content: json }
+    Home: { meta_title: 'json nullable', meta_desc: 'json nullable', slider_title: json, slider_subtitle: json, slider_images: text, phone: text, mail: text, logo: text, map: 'text nullable', booking_script: text, booking_link: text, about_heading: json, about_text_first: json, about_text_second: json, about_images: text, rooms_heading: json, rooms_text: json, testimonials_heading: json, testimonials_text: json, relationships: { belongsTo: 'Slides,', hasMany: Phone } }
+    Phone: { phone: text }
+    Features: { icon: text, title: json, description: json }
+    Cta: { title: json, subtitle: json, link: text }
+    HomeApartmentsPage: { meta_title: 'json nullable', meta_desc: 'json nullable', heading: json, text: json, banner: text }
+    HomeLocationPage: { meta_title: 'json nullable', meta_desc: 'json nullable', heading: json, text: json, banner: text }
+    HomeContactPage: { meta_title: 'json nullable', meta_desc: 'json nullable', banner: text }

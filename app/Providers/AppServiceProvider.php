@@ -33,6 +33,5 @@ class AppServiceProvider extends ServiceProvider
         Gallery::observe(GalleryObserver::class);
         LocalAttraction::observe(LocalAttractionObserver::class);
         Room::observe(RoomObserver::class);
-        Slide::observe(SlideObserver::class);
     }
 }

@@ -19,6 +19,25 @@
 <body class="overflow-x-hidden font-text bg-bgPrimary  ">
     @include('partials.gtm')
 
+   
+
+
+
+    {{ $slot }}
+
+ 
+
+
+
+
+
+   
+
+</body>
+
+{{-- <body class="overflow-x-hidden font-text bg-bgPrimary  ">
+    @include('partials.gtm')
+
     <x-preloader />
     <x-nav.navbar-home />
 
@@ -27,7 +46,7 @@
     {{ $slot }}
 
     {{-- <x-map /> --}}
-    <x-footer-home />
+    {{-- <x-footer-home />
 
 
 
@@ -36,6 +55,6 @@
     <script src="https://wis.upperbooking.com/willajan/be-panel?locale={{ str_replace('_', '-', app()->getLocale()) }}"
         async=""></script>
 
-</body>
+</body>  --}}
 
 </html>

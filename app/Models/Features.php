@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slide extends Model
+class Features extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,9 @@ class Slide extends Model
      * @var array
      */
     protected $fillable = [
-        'images',
-        'sort',
+        'icon',
+        'title',
+        'description',
     ];
 
     /**
@@ -26,6 +27,7 @@ class Slide extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'images' => 'array',
+        'title' => 'array',
+        'description' => 'array',
     ];
 }
