@@ -19,9 +19,11 @@ class HomeController extends Controller
     {
 
         $home = Home::firstOrFail();
-        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city")->get();
+        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city",'short_desc')->get();
         $cta = Cta::firstOrFail();
         $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
+
+        
 
         return view('pages.home.index', compact("apartments", 'testimonials', 'home','cta'));
     }

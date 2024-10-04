@@ -22,7 +22,7 @@
 
             <a href="{{ route('home.index') }}"
                 class="lg:absolute lg:left-1/2 transform lg:-translate-x-1/2 flex flex-col justify-center items-center gap-1 ">
-                <img src="{{ asset($home->logo) }}" alt="logo Apartamenty Jan" width="96" height="50"
+                <img src="{{ asset('storage/'.$home->logo) }}" alt="logo Apartamenty Jan" width="96" height="50"
                     class=" w-24 " />
             </a>
             <x-ui.link-button id="nav-booking--light" type="primary"
@@ -42,22 +42,6 @@
                 <x-nav.menu-item href="{{route('home.location')}}">Lokalizacja</x-nav.menu-item>
                 <x-nav.menu-item href="{{route('home.contact')}}">Kontakt</x-nav.menu-item>
                 <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" rel="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
-
-                {{-- <x-nav.menu-item href="{{route('about')}}">{{__('navbar.about')}}</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('apartment.index')}}">{{__('navbar.rooms')}}</x-nav.menu-item>
-                <x-nav.menu-item
-                    href="https://booking.profitroom.com/{{ str_replace('_', '-', app()->getLocale()) }}/aparthoteljan/home?currency=PLN">
-                    {{__('navbar.offers')}}</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('local-attractions')}}">{{__('navbar.local-attractions')}}
-                </x-nav.menu-item>
-                <x-nav.menu-item href="{{route('transfers')}}">{{__('navbar.transfers')}}
-                </x-nav.menu-item>
-                <x-nav.menu-item href="{{route('gallery')}}">{{__('navbar.gallery')}}</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('safety')}}">{{__('navbar.safety')}}</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('contact')}}">{{__('navbar.contact')}}</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('other-apartments')}}">{{__('navbar.other-objects')}}</x-nav.menu-item>
-                --}}
-
             </ul>
 
         </div>

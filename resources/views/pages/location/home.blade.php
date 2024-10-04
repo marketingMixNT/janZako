@@ -7,9 +7,7 @@
 
 
         {{-- HEADER --}}
-        {{--
-        <x-header title="Lokalizacja" bgi="{{asset('assets/images/willa-jan/willa-jan-2.webp')}}" /> --}}
-        <x-header title="Lokalizacja" bgi="{{asset($locationPage->banner)}}" />
+        <x-header title="Lokalizacja" bgi="{{asset('storage/'.$locationPage->banner)}}" />
 
         {{-- MAIN --}}
         <section class="py-20">
@@ -19,13 +17,7 @@
                     <x-heading-horizontal title="{{$locationPage->heading}}">
                         <x-text>{{$locationPage->text}}</x-text>
                     </x-heading-horizontal>
-                    {{-- <x-heading-horizontal title="Odkryj Nasze Miejsca w Zakopanem">
-                        <x-text>Apartamenty Jan znajdują się w malowniczym Zakopanem, w sercu Tatr. Każdy z naszych
-                            apartamentów oferuje dogodną lokalizację blisko atrakcji turystycznych, szlaków górskich
-                            oraz lokalnych restauracji. Niezależnie od tego, czy planujesz wędrówki, czy chcesz cieszyć
-                            się urokami Zakopanego, nasze miejsca zapewniają łatwy dostęp do wszystkiego, co region ma
-                            do zaoferowania.</x-text>
-                    </x-heading-horizontal> --}}
+                   
                 </div>
 
                 @foreach ($apartments as $apartment)

@@ -31,7 +31,7 @@
 
                         <x-contact-box title="{{__('contact.address')}}">
                             <a class="link-hover--dark text-xl font-light"
-                                href="{{$apartment->map_link}}">{{$apartment->address}}</a>
+                                href="{{$apartment->map_link}}">{{$apartment->address}},<br/> {{$apartment->city}}</a>
                         </x-contact-box>
 
                         <x-contact-box title="Social Media">

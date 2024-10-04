@@ -79,7 +79,7 @@ class HomeApartmentsPageResource extends Resource
 
                                     ->required(),
 
-                                Forms\Components\TextArea::make('text')
+                                Forms\Components\Textarea::make('text')
                                     ->label('Paragraf')
                                     ->columnSpanFull()
                                     ->cols(5)

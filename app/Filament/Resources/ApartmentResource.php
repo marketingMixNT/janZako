@@ -278,7 +278,7 @@ class ApartmentResource extends Resource
                                     ->required(),
 
                                 Forms\Components\TextArea::make('about_text_second')
-                                    ->label('Paragraf 1')
+                                    ->label('Paragraf 2')
                                     ->columnSpanFull()
                                     ->cols(5)
                                     ->autosize()
@@ -378,7 +378,7 @@ class ApartmentResource extends Resource
                                     ->label('Strona galeria')
                                     ->directory('apartments-banners')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -397,7 +397,7 @@ class ApartmentResource extends Resource
                                     ->label('Strona kontakt')
                                     ->directory('apartments-banners')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -416,7 +416,7 @@ class ApartmentResource extends Resource
                                     ->label('Strona pokoje')
                                     ->directory('apartments-banners')
                                     ->getUploadedFileNameForStorageUsing(
-                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' .  now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
                                     )
                                     ->image()
                                     ->maxSize(8192)
@@ -484,21 +484,20 @@ class ApartmentResource extends Resource
                                         Forms\Components\TextInput::make('google_reviews')
                                             ->label('Liczba opini w google')
                                             ->placeholder('452')
-                                            ->numeric()
-                                            ->required(),
+                                            ->numeric(),
+                                            
 
                                         Forms\Components\TextInput::make('google_reviews_average')
                                             ->label('Średnia ocen')
-                                            ->placeholder('4.6')
-                                            ->numeric()
-                                            ->required(),
+                                            ->placeholder('4.6'),
+                                            
 
                                         Forms\Components\TextInput::make('google_reviews_link')
                                             ->label('Link do wizytówki google')
                                             ->placeholder('https://maps.app.goo.gl/J68keyMP4o8iAR1C6')
                                             ->url()
-                                            ->columnSpanFull()
-                                            ->required(),
+                                            ->columnSpanFull(),
+                                          
                                     ]),
 
                                 Fieldset::make('TripAdvisor')
@@ -508,21 +507,20 @@ class ApartmentResource extends Resource
                                         Forms\Components\TextInput::make('tripadvisor_reviews')
                                             ->label('Liczba opini w Trip Advisor')
                                             ->placeholder('452')
-                                            ->numeric()
-                                            ->required(),
+                                            ->numeric(),
+                                           
 
                                         Forms\Components\TextInput::make('tripadvisor_reviews_average')
                                             ->label('Średnia ocen')
-                                            ->placeholder('4.6')
-                                            ->numeric()
-                                            ->required(),
+                                            ->placeholder('4.6'),
+                                           
 
                                         Forms\Components\TextInput::make('tripadvisor_reviews_link')
                                             ->label('Link do Trip Advisor')
                                             ->placeholder('https://www.tripadvisor.com/Hotel_Review-g274772-d519743-Reviews-Hotel_Jan-Krakow_Lesser_Poland_Province_Southern_Poland.html')
                                             ->url()
-                                            ->columnSpanFull()
-                                            ->required(),
+                                            ->columnSpanFull(),
+                                            
                                     ]),
 
 

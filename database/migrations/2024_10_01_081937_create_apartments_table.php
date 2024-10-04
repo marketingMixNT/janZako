@@ -51,12 +51,12 @@ return new class extends Migration
             $table->text('map_link');
 
             // Reviews
-            $table->integer('google_reviews');
-            $table->integer('google_reviews_average');
-            $table->text('google_reviews_link');
-            $table->integer('tripadvisor_reviews');
-            $table->integer('tripadvisor_reviews_average');
-            $table->text('tripadvisor_reviews_link');
+            $table->integer('google_reviews')->nullable();
+            $table->integer('google_reviews_average')->nullable();
+            $table->text('google_reviews_link')->nullable();
+            $table->integer('tripadvisor_reviews')->nullable();
+            $table->integer('tripadvisor_reviews_average')->nullable();
+            $table->text('tripadvisor_reviews_link')->nullable();
 
             // Slider
             $table->json('slider_heading')->nullable();

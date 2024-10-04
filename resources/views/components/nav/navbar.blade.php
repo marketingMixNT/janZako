@@ -44,7 +44,7 @@
                 <x-nav.menu-item href="{{route('safety',$apartment->slug)}}">Bezpieczeństwo</x-nav.menu-item>
                 <x-nav.menu-item href="  {{ route('contact',$apartment->slug) }}">Kontakt</x-nav.menu-item>
                 <x-nav.menu-item href="  {{ route('home.index') }}">Pozostałe obiekty</x-nav.menu-item>
-                <x-nav.menu-item href="" target="_blank" role="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
+                <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" role="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
 
             </ul>
 

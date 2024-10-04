@@ -8,7 +8,7 @@
         <div class="max-w-screen-lg mx-4 sm:mx-24 xl:mx-auto text-sm  flex gap-6 flex-col lg:flex-row justify-between items-center">
             <div class="flex items-start justify-start">
                 <a href="{{route('home.index')}}" aria-label="Logo Hotelu Jan w Krakowie">
-                    <img src="{{ asset($home->logo) }}" alt="logo Apartamenty Jan" class="w-32 lg:ml-16" width="128"
+                    <img src="{{ asset('storage/'.$home->logo) }}" alt="logo Apartamenty Jan" class="w-32 lg:ml-16" width="128"
                         height="73" /></a>
             </div>
 

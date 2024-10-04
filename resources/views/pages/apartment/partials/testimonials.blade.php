@@ -7,15 +7,16 @@
                 osób, które odwiedziły nasz hotel i doświadczyły naszej gościnności. Przeczytaj, co o nas mówią, i
                 przekonaj się, dlaczego warto nas odwiedzić!</x-text>
 
-            <x-rating source="google" rate="{{$apartment->google_reviews_average}}"
-                href="{{$apartment->google_reviews_link}}"
-                reviews="{{$apartment->google_reviews}} opinii" />
+            @if($apartment->google_reviews_average && $apartment->google_reviews)
+            <x-rating source="google" rate="{{ $apartment->google_reviews_average }}"
+                href="{{ $apartment->google_reviews_link }}" reviews="{{ $apartment->google_reviews }} opinii" />
+            @endif
 
-
+            @if($apartment->tripadvisor_reviews_average && $apartment->tripadvisor_reviews)
             <x-rating source="tripAdvisor" rate="{{$apartment->tripadvisor_reviews_average}}"
-                href="{{$apartment->tripadvisor_reviews_link}}"
-                reviews="{{$apartment->tripadvisor_reviews}} opinii" />
+                href="{{$apartment->tripadvisor_reviews_link}}" reviews="{{$apartment->tripadvisor_reviews}} opinii" />
         </x-heading-horizontal>
+        @endif
 
 
         <div class="swiper testimonial-carousel max-w-screen-md">

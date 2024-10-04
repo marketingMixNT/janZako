@@ -133,13 +133,7 @@ class HomeContactPageResource extends Resource
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),
 
-            Tables\Columns\TextColumn::make('heading')
-                ->label('Nazwa')
-                ->description(function (HomeContactPage $record) {
-                    return Str::limit(strip_tags($record->text), 40);
-                })
-                ->searchable()
-                ->sortable(),
+            
             ])
             ->filters([
                 //

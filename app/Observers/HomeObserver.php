@@ -13,7 +13,15 @@ class HomeObserver
     public function created(Home $home): void
     {
 
-        // SINGLE
+       
+    }
+
+    /**
+     * Handle the Home "updated" event.
+     */
+    public function updated(Home $home): void
+    {
+       // SINGLE
         // logo
         if ($home->isDirty('logo')) {
             Storage::disk('public')->delete($home->getOriginal('logo'));
@@ -54,9 +62,9 @@ class HomeObserver
     }
 
     /**
-     * Handle the Home "updated" event.
+     * Handle the Home "deleted" event.
      */
-    public function updated(Home $home): void
+    public function deleted(Home $home): void
     {
          //logo
          if (!is_null($home->logo)) {
@@ -72,14 +80,6 @@ class HomeObserver
          if (!is_null($home->about_images)) {
             Storage::disk('public')->delete($home->getOriginal('about_images'));
         }
-    }
-
-    /**
-     * Handle the Home "deleted" event.
-     */
-    public function deleted(Home $home): void
-    {
-        //
     }
 
     /**

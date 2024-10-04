@@ -2,7 +2,7 @@
 
 <section
     {{-- class="py-24 bg-cover bg-center bg-gray-500 bg-blend-multiply bg-no-repeat bg-fixed " style="background-image: url({{asset('assets/images/apartamenty-jan/apartamenty-jan-10.webp')}})"> --}}
-    class="py-24 bg-cover bg-center bg-gray-500 bg-blend-multiply bg-no-repeat bg-fixed " style="background-image: url({{asset($cta->image)}})">
+    class="py-24 bg-cover bg-center bg-gray-500 bg-blend-multiply bg-no-repeat bg-fixed " style="background-image: url({{asset('storage/'.$cta->image)}})">
 
 
     <x-container class="max-w-screen-xl flex flex-col justify-center items-center gap-8 text-white py-20 mx-auto">

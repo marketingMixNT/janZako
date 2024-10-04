@@ -87,7 +87,15 @@ class RoomResource extends Resource
                                     ->placeholder('np. 1 łazienka')
                                     ->columns(1),
 
-                                RichEditor::make('short_desc')
+                               
+                               
+                            ]),
+
+ Tabs\Tab::make('Opisy')
+                            ->icon('heroicon-o-pencil-square')
+                            ->columns()
+                            ->schema([
+                                 RichEditor::make('short_desc')
                                     ->label('Krótki opis')
                                     ->toolbarButtons([
                                         'bold',
@@ -115,7 +123,12 @@ class RoomResource extends Resource
                                     ->required()
                                     ->placeholder('Pojawi się na stronie pokoju')
                                     ->columnSpanFull(),
-                                RichEditor::make('equipment')
+                            ]),
+Tabs\Tab::make('Wyposażenie')
+                            ->icon('heroicon-o-presentation-chart-bar')
+                            ->columns()
+                            ->schema([
+                                 RichEditor::make('equipment')
                                     ->label('Wyposażenie')
                                     ->toolbarButtons([
                                         'bulletList',

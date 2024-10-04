@@ -52,6 +52,7 @@ class Home extends Model
         'id' => 'integer',
         'meta_title' => 'array',
         'meta_desc' => 'array',
+        'booking_link' => 'array',
         'slider_title' => 'array',
         'slider_subtitle' => 'array',
         'slider_images' => 'array',
@@ -72,6 +73,6 @@ class Home extends Model
 
 
     public $translatable = [
-        'meta_title','meta_desc','slider_title','slider_subtitle','about_heading','about_text_first','about_text_second','rooms_heading','rooms_text','testimonials_heading','testimonials_text',
+        'meta_title','meta_desc','booking_link','slider_title','slider_subtitle','about_heading','about_text_first','about_text_second','rooms_heading','rooms_text','testimonials_heading','testimonials_text',
      ];
 }

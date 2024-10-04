@@ -12,32 +12,35 @@ class RoomController extends Controller
     public function index($apartmentSlug)
     {
 
-        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link','booking_link','banner_rooms')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link', 'booking_link', 'banner_rooms')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
-     
 
-        $rooms = Room::select('id','title','thumbnail','short_desc','slug',)->where('apartment_id', $apartment->id)->get();
+
+        $rooms = Room::select('id', 'title', 'thumbnail', 'short_desc', 'slug', 'beds', 'bathroom')->where('apartment_id', $apartment->id)->get();
 
         return view('pages.room.index', compact('apartment', 'rooms'));
     }
 
     public function show($apartmentSlug, $roomSlug)
     {
-
-        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link')
+            ->where('slug->pl', $apartmentSlug)
+            ->firstOrFail();
 
         $cta = Cta::firstOrFail();
 
-        $room = Room::where('apartment_id', $apartment->id)->where('slug->pl', $roomSlug)->firstOrFail();
+        $room = Room::where('apartment_id', $apartment->id)
+            ->where('slug->pl', $roomSlug)
+            ->firstOrFail();
 
-        $otherRooms = Room::select('title','slug','thumbnail')
-        ->where('id', '!=', $apartment->id)
-        ->orderBy('sort')
-        ->take(3) 
-        ->get();
 
-       
+        $otherRooms = Room::select('title', 'slug', 'thumbnail','beds','bathroom')
+            ->where('apartment_id', $apartment->id)
+            ->where('id', '!=', $room->id)
+            ->orderBy('sort')
+            ->take(3)
+            ->get();
 
-        return view('pages.room.show', compact('apartment', 'room','otherRooms','cta'));
+        return view('pages.room.show', compact('apartment', 'room', 'otherRooms', 'cta'));
     }
 }
