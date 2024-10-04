@@ -12,7 +12,7 @@
 
         @include('pages.home.partials.apartments')
 
-        <x-cta />
+        <x-cta :link="$home->booking_link" :cta="$cta"/>
 
         @include('pages.home.partials.testimonials')
         @include('pages.home.partials.local-attractions')

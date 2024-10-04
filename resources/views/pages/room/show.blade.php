@@ -13,7 +13,7 @@
 
                 <div class="grid xl:grid-cols-3   gap-32 mx-auto max-w-screen-xl ">
                     <div
-                        class="border hidden  sticky top-32 h-[400px] p-12 xl:flex flex-col justify-start items-start gap-8">
+                        class="border hidden  sticky top-32 h-[450px] p-12 xl:flex flex-col justify-start items-start gap-8">
 
                         <h2 class="text-fontDark text-xl uppercase font-light">{{$apartment->title}}</h2>
 
@@ -36,11 +36,12 @@
 
                             </span>
                         </div>
-
-
-
                         <x-ui.link href="{{$room->booking_link}}}}" target="_blank" rel="noreferrer nofollow"
                             target="_blank" title=" zarezerwuj" />
+
+
+
+                      
                     </div>
                     {{-- <div class="xl:col-span-2 flex flex-col  gap-8 md:px-12"> --}}
                         <div class="xl:col-span-2 flex flex-col  gap-8 ">
@@ -125,7 +126,7 @@
         </section>
 
         {{-- cta --}}
-        <x-cta />
+        <x-cta :link="$apartment->booking_link" :cta="$cta"/>
 
 
         {{-- other apartments --}}

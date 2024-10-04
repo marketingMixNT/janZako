@@ -5,8 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Translatable\HasTranslations;
+
+
 class Cta extends Model
 {
+
+    use HasTranslations;
+
     use HasFactory;
 
     /**
@@ -17,6 +23,7 @@ class Cta extends Model
     protected $fillable = [
         'title',
         'subtitle',
+        'image',
         'link',
     ];
 
@@ -30,4 +37,6 @@ class Cta extends Model
         'title' => 'array',
         'subtitle' => 'array',
     ];
+
+    public $translatable = ['title', 'subtitle'];
 }

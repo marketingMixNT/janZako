@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cta;
+use App\Models\Home;
 use App\Models\Slide;
 use App\Models\Apartment;
-use App\Models\Home;
-use App\Models\HomeApartmentsPage;
 use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
 use App\Models\LocalAttraction;
 use App\Models\TestimonialHome;
+use App\Models\HomeApartmentsPage;
 
 class ApartmentController extends Controller
 {
     public function index()
     {
-        $home = Home::firstOrFail();
+        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
 
         $apartmentPage = HomeApartmentsPage::firstOrFail();
 
@@ -33,7 +34,9 @@ class ApartmentController extends Controller
             ->where('slug->pl', $slug)
             ->firstOrFail();
 
-        return view('pages.apartment.show', compact('apartment',));
+            $cta = Cta::firstOrFail();
+
+        return view('pages.apartment.show', compact('apartment','cta'));
     }
 
     public function attractions($apartmentSlug)

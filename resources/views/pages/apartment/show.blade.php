@@ -10,7 +10,7 @@
 
         @include('pages.apartment.partials.rooms')
 
-        <x-cta />
+        <x-cta :link="$apartment->booking_link" :cta="$cta"/>
 
 
         @include('pages.apartment.partials.testimonials')

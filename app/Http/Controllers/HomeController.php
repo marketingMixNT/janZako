@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Models\Slide;
 use App\Models\Apartment;
+use App\Models\Cta;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Models\PrivacyPolicy;
@@ -19,15 +20,16 @@ class HomeController extends Controller
 
         $home = Home::firstOrFail();
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city")->get();
+        $cta = Cta::firstOrFail();
         $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
 
-        return view('pages.home.index', compact("apartments", 'testimonials', 'home'));
+        return view('pages.home.index', compact("apartments", 'testimonials', 'home','cta'));
     }
 
     public function attractions()
     {
 
-        $home = Home::firstOrFail();
+        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
 
         $attractions = LocalAttraction::orderBy('sort')->get();
 
@@ -36,7 +38,7 @@ class HomeController extends Controller
 
     public function location()
     {
-        $home = Home::firstOrFail();
+        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
 
         $locationPage = HomeLocationPage::firstOrFail();
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city", 'phone', 'mail', 'short_desc')->get();
@@ -47,7 +49,7 @@ class HomeController extends Controller
     public function contact()
     {
 
-        $home = Home::firstOrFail();
+        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
 
         $contactPage = HomeContactPage::firstOrFail();
 
@@ -57,7 +59,7 @@ class HomeController extends Controller
     public function privacyPolicy()
     {
 
-        $home = Home::firstOrFail();
+        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
 
         $privacyPolicy = PrivacyPolicy::firstOrFail();
 

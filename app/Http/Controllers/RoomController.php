@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apartment;
+use App\Models\Cta;
 use App\Models\Room;
 
 class RoomController extends Controller
@@ -13,6 +14,7 @@ class RoomController extends Controller
 
         $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link','booking_link','banner_rooms')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
+     
 
         $rooms = Room::select('id','title','thumbnail','short_desc','slug',)->where('apartment_id', $apartment->id)->get();
 
@@ -24,6 +26,8 @@ class RoomController extends Controller
 
         $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'map_link')->where('slug->pl', $apartmentSlug)->firstOrFail();
 
+        $cta = Cta::firstOrFail();
+
         $room = Room::where('apartment_id', $apartment->id)->where('slug->pl', $roomSlug)->firstOrFail();
 
         $otherRooms = Room::select('title','slug','thumbnail')
@@ -34,6 +38,6 @@ class RoomController extends Controller
 
        
 
-        return view('pages.room.show', compact('apartment', 'room','otherRooms'));
+        return view('pages.room.show', compact('apartment', 'room','otherRooms','cta'));
     }
 }
