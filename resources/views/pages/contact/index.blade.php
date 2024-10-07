@@ -1,9 +1,9 @@
-<x-layouts.app title="Kontakt z Apartamentami Jan - Skontaktuj się z Nami" description="Masz pytania dotyczące naszych apartamentów w Zakopanem? Skontaktuj się z nami! Sprawdź nasze dane kontaktowe i uzyskaj wszystkie potrzebne informacje. Jesteśmy tutaj, aby Ci pomóc!">
+<x-layouts.app title="{{__('meta.contact-index.title')}}" description="{{__('meta.contact-index.desc')}}">
 
     <x-layouts.app-wrapper :apartment="$apartment">
 
     {{-- HEADER --}}
-    <x-header subtitle="{{$apartment->title}}" title="Kontakt" bgi="{{asset('storage/' . $apartment->banner_contact)}}" />
+    <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.contact')}}" bgi="{{asset('storage/' . $apartment->banner_contact)}}" />
 
 
     {{-- MAIN --}}

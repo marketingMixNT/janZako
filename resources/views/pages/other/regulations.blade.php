@@ -1,21 +1,23 @@
-<x-layouts.app title="{{__('regulations.meta_title')}}"
-    description="{{__('regulations.meta_desc')}}">
+<x-layouts.app title="{{__('meta.regulations.title')}}" description="{{__('meta.regulations.title')}}">
 
-    {{-- HEADER --}}
-    <x-header title="{{__('regulations.header-heading')}}"  bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-11.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-11.webp')]" />
+    <x-layouts.home-wrapper :home="$home">
 
-    {{-- MAIN --}}
-    <section class="py-20">
-        <x-container class="max-w-screen-lg prose">
-             {!! $regulations->content !!}
+        {{-- HEADER --}}
+        <x-header title="{{__('global.headings.regulations')}}"
+            bgi="{{asset('assets/images/apartamenty-jan/apartamenty-jan-9.webp')}}" />
 
-
-
-
-
-        </x-container>
-    </section>
+        {{-- MAIN --}}
+        <section class="py-20">
+            <x-container class="max-w-screen-lg prose">
+                {!! $regulations->content !!}
 
 
+
+
+
+            </x-container>
+        </section>
+
+    </x-layouts.home-wrapper>
 
 </x-layouts.app>

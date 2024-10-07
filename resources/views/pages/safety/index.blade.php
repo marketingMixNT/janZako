@@ -1,5 +1,4 @@
-<x-layouts.app title="Bezpieczeństwo w Apartamentach Jan - Twój Spokojny Pobyt w Zakopanem"
-    description="Dbamy o Twoje bezpieczeństwo w Apartamentach Jan. Poznaj nasze standardy higieny i ochrony, aby cieszyć się spokojnym i bezpiecznym wypoczynkiem w Zakopanem.">
+<x-layouts.app title="{{__('meta.safety-index.title')}}" description="{{__('meta.safety-index.desc')}}">
 
     <x-layouts.app-wrapper :apartment="$apartment">
 

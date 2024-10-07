@@ -3,6 +3,7 @@
 return [
     'home-local-attractions'=>'local-attractions',
     'home-localization'=>'localization',
+
     'home-contact'=>'contact',
     'home-privacy-policy'=>'privacy-policy',
     'home-regulations'=>"regulations",

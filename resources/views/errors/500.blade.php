@@ -1,6 +1,5 @@
-<x-layouts.app title="{{__('errors.meta_title')}}"
-    description="{{__('errors.meta_desc')}}"
-    noFollow>
+<x-layouts.home title="{{__('meta.home.title')}}" description="{{__('meta.home.desc')}}" noFollow>
+
 
 
 
@@ -12,11 +11,12 @@
 
 
         <h2 class="text-center text-8xl   tracking-wider font-heading font-extralight text-fontWhite">
-            {{__('errors.500.title')}}</h2>
-            <p class="text-xl text-fontWhite pt-4">{{__('errors.500.text')}}</p>
-      
+            {{__('global.errors.500.title')}}</h2>
+        <p class="text-xl text-fontWhite pt-4"> {{__('global.errors.500.text')}}</p>
 
-        <x-ui.link-button href="{{ url()->previous() }}" class="mt-6 2xl:mt-12">{{__('errors.back')}}</x-ui.link-button>
+
+        <x-ui.link-button href="{{ route('home.index') }}" class="mt-6 2xl:mt-12"> {{__('global.errors.back')}}
+        </x-ui.link-button>
 
     </div>
 

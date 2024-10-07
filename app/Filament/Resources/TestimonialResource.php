@@ -72,14 +72,10 @@ class TestimonialResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->reorderable('sort')
-            ->defaultSort('sort', 'asc')
+            
             ->columns([
 
-                Tables\Columns\TextColumn::make('sort')
-                    ->label('#')
-                    ->numeric()
-                    ->sortable(),
+                
 
                 Tables\Columns\TextColumn::make('name')
                     ->label('Imię i nazwisko')
@@ -93,10 +89,12 @@ class TestimonialResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('home')
-                    ->boolean(),
+                    ->boolean()
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('source')
-                    ->label('Źródło opini'),
+                    ->label('Źródło opini')
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data utworzenia')

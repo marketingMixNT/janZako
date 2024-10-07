@@ -1,11 +1,11 @@
-<x-layouts.app title="{{__('meta.local-attractions-index.title')}}"
-description="{{__('meta.local-attractions-index.desc')}}">
+<x-layouts.app title="{{__('meta.local-attractions-home.title')}}"
+    description="{{__('meta.local-attractions-home.desc')}}">
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.home-wrapper :home="$home">
 
 
     {{-- HEADER --}}
-    <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.local-attractions')}}" bgi="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-banner.webp')}}" />
+    <x-header subtitle="Apartamenty Jan" title="{{__('global.headings.local-attractions')}}" bgi="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-banner.webp')}}" />
 
     <x-container class="max-w-screen-xl pt-20 pb-28">
         <x-heading-horizontal title="{{__('local-attractions.page.heading')}}">
@@ -42,5 +42,5 @@ description="{{__('meta.local-attractions-index.desc')}}">
 
     </x-container>
 
-    </x-layouts.app-wrapper>
+    </x-layouts.home-wrapper>
 </x-layouts.app>

@@ -1,5 +1,4 @@
-<x-layouts.app title="Galeria Apartamentów Jan - Zobacz Nasze Komfortowe Wnętrza"
-    description="Zobacz galerię Apartamentów Jan w Zakopanem! Odkryj nasze eleganckie wnętrza i przytulne pokoje, idealne na wypoczynek w sercu Tatr. Sprawdź zdjęcia i zainspiruj się!">
+<x-layouts.app title="{{__('meta.gallery-index.title')}}" description="{{__('meta.gallery-index.desc')}}">
 
     <x-layouts.app-wrapper :apartment="$apartment">
 

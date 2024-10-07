@@ -1,5 +1,5 @@
-<x-layouts.home title="{{$home->meta_title ? $home->meta_title : 'Apartamenty Jan - Wygodne noclegi w Zakopanem'}}"
-    description="{{$home->meta_desc ? $home->meta_desc  : 'Zarezerwuj komfortowy apartament w Zakopanem! Apartamenty Jan to idealne miejsce na wypoczynek w sercu Tatr. Odkryj magię gór już dziś!'}}">
+<x-layouts.home title="{{$home->meta_title ? $home->meta_title : __('meta.home.title')}}"
+    description="{{$home->meta_desc ? $home->meta_desc  : __('meta.home.desc')}}">
 
 
 
@@ -12,7 +12,7 @@
 
         @include('pages.home.partials.apartments')
 
-        <x-cta :link="$home->booking_link" :cta="$cta"/>
+        <x-cta :link="$home->booking_link" :cta="$cta" />
 
         @include('pages.home.partials.testimonials')
         @include('pages.home.partials.local-attractions')

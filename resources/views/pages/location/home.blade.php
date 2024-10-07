@@ -1,8 +1,8 @@
 <x-layouts.home
     title="
-{{$locationPage->meta_title ? $locationPage->meta_title : 'Lokalizacja Apartamentów Jan - Znajdź Swoje Miejsce w Zakopanem'}}"
+{{$locationPage->meta_title ? $locationPage->meta_title : __('meta.location-index.title')}}"
     description="
-{{$locationPage->meta_desc ? $locationPage->meta_desc : 'Odkryj lokalizację apartamentów Jan w Zakopanem! Sprawdź, gdzie znajdują się nasze komfortowe noclegi i jak blisko do atrakcji Tatr. Zarezerwuj idealne miejsce na swój wypoczynek!'}}">
+{{$locationPage->meta_desc ? $locationPage->meta_desc : __('meta.location-index.desc')}}">
     <x-layouts.home-wrapper :home="$home">
 
 

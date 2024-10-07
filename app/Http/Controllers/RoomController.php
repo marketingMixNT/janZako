@@ -14,7 +14,9 @@ class RoomController extends Controller
     public function index($apartmentSlug)
     {
 
-        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link', 'booking_link', 'banner_rooms')->where('slug->pl', $apartmentSlug)->firstOrFail();
+        $locale = App::getLocale();
+
+        $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link', 'booking_link', 'banner_rooms')->where("slug->{$locale}", $apartmentSlug)->firstOrFail();
 
 
 
@@ -26,13 +28,13 @@ class RoomController extends Controller
     public function show($apartmentSlug, $roomSlug)
     {
 
-        $locale = App::getLocale(); // Pobieramy aktualny język aplikacji
+        $locale = App::getLocale();
 
         $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link')
-            ->where("slug->{$locale}", $apartmentSlug) // Używamy dynamicznie lokalizacji
+            ->where("slug->{$locale}", $apartmentSlug) 
             ->firstOrFail();
 
-      
+
 
         $cta = Cta::firstOrFail();
 

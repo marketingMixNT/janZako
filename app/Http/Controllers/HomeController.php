@@ -19,52 +19,53 @@ class HomeController extends Controller
     {
 
         $home = Home::firstOrFail();
-        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city",'short_desc')->get();
+        $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city", 'short_desc')->get();
         $cta = Cta::firstOrFail();
         $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
 
-        
 
-        return view('pages.home.index', compact("apartments", 'testimonials', 'home','cta'));
+
+        return view('pages.home.index', compact("apartments", 'testimonials', 'home', 'cta'));
     }
 
     public function attractions()
     {
 
-        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
+        $home = Home::select('logo', 'phone', 'mail', 'booking_link')->firstOrFail();
 
         $attractions = LocalAttraction::orderBy('sort')->get();
 
-        return view('pages.local-attractions.index', compact('attractions','home'));
+        return view('pages.local-attractions.home', compact('attractions', 'home'));
     }
 
     public function location()
     {
-        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
+        $home = Home::select('logo', 'phone', 'mail', 'booking_link')->firstOrFail();
 
         $locationPage = HomeLocationPage::firstOrFail();
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city", 'phone', 'mail', 'short_desc')->get();
 
-        return view('pages.location.home', compact('apartments', 'locationPage','home'));
+        return view('pages.location.home', compact('apartments', 'locationPage', 'home'));
     }
 
     public function contact()
     {
 
-        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
+        $home = Home::select('logo', 'phone', 'mail', 'booking_link')->firstOrFail();
 
         $contactPage = HomeContactPage::firstOrFail();
 
-        return view('pages.contact.home', compact('contactPage','home'));
+        return view('pages.contact.home', compact('contactPage', 'home'));
     }
+   
 
     public function privacyPolicy()
     {
 
-        $home = Home::select('logo','phone','mail','booking_link')->firstOrFail();
+        $home = Home::select('logo', 'phone', 'mail', 'booking_link')->firstOrFail();
 
         $privacyPolicy = PrivacyPolicy::firstOrFail();
 
-        return view('pages.other.privacy-policy', compact('privacyPolicy','home'));
+        return view('pages.other.privacy-policy', compact('privacyPolicy', 'home'));
     }
 }

@@ -1,11 +1,11 @@
-<x-layouts.home title="{{__('privacy-policy.meta_title')}}" description="{{__('privacy-policy.meta_desc')}}">
+<x-layouts.home title="{{__('meta.privacy-policy.title')}}" description="{{__('meta.privacy-policy.desc')}}">
 
     <x-layouts.home-wrapper :home="$home">
 
 
         {{-- HEADER --}}
-        <x-header title="{{__('privacy-policy.header-heading')}}"
-            bgi="bg-[url('/public/assets/images/pokoje/mobile/pokoje-11.webp')] sm:bg-[url('/public/assets/images/pokoje/pokoje-11.webp')]" />
+        <x-header title="{{__('global.headings.privacy-policy')}}"
+            bgi="{{asset('assets/images/apartamenty-jan/apartamenty-jan-9.webp')}}" />
 
         {{-- MAIN --}}
         <section class="py-20">
