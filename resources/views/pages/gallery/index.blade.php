@@ -4,7 +4,7 @@
     <x-layouts.app-wrapper :apartment="$apartment">
 
     {{-- HEADER --}}
-    <x-header subtitle="{{$apartment->title}}" title="Galeria" bgi="{{asset('storage/' . $apartment->banner_gallery)}}" />
+    <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.gallery')}}" bgi="{{asset('storage/' . $apartment->banner_gallery)}}" />
 
     {{-- MAIN --}}
     <section class="py-20">
@@ -16,7 +16,7 @@
                 <button
                     class="border   px-8 py-3 uppercase text-xs duration-300   gallery-btn filter-btn"
                     data-title="">
-                    Wszystkie
+                    {{__('global.all')}}
                 </button>
 
              

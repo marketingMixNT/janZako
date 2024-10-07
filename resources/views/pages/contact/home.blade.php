@@ -6,8 +6,7 @@
 
 
     {{-- HEADER --}}
-    <x-header title="Kontakt"
-        {{-- bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy/apartamenty-jan-apartament-dwuosobowy7.webp')}}" /> --}}
+    <x-header title="{{__('global.headings.contact')}}"
         bgi="{{asset($contactPage->banner)}}" />
 
     {{-- MAIN --}}
@@ -19,15 +18,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 py-12 lg:py-24 ">
 
                 <div class="order-1 lg:order-none">
-                    <x-title>Hotel Jan</x-title>
+                    <x-title>Apartamenty Jan</x-title>
                     <div class="grid sm:grid-cols-2 sm:grid-rows-2 gap-x-24 h-[80%]">
 
-                        <x-contact-box title="E-mail">
+                        <x-contact-box title="{{__('contact.email')}}">
                             <a class="link-hover--dark text-xl font-light"
                                 href="mailto:biuro@apartamenty-jan.com.pl">biuro@apartamenty-jan.com.pl</a>
                         </x-contact-box>
 
-                        <x-contact-box title="Telefon">
+                        <x-contact-box title="{{__('contact.phone')}}">
 
                             <a href="tel:+48602512008" class="link-hover--dark text-xl font-light mb-2">+48
                                 602-512-008</a>
@@ -44,7 +43,7 @@
                     <div class="flex flex-col gap-2 col-span-2">
 
 
-                        <span class="font-light">Numer konta Mbank: 85 1140 2004 0000 3902 7685 1621</span>
+                        <span class="font-light">{{__('contact.bank-account')}} Mbank: 85 1140 2004 0000 3902 7685 1621</span>
 
                     </div>
                 </div>

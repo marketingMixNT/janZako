@@ -14,13 +14,13 @@
                 class=" mx-4 md:mx-12 flex flex-col gap-6 justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
                 <div>
                     <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                     Zadzwoń do nas
+                    {{__('footer.call-to-us')}}
                     </h2>
                     <a href="tel:+48{{$apartment->phone}}" class="font-thin font-heading link-hover text-sm">+48 {{$apartment->phone}}</a>
                 </div>
                 <div>
                     <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                      Napisz do nas
+                        {{__('footer.write-to-us')}}
                     </h2>
                     <a href="mailto:{{$apartment->phone}}"
                         class="font-thin font-heading link-hover text-sm">{{$apartment->mail}}</a>
@@ -29,7 +29,7 @@
             <!--THREE-->
             <div
                 class="mx-4 md:mx-12 flex flex-col justify-center items-center text-center sm:justify-start sm:items-start sm:text-start">
-                <h2 class="font-heading text-lg uppercase mb-2 font-light">   Adres</h2>
+                <h2 class="font-heading text-lg uppercase mb-2 font-light">{{__('footer.address')}}</h2>
                 <a href="{{$apartment->map_link}}" target="_blank"
                     class="font-thin font-heading link-hover text-sm">{{$apartment->address}} <br/> {{$apartment->city}}</a>
             </div>
@@ -55,7 +55,7 @@
             <hr class="opacity-40" />
             <ul class="flex justify-center items-center gap-8 text-xs py-4">
                 <li>
-                    <a href="{{route('home.privacy-policy')}}" class="link-hover font-light">Polityka Prywatności</a>
+                    <a href="{{route('home.privacy-policy')}}" class="link-hover font-light">{{__('footer.privacy-policy')}}</a>
                 </li>
                 {{-- <li><a href="{{route('regulations')}}" class="link-hover font-light">    {{__('footer.regulations')}}</a></li> --}}
             </ul>

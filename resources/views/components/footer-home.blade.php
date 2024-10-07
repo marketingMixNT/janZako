@@ -16,14 +16,14 @@
 
                 <div>
                     <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                        Napisz do nas
+                       {{__('footer.write-to-us')}}
                     </h2>
                     <a href="mailto:{{$home->mail}}"
                         class="font-thin font-heading link-hover text-sm">{{$home->mail}}</a>
                 </div>
                 <div>
                     <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                        Zadzwoń do nas
+                        {{__('footer.call-to-us')}}
                     </h2>
                     <a href="tel:+48{{$home->phone}}"
                         class="font-thin font-heading link-hover text-sm ">{{$home->phone}}</a>
@@ -43,7 +43,7 @@
             <ul class="flex justify-center items-center gap-8 text-xs py-4">
                 <li>
                     <a href="{{route('home.privacy-policy')}}" class="link-hover font-light">
-                        Polityka Prywatności</a>
+                        {{__('footer.privacy-policy')}}</a>
                 </li>
                 {{-- <li><a href="{{route('regulations')}}" class="link-hover font-light">
                         {{__('footer.regulations')}}</a></li> --}}

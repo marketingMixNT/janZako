@@ -2,19 +2,17 @@
 
     <x-container class="max-w-screen-xl mx-auto space-y-20">
 
-        <x-heading-horizontal title="Słowa naszych gości mówią wszystko">
-            <x-text>Naszym priorytetem jest zapewnienie komfortu i wyjątkowych wrażeń. Z dumą dzielimy się opiniami
-                osób, które odwiedziły nasz hotel i doświadczyły naszej gościnności. Przeczytaj, co o nas mówią, i
-                przekonaj się, dlaczego warto nas odwiedzić!</x-text>
+        <x-heading-horizontal title="{{__('testimonials.heading')}}">
+            <x-text>{{__('testimonials.text')}}</x-text>
 
             @if($apartment->google_reviews_average && $apartment->google_reviews)
             <x-rating source="google" rate="{{ $apartment->google_reviews_average }}"
-                href="{{ $apartment->google_reviews_link }}" reviews="{{ $apartment->google_reviews }} opinii" />
+                href="{{ $apartment->google_reviews_link }}" reviews="{{ $apartment->google_reviews }} {{__('testimonials.reviews')}}" />
             @endif
 
             @if($apartment->tripadvisor_reviews_average && $apartment->tripadvisor_reviews)
             <x-rating source="tripAdvisor" rate="{{$apartment->tripadvisor_reviews_average}}"
-                href="{{$apartment->tripadvisor_reviews_link}}" reviews="{{$apartment->tripadvisor_reviews}} opinii" />
+                href="{{$apartment->tripadvisor_reviews_link}}" reviews="{{$apartment->tripadvisor_reviews}} {{__('testimonials.reviews')}}" />
         </x-heading-horizontal>
         @endif
 

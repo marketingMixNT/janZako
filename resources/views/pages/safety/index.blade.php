@@ -3,7 +3,7 @@
 
     <x-layouts.app-wrapper :apartment="$apartment">
 
-        <x-header subtitle="{{$apartment->title}}" title="Bezpieczeństwo" bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem/apartamenty-jan-apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem-6.webp')}}" />
+        <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.safety')}}" bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem/apartamenty-jan-apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem-6.webp')}}" />
 
 
 
@@ -12,21 +12,20 @@
             <x-container class="max-w-screen-2xl">
 
                 <div class="flex flex-col justify-center items-center gap-6  text-center">
-                    <x-title>W apartamencie każdy powinien czuć się bezpiecznie.</x-title>
-                    <x-text>W Apartamentach Jan zawsze dokładaliśmy wszelkich starań, aby tak właśnie było, czego
-                        dowodem są oceny 9,5/10 i 4,8/5 za czystość na serwisach Booking i Expedia.</x-text>
+                    <x-title>{{__('safety.heading')}}</x-title>
+                    <x-text>{{__('safety.text')}}</x-text>
 
                     <div class="grid xs:grid-cols-2 lg:grid-cols-3 gap-12 xs:gap-20 pt-12">
-                        <x-security-box icon="{{asset('assets/icons/security-1.svg')}}" text="Dezynfekcja" />
+                        <x-security-box icon="{{asset('assets/icons/security-1.svg')}}" text="{{__('safety.item-1')}}" />
                         <x-security-box icon="{{asset('assets/icons/security-2.svg')}}"
-                            text="Wysokie oceny i standardy" />
-                        <x-security-box icon="{{asset('assets/icons/security-3.svg')}}" text="Ozonowanie obiektu" />
+                            text="{{__('safety.item-2')}}" />
+                        <x-security-box icon="{{asset('assets/icons/security-3.svg')}}" text="{{__('safety.item-3')}}" />
                         <x-security-box icon="{{asset('assets/icons/security-4.svg')}}"
-                            text="Współpraca z opieką lekarską" />
+                            text="{{__('safety.item-4')}}" />
                         <x-security-box icon="{{asset('assets/icons/security-5.svg')}}"
-                            text="Środki higieniczne w pokoju i na recepcji" />
+                            text="{{__('safety.item-5')}}" />
                         <x-security-box icon="{{asset('assets/icons/security-6.svg')}}"
-                            text="Brak centralnej klimatyzacji" />
+                            text="{{__('safety.item-6')}}" />
 
                     </div>
                 </div>

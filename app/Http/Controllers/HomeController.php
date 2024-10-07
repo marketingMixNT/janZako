@@ -35,7 +35,7 @@ class HomeController extends Controller
 
         $attractions = LocalAttraction::orderBy('sort')->get();
 
-        return view('pages.local-attractions.home', compact('attractions','home'));
+        return view('pages.local-attractions.index', compact('attractions','home'));
     }
 
     public function location()

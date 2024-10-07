@@ -30,6 +30,6 @@
         </a>
     </div>
 </div>
-    <x-ui.link href="{{route('apartment.show',$apartment->slug)}}"  title="zobacz"/>
+    <x-ui.link href="{{route('apartment.show',$apartment->slug)}}"  title="{{__('global.check')}}"/>
 </div>
 </x-image-text-block>

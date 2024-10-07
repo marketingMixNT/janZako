@@ -5,11 +5,11 @@
 
 
     {{-- HEADER --}}
-    <x-header subtitle="{{$apartment->title}}" title="Lokalne Atrakcje" bgi="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-banner.webp')}}" />
+    <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.local-attractions')}}" bgi="{{asset('assets/images/apartamenty-jan-lokalne-atrakcje-banner.webp')}}" />
 
     <x-container class="max-w-screen-xl pt-20 pb-28">
-        <x-heading-horizontal title="Odkryj Zakopane i Okoliczne Atrakcje">
-            <x-text>Zakopane to wyjątkowe miejsce pełne atrakcji dla każdego. Od malowniczych szlaków górskich, przez popularne termy, po unikalne zabytki i lokalną kulturę – każdy znajdzie tu coś dla siebie. Niezależnie od tego, czy szukasz aktywnego wypoczynku, czy spokojnego relaksu, nasze apartamenty Jan są idealną bazą do odkrywania uroków Tatr i okolicy.
+        <x-heading-horizontal title="{{__('local-attractions.page.heading')}}">
+            <x-text>{{__('local-attractions.page.text')}}
             </x-text>
         </x-heading-horizontal>
 

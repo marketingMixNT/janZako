@@ -25,9 +25,8 @@
                 <img src="{{ asset('storage/'.$home->logo) }}" alt="logo Apartamenty Jan" width="96" height="50"
                     class=" w-24 " />
             </a>
-            <x-ui.link-button id="nav-booking--light" type="primary"
-                href="{{$home->booking_link}}"
-                aria-label="Rezerwuj" class="hidden lg:block" target="_blank">Zarezerwuj
+            <x-ui.link-button id="nav-booking--light" type="primary" href="{{$home->booking_link}}"
+                aria-label="Rezerwuj" class="hidden lg:block" target="_blank">{{__('navbar.book')}}
             </x-ui.link-button>
             <div class="lg:hidden ">
                 <x-nav.hamburger />
@@ -37,11 +36,14 @@
         <div id="nav-links" class="max-w-screen-xl mx-auto py-3.5 hidden lg:block ">
             <ul class="flex gap-6 xl:gap-12">
 
-                <x-nav.menu-item href="{{route('home.index')}}/#o-nas">O nas</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('apartment.index')}}">Nasze obiekty</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('home.location')}}">Lokalizacja</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('home.contact')}}">Kontakt</x-nav.menu-item>
-                <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" rel="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('home.index')}}/#{{__('sections.about')}}">{{__('navbar.home.about')}}
+                </x-nav.menu-item>
+                <x-nav.menu-item href="{{route('apartment.index')}}">{{__('navbar.home.apartments')}}</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('home.location')}}">{{__('navbar.home.localization')}}</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('home.contact')}}">{{__('navbar.home.contact')}}</x-nav.menu-item>
+                <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" rel="noreferrer nofollow">
+                    {{__('navbar.home.hotel-in-cracow')}}</x-nav.menu-item>
+
             </ul>
 
         </div>

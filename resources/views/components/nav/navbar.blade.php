@@ -24,7 +24,7 @@
                     height="50" class=" w-24 " />
             </a>
             <x-ui.link-button id="nav-booking--light" type="primary" href="{{$apartment->booking_link}}" target="_blank"
-                aria-label="Rezerwuj" class="hidden lg:block" target="_blank">Zarezerwuj
+                aria-label="Rezerwuj" class="hidden lg:block" target="_blank">{{__('navbar.book')}}
             </x-ui.link-button>
             <div class="lg:hidden ">
                 <x-nav.hamburger />
@@ -36,15 +36,23 @@
 
 
 
-                <x-nav.menu-item href="{{route('apartment.show',$apartment->slug)}}/#o-nas">O nas</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('room.index',$apartment->slug)}}">Pokoje</x-nav.menu-item>
-                <x-nav.menu-item href="{{$apartment->booking_link}}" target="_blank" rel="noreferrer nofollow">Oferty</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('attractions',$apartment->slug)}}">Lokalne atrakcje</x-nav.menu-item>
-                <x-nav.menu-item href="{{ route('gallery',$apartment->slug) }}">Galeria</x-nav.menu-item>
-                <x-nav.menu-item href="{{route('safety',$apartment->slug)}}">Bezpieczeństwo</x-nav.menu-item>
-                <x-nav.menu-item href="  {{ route('contact',$apartment->slug) }}">Kontakt</x-nav.menu-item>
-                <x-nav.menu-item href="  {{ route('home.index') }}">Pozostałe obiekty</x-nav.menu-item>
-                <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" role="noreferrer nofollow">Hotel w Krakowie</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('apartment.show',$apartment->slug)}}/#{{__('sections.about')}}">
+                    {{__('navbar.about')}}</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('room.index',$apartment->slug)}}">{{__('navbar.rooms')}}
+                </x-nav.menu-item>
+                <x-nav.menu-item href="{{$apartment->booking_link}}" target="_blank" rel="noreferrer nofollow">
+                    {{__('navbar.offers')}}</x-nav.menu-item>
+                <x-nav.menu-item href="{{route('attractions',$apartment->slug)}}">{{__('navbar.local-attractions')}}
+                </x-nav.menu-item>
+                <x-nav.menu-item href="{{ route('gallery',$apartment->slug) }}">{{__('navbar.gallery')}}
+                </x-nav.menu-item>
+                <x-nav.menu-item href="{{route('safety',$apartment->slug)}}">{{__('navbar.safety')}}</x-nav.menu-item>
+                <x-nav.menu-item href="  {{ route('contact',$apartment->slug) }}">{{__('navbar.contact')}}
+                </x-nav.menu-item>
+                <x-nav.menu-item href="  {{ route('home.index') }}">{{__('navbar.apartments')}}</x-nav.menu-item>
+                <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" role="noreferrer nofollow">
+                    {{__('navbar.hotel-in-cracow')}}</x-nav.menu-item>
+
 
             </ul>
 

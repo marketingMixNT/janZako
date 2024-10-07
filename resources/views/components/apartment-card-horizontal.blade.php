@@ -15,28 +15,29 @@
         <h2 class=" text-4xl uppercase  font-heading font-light ">{{ $apartment->title }}</h2>
         <div class="text 2xl:mr-12 leading-loose font-light text-[14px] 2xl:text-base">{!! $apartment->short_desc !!}
         </div>
-       
+
 
 
         <div class="flex flex-wrap gap-12">
 
             <div class="flex justify-center items-center gap-3">
                 <x-lucide-map-pin class="size-6 text-accent-400" />
-                <a href="{{$apartment->map_link}}" target="_blank" rel="noreferrer nofollow" class="font-light link-hover--accent ">
+                <a href="{{$apartment->map_link}}" target="_blank" rel="noreferrer nofollow"
+                    class="font-light link-hover--accent ">
                     {{ $apartment->address }}, {{$apartment->city}} </a>
             </div>
-            
+
         </div>
 
     </div>
     <div class="w-full lg:w-[15%] flex justify-center items-start gap-6 flex-col">
 
 
-        <x-ui.link href="{{$apartment->booking_link}}" target="_blank" title="Zarezerwuj"
+        <x-ui.link href="{{$apartment->booking_link}}" target="_blank" title="{{__('global.book')}}"
             color="text-fontBlack " />
 
-        <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="Zobacz" />
-        
+        <x-ui.link href="{{route('apartment.show',$apartment->slug)}}" title="{{__('global.check')}}" />
+
 
 
 

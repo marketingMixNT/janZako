@@ -33,9 +33,9 @@
     <div class="w-full lg:w-[15%] flex justify-center items-start gap-6 flex-col">
 
 
-        <x-ui.link href="{{$apartmentLink}}" target="_blank" title="Zarezerwuj" color="text-fontBlack " />
+        <x-ui.link href="{{$apartmentLink}}" target="_blank" title="{{__('global.book')}}" color="text-fontBlack " />
 
-        <x-ui.link href="{{ route('room.show', ['apartmentSlug' => $testSlug, 'roomSlug' => $roomSlug]) }}" title="Zobacz" />
+        <x-ui.link href="{{ route('room.show', ['apartmentSlug' => $testSlug, 'roomSlug' => $roomSlug]) }}" title="{{__('global.check')}}" />
 
 
 

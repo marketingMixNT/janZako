@@ -18,7 +18,7 @@
 
 
             target="_blank" rel="noreferrer nofollow">
-            Zarezerwuj</x-ui.link-button>
+            {{__('global.book')}}</x-ui.link-button>
 
     </x-container>
 

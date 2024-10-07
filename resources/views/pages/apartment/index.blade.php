@@ -4,7 +4,7 @@
 
 <x-layouts.home-wrapper :home="$home">
     {{-- HEADER --}}
-    <x-header title="Nasze obiekty"
+    <x-header title="{{__('global.headings.apartments')}}"
        
         bgi="{{asset($apartmentPage->banner)}}" />
 

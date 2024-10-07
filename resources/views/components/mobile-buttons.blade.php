@@ -6,22 +6,22 @@
 
     <x-mobile-button href="{{$apartment->booking_link}}" target="_blank" rel="noreferrer nofollow">
         <x-lucide-pointer class="size-5  text-fontWhite" />
-        <span class="text-xs uppercase  text-fontWhite">Zarezerwuj</span>
+        <span class="text-xs uppercase  text-fontWhite">{{__('mobile-buttons.book')}}</span>
     </x-mobile-button>
 
     <x-mobile-button href="{{route('gallery',$apartment->slug)}}">
         <x-lucide-images class="size-5  text-fontWhite" />
-        <span class="text-xs uppercase  text-fontWhite">Galeria</span>
+        <span class="text-xs uppercase  text-fontWhite">{{__('mobile-buttons.gallery')}}</span>
     </x-mobile-button>
 
     <x-mobile-button href="{{route('contact',$apartment->slug)}}">
         <x-lucide-phone class="size-5  text-fontWhite" />
-        <span class="text-xs uppercase  text-fontWhite">Kontakt</span>
+        <span class="text-xs uppercase  text-fontWhite">{{__('mobile-buttons.contact')}}</span>
     </x-mobile-button>
 
     <x-mobile-button href="{{$apartment->map_link}}" target="_blank">
         <x-lucide-map-pin class="size-5 text-fontWhite" />
-        <span class="text-xs uppercase  text-fontWhite">Lokalizacja</span>
+        <span class="text-xs uppercase  text-fontWhite">{{__('mobile-buttons.localization')}}</span>
     </x-mobile-button>
 
 

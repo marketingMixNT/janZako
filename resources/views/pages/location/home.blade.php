@@ -7,7 +7,7 @@
 
 
         {{-- HEADER --}}
-        <x-header title="Lokalizacja" bgi="{{asset('storage/'.$locationPage->banner)}}" />
+        <x-header title="{{__('global.headings.localization')}}" bgi="{{asset('storage/'.$locationPage->banner)}}" />
 
         {{-- MAIN --}}
         <section class="py-20">

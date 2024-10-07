@@ -20,7 +20,7 @@
                     class="pt-12 sm:mt-0 self-center sm:self-end flex flex-col justify-center sm:justify-end items-center sm:items-end gap-3 mb-12 sm:mb-24 lg:mb-12 ">
 
 
-                    <x-ui.link href="{{route('home.attractions')}}" title="zoacz więcej" />
+                    <x-ui.link href="{{route('home.attractions')}}" title="{{__('local-attractions.link')}}" />
                 </div>
             </div>
 
@@ -30,8 +30,8 @@
 
                 <div class="flex flex-col justify-between items-center gap-12 ">
                     <x-title>
-                        Odkryj piękno Zakopanego i okolic</x-title>
-                    <x-text>Zakopane to prawdziwy raj dla miłośników natury i aktywnego wypoczynku. Wybierz się na piesze wędrówki po malowniczych szlakach Tatr, zwiedź urokliwe górskie stawy lub skorzystaj z licznych atrakcji, takich jak narciarstwo, snowboard czy termalne baseny. Odkryj lokalną kulturę, spróbuj tradycyjnych potraw i delektuj się niesamowitymi widokami. W Zakopanem każdy dzień przynosi nowe przygody!
+                        {{__('local-attractions.heading')}}</x-title>
+                    <x-text>{{__('local-attractions.text')}}
                     </x-text>
 
           

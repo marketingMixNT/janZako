@@ -10,7 +10,7 @@
     <section class="py-20">
         <x-container class="max-w-screen-xl">
 
-            <x-heading heading="Kontakt" />
+            <x-heading heading="{{__('global.headings.contact')}}" />
             <!--CONTENT-->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 py-12 lg:py-24 ">
 

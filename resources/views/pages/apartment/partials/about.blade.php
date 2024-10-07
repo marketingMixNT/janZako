@@ -1,7 +1,7 @@
 <!--CONTAINER-->
 
 
-<section id="o-nas" class="pt-16 pb-8 ">
+<section id="{{__('sections.about')}}" class="pt-16 pb-8 ">
     <x-container class="max-w-screen-xl ">
 
         <div class="grid lg:grid-cols-2 gap-24 pt-12 lg:py-20">

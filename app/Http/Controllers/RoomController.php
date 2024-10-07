@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Apartment;
 use App\Models\Cta;
 use App\Models\Room;
+use Illuminate\Support\Facades\App;
+
 
 class RoomController extends Controller
 {
@@ -23,18 +25,23 @@ class RoomController extends Controller
 
     public function show($apartmentSlug, $roomSlug)
     {
+
+        $locale = App::getLocale(); // Pobieramy aktualny język aplikacji
+
         $apartment = Apartment::select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link')
-            ->where('slug->pl', $apartmentSlug)
+            ->where("slug->{$locale}", $apartmentSlug) // Używamy dynamicznie lokalizacji
             ->firstOrFail();
+
+      
 
         $cta = Cta::firstOrFail();
 
         $room = Room::where('apartment_id', $apartment->id)
-            ->where('slug->pl', $roomSlug)
+            ->where("slug->{$locale}", $roomSlug)
             ->firstOrFail();
 
 
-        $otherRooms = Room::select('title', 'slug', 'thumbnail','beds','bathroom')
+        $otherRooms = Room::select('title', 'slug', 'thumbnail', 'beds', 'bathroom')
             ->where('apartment_id', $apartment->id)
             ->where('id', '!=', $room->id)
             ->orderBy('sort')

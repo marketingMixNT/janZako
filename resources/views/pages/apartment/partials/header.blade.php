@@ -25,7 +25,7 @@
             aria-label="Rezerwuj">Zarezeruj</x-ui.link-button>
 
         {{-- ANCHOR --}}
-        <a href="{{route('apartment.show',$apartment->slug)}}#o-nas" class="absolute bottom-6 2xl:bottom-12 left-1/2 transform -translate-x-1/2 z-50"
+        <a href="{{route('apartment.show',$apartment->slug)}}#{{__('sections.about')}}" class="absolute bottom-6 2xl:bottom-12 left-1/2 transform -translate-x-1/2 z-50"
             aria-label="Przejdź do sekcji o nas">
             <x-lucide-arrow-down-circle class="animate-pulse w-8 md:w-12 text-white" />
         </a>
