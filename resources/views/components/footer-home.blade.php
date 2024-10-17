@@ -40,7 +40,7 @@
 
         <div class="flex flex-col justify-center items-center mx-auto text-left">
             <h2 class="font-heading text-lg uppercase mb-2 font-light">
-                Wszytkie obiekty
+               {{__('footer.all-objects')}}
             </h2>
            
             <div class="flex flex-col justify-center items-center gap-1">
@@ -55,11 +55,11 @@
                 <a href="mailto:{{$home->mail}}" class="font-heading link-hover font-normal ">{{$home->mail}}
                 </a>
                 <div class="flex flex-col justify-center items-center pt-4">
-                    <p class="font-thin font-heading text-sm">Numer konta {{$home->bank}}:</p>
+                    <p class="font-thin font-heading text-sm">{{__('footer.bank-account')}} {{$home->bank}}:</p>
                     <p class="font-thin font-heading text-sm">{{$home->bank_account}}</p>
                 </div>
             </div>
-            <p class="text-accent-400 font-medium pt-6">Recepcja czynna od 9:00 do 22:00</p>
+            <p class="text-accent-400 font-medium pt-6">  {{__('footer.reception')}}</p>
         </div>
 
 
