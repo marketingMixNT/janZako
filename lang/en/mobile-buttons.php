@@ -2,6 +2,6 @@
 
 'book'=>"Book now",
 'gallery'=>"Gallery",
-'contact'=>"Contact",
+'contact'=>"Call",
 'localization'=>"Map",
 ];

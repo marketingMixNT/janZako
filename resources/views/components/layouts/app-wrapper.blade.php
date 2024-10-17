@@ -5,7 +5,10 @@
 
 {{$slot}}
 
+
+@if($apartment->map)
 {!!$apartment->map!!}
+@endif
 
 <x-footer :apartment="$apartment" :apartments="$apartments" :home="$home"/>
 

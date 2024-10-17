@@ -2,6 +2,6 @@
 
     'book' => "Zarezerwuj",
     'gallery' => "Galeria",
-    'contact' => "Kontakt",
+    'contact' => "Zadzwoń",
     'localization' => "Lokalizacja",
 ];

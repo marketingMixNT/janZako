@@ -11,6 +11,7 @@ return [
     'local-attractions'=>"{apartmentSlug}/local-attractions",
     'contact'=>"{apartmentSlug}/contact",
     'gallery'=>"{apartmentSlug}/gallery",
+    'location'=>"{apartmentSlug}/localization",
     'safety'=>"{apartmentSlug}/safety",
 
     'apartments'=>'apartments',

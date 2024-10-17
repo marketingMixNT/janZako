@@ -53,7 +53,7 @@
                 <x-nav.menu-item href="{{route('safety',$apartment->slug)}}">{{__('navbar.safety')}}</x-nav.menu-item>
                 <x-nav.menu-item href="  {{ route('contact',$apartment->slug) }}">{{__('navbar.contact')}}
                 </x-nav.menu-item>
-                <x-nav.menu-item href="  {{ route('apartment.index') }}">{{__('navbar.apartments')}}</x-nav.menu-item>
+                <x-nav.menu-item href="  {{ route('location',$apartment->slug) }}">{{__('navbar.localization')}}</x-nav.menu-item>
                 <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" role="noreferrer nofollow">
                     {{__('navbar.hotel-in-cracow')}}</x-nav.menu-item>
 

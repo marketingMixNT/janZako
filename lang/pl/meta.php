@@ -58,6 +58,8 @@
         'desc' => 'Dbamy o Twoje bezpieczeństwo w Apartamentach Jan. Poznaj nasze standardy higieny i ochrony, aby cieszyć się spokojnym i bezpiecznym wypoczynkiem w Zakopanem.',
     ],
 
+   
+
 
 
 ];

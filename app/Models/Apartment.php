@@ -44,6 +44,7 @@ class Apartment extends Model
         'about_images',
         'banner_rooms',
         'banner_gallery',
+        'banner_location',
         'banner_contact',
 
         // Descriptions
@@ -53,10 +54,18 @@ class Apartment extends Model
         'about_text_second',
         'rooms_heading',
         'rooms_text',
+        'location_heading',
+        'location_text',
+        'location_info',
+
+        'location_meta_title',
+        'location_meta_desc',
+       
 
         // Map
         'map',
         'map_link',
+        'location_map',
 
         // Reviews
         'google_reviews',
@@ -91,6 +100,12 @@ class Apartment extends Model
         "about_text_second" => "array",
         'about_images' => 'array',
         "short_desc" => "array",
+        "location_heading" => "array",
+        "location_text" => "array",
+        "location_info" => "array",
+
+        'location_meta_title' => 'array',
+        'location_meta_desc' => 'array',
 
         'slider_heading' => 'array',
         'slider_images' => 'array',
@@ -133,6 +148,8 @@ class Apartment extends Model
         }
     }
 
+    
+
 
     public $translatable = [
         'meta_title',
@@ -147,5 +164,10 @@ class Apartment extends Model
         'rooms_text',
         'slider_heading',
         'booking_link',
+        'location_heading',
+        'location_text',
+        'location_info',
+        'location_meta_title',
+        'location_meta_desc',
     ];
 }

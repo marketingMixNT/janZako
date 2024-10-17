@@ -10,6 +10,7 @@ return [
     'local-attractions'=>"{apartmentSlug}/lokalne-atrakcje",
     'contact'=>"{apartmentSlug}/kontakt",
     'gallery'=>"{apartmentSlug}/galeria",
+    'location'=>"{apartmentSlug}/lokalizacja",
     'safety'=>"{apartmentSlug}/bezpieczenstwo",
 
     'apartments'=>'apartamenty',

@@ -71,9 +71,9 @@ class ApartmentResource extends Resource
                                     ->getUploadedFileNameForStorageUsing(
                                         fn(TemporaryUploadedFile $file): string => 'apartament-logo-' . now()->format('Ymd_His') . '.' . $file->getClientOriginalExtension()
                                     )
-                                    
+
                                     ->maxSize(8192)
-                                  
+
                                     ->columnSpanFull()
                                     ->required(),
 
@@ -183,7 +183,7 @@ class ApartmentResource extends Resource
                                     ->placeholder("123456789")
                                     ->minLength(3)
                                     ->maxLength(255),
-                                
+
 
                                 Forms\Components\TextInput::make('mail')
                                     ->label('Email')
@@ -325,13 +325,73 @@ class ApartmentResource extends Resource
 
 
                             ]),
+                        // ABOUT
+                        Tabs\Tab::make('Lokalizacja')
+                            ->icon('heroicon-o-map')
+                            ->columns()
+                            ->schema([
+                                TextInput::make('location_meta_title')
+                                ->label('Tytuł Meta')
+                                ->characterLimit(60)
+                                ->minLength(10)
+                                ->maxLength(75)
+                                ->live(debounce: 1000)
+                                ->afterStateUpdated(function (Livewire $livewire, Component $component) {
+                                    $validate = $livewire->validateOnly($component->getStatePath());
+                                })
+                                ->columnSpanFull(),
+
+                            TextInput::make('location_meta_desc')
+                                ->label('Opis Meta')
+                                ->characterLimit(160)
+                                ->minLength(10)
+                                ->maxLength(180)
+                                ->live(debounce: 1000)
+                                ->afterStateUpdated(function (Livewire $livewire, Component $component) {
+                                    $validate = $livewire->validateOnly($component->getStatePath());
+                                })
+                                ->columnSpanFull(),
+
+                                Forms\Components\TextInput::make('location_heading')
+                                    ->label('Nagłówek')
+                                    ->columnSpanFull()
+
+                                    ->required(),
+
+                                Forms\Components\TextArea::make('location_text')
+                                    ->label('Paragraf')
+                                    ->columnSpanFull()
+                                    ->cols(5)
+                                    ->autosize()
+
+                                    ->required(),
+
+                                RichEditor::make('location_info')
+                                    ->label('Info')
+                                    ->toolbarButtons([
+                                        'bold',
+                                        'italic',
+                                    ])
+                                    ->required()
+                                    ->columnSpanFull(),
+
+
+                                    Forms\Components\Textarea::make('location_map')
+                                            ->label('Google Maps iFrame')
+                                            ->placeholder("<iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.547169189393!2d20.00688517730142!3d49.474170357174515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715e5905e21c0ed%3A0x159c133ae9b83572!2sMarketingMix!5e0!3m2!1spl!2spl!4v1727760651042!5m2!1spl!2spl' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade' title='apartament-willa' class='w-full'></iframe>")
+                                            ->autosize()
+                                            ->required()
+
+                                            ->columnSpanFull(),
+
+                            ]),
 
                         // PHOTOS
                         Tabs\Tab::make('Zdjęcia')
                             ->icon('heroicon-o-camera')
                             ->columns()
                             ->schema([
-                                 Shout::make('info')
+                                Shout::make('info')
                                     ->content('Aby zlokalizować nazwy kategorii w galerii przejdź do dedykowanej zakładki')
                                     ->type('info')
                                     ->color('info')
@@ -400,6 +460,25 @@ class ApartmentResource extends Resource
                                     ->required()
                                     ->columnSpanFull(),
 
+                                Forms\Components\FileUpload::make('banner_location')
+                                    ->label('Strona lokalizacja')
+                                    ->directory('apartments-banners')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn(TemporaryUploadedFile $file): string => 'apartment-banner-' . now()->format('H-i-s') . '-' . str_replace([' ', '.'], '', microtime()) . '.' . $file->getClientOriginalExtension()
+                                    )
+                                    ->image()
+                                    ->maxSize(8192)
+                                    ->optimize('webp')
+                                    ->imageEditor()
+                                    ->imageEditorAspectRatios([
+                                        null,
+                                        '16:9',
+                                        '4:3',
+                                        '1:1',
+                                    ])
+                                    ->required()
+                                    ->columnSpanFull(),
+
                                 Forms\Components\FileUpload::make('banner_contact')
                                     ->label('Strona kontakt')
                                     ->directory('apartments-banners')
@@ -437,6 +516,8 @@ class ApartmentResource extends Resource
                                     ])
                                     ->required()
                                     ->columnSpanFull(),
+
+
                             ]),
 
                         // ROOMS
@@ -482,29 +563,29 @@ class ApartmentResource extends Resource
                             ->columns()
                             ->schema([
                                 Shout::make('info')
-                                ->content('Aby dodać opinie przejdź do dedykowanej zakładki')
-                                ->type('info')
-                                ->color('info')
-                                ->columnSpanFull(),
+                                    ->content('Aby dodać opinie przejdź do dedykowanej zakładki')
+                                    ->type('info')
+                                    ->color('info')
+                                    ->columnSpanFull(),
                                 Fieldset::make('google')
                                     ->schema([
                                         Forms\Components\TextInput::make('google_reviews')
                                             ->label('Liczba opini w google')
                                             ->placeholder('452')
                                             ->numeric(),
-                                            
+
 
                                         Forms\Components\TextInput::make('google_reviews_average')
                                             ->label('Średnia ocen')
                                             ->placeholder('4.6'),
-                                            
+
 
                                         Forms\Components\TextInput::make('google_reviews_link')
                                             ->label('Link do wizytówki google')
                                             ->placeholder('https://maps.app.goo.gl/J68keyMP4o8iAR1C6')
                                             ->url()
                                             ->columnSpanFull(),
-                                          
+
                                     ]),
 
                                 Fieldset::make('TripAdvisor')
@@ -515,19 +596,19 @@ class ApartmentResource extends Resource
                                             ->label('Liczba opini w Trip Advisor')
                                             ->placeholder('452')
                                             ->numeric(),
-                                           
+
 
                                         Forms\Components\TextInput::make('tripadvisor_reviews_average')
                                             ->label('Średnia ocen')
                                             ->placeholder('4.6'),
-                                           
+
 
                                         Forms\Components\TextInput::make('tripadvisor_reviews_link')
                                             ->label('Link do Trip Advisor')
                                             ->placeholder('https://www.tripadvisor.com/Hotel_Review-g274772-d519743-Reviews-Hotel_Jan-Krakow_Lesser_Poland_Province_Southern_Poland.html')
                                             ->url()
                                             ->columnSpanFull(),
-                                            
+
                                     ]),
 
 
@@ -607,12 +688,12 @@ class ApartmentResource extends Resource
                     })
                     ->searchable()
                     ->sortable(),
-                 
-                    Tables\Columns\TextColumn::make('rooms_count')
+
+                Tables\Columns\TextColumn::make('rooms_count')
                     ->label('Liczba pokoi')
                     ->counts('rooms')
                     ->sortable(),
-                    
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Data utworzenia')
                     ->dateTime()

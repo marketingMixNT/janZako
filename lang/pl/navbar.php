@@ -18,5 +18,6 @@
     'safety' => "Bezpieczeństwo",
     'contact' => "Kontakt",
     'apartments' => 'Pozostałe Obiekty',
+    'localization'=>'Lokalizacja',
     'hotel-in-cracow' => "Hotel w Krakowie",
 ];

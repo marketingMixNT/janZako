@@ -14,7 +14,7 @@
         <span class="text-xs uppercase  text-fontWhite">{{__('mobile-buttons.gallery')}}</span>
     </x-mobile-button>
 
-    <x-mobile-button href="{{route('contact',$apartment->slug)}}">
+    <x-mobile-button href="tel:+48{{$apartment->phone}}">
         <x-lucide-phone class="size-5  text-fontWhite" />
         <span class="text-xs uppercase  text-fontWhite">{{__('mobile-buttons.contact')}}</span>
     </x-mobile-button>

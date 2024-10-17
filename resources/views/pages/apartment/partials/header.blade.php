@@ -11,7 +11,7 @@
         @foreach ($apartment->slider_images as $image)
         <div class="swiper-slide relative w-full h-full">
             <img src="{{asset('storage/' .  $image)}}" alt="{{$apartment->title}}"
-                class="absolute inset-0 w-full h-full object-cover hidden sm:block" />
+                class="absolute inset-0 w-full h-full object-cover " />
             <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
         @endforeach
@@ -31,3 +31,6 @@
         </a>
     </div>
 </div>
+
+
+

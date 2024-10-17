@@ -18,5 +18,7 @@
 'safety' => "Safety",
 'contact' => "Contact",
 'apartments' => 'Other objects',
+'localization'=>'Localization',
+
 'hotel-in-cracow' => "Hotel in Cracow",
 ];

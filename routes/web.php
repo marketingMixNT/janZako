@@ -19,6 +19,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get(LaravelLocalization::transRoute('routes.local-attractions'), [ApartmentController::class, 'attractions'])->name('attractions');
     Route::get(LaravelLocalization::transRoute('routes.contact'), [ApartmentController::class, 'contact'])->name('contact');
     Route::get(LaravelLocalization::transRoute('routes.gallery'), [ApartmentController::class, 'gallery'])->name('gallery');
+    Route::get(LaravelLocalization::transRoute('routes.location'), [ApartmentController::class, 'location'])->name('location');
     Route::get(LaravelLocalization::transRoute('routes.safety'), [ApartmentController::class, 'safety'])->name('safety');
 
     Route::get(LaravelLocalization::transRoute('routes.apartments'), [ApartmentController::class, 'index'])->name('apartment.index');
