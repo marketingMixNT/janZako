@@ -1,6 +1,6 @@
 <x-layouts.app title="{{ $apartment->getMetaTitle() }}" description="{{ $apartment->getMetaDesc() }}">
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.app-wrapper :apartment="$apartment" :apartments="$apartments" :home='$home'>
 
 
         @include('pages.apartment.partials.header')

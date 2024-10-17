@@ -29,6 +29,7 @@ class Apartment extends Model
 
         // Contact Information
         'phone',
+        'phone_second',
         'mail',
         'address',
         'city',

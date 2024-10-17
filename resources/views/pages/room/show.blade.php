@@ -1,6 +1,6 @@
 <x-layouts.app title="{{ $room->getMetaTitle() }}" description="{{ $room->getMetaDesc() }}">
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.app-wrapper :apartment="$apartment" :apartments="$apartments" :home="$home">
 
 
 

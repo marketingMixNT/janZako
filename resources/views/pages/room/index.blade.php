@@ -1,7 +1,7 @@
 <x-layouts.app title="{{__('meta.room-index.title')}}" description="{{__('meta.room-index.desc')}}">
 
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.app-wrapper :apartment="$apartment" :apartments="$apartments" :home="$home">
 
 
         {{-- HEADER --}}

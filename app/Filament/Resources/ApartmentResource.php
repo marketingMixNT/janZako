@@ -177,6 +177,13 @@ class ApartmentResource extends Resource
                                     ->minLength(3)
                                     ->maxLength(255)
                                     ->required(),
+                                Forms\Components\TextInput::make('phone_second')
+                                    ->label('Drugi Telefon')
+                                    ->prefix("+48")
+                                    ->placeholder("123456789")
+                                    ->minLength(3)
+                                    ->maxLength(255),
+                                
 
                                 Forms\Components\TextInput::make('mail')
                                     ->label('Email')

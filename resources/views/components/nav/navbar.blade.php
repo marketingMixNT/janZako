@@ -34,7 +34,11 @@
         <div id="nav-links" class="max-w-screen-xl mx-auto py-3.5 hidden lg:block ">
             <ul class="flex gap-6 xl:gap-12">
 
-
+                <li class=" opacity-70 lg:opacity-100 hover:opacity-100 duration-300 flex justify-center items-center group">
+                    <a href={{route('home.index')}} class=" text-fontWhite" aria-label="Strona główna">
+                        <x-lucide-home class="w-4 group-hover:scale-110 duration-500" />
+                    </a>
+                </li>
 
                 <x-nav.menu-item href="{{route('apartment.show',$apartment->slug)}}/#{{__('sections.about')}}">
                     {{__('navbar.about')}}</x-nav.menu-item>
@@ -49,7 +53,7 @@
                 <x-nav.menu-item href="{{route('safety',$apartment->slug)}}">{{__('navbar.safety')}}</x-nav.menu-item>
                 <x-nav.menu-item href="  {{ route('contact',$apartment->slug) }}">{{__('navbar.contact')}}
                 </x-nav.menu-item>
-                <x-nav.menu-item href="  {{ route('home.index') }}">{{__('navbar.apartments')}}</x-nav.menu-item>
+                <x-nav.menu-item href="  {{ route('apartment.index') }}">{{__('navbar.apartments')}}</x-nav.menu-item>
                 <x-nav.menu-item href="https://jan-krakow.pl" target="_blank" role="noreferrer nofollow">
                     {{__('navbar.hotel-in-cracow')}}</x-nav.menu-item>
 

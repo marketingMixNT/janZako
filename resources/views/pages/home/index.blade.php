@@ -3,7 +3,7 @@
 
 
 
-    <x-layouts.home-wrapper :home="$home">
+    <x-layouts.home-wrapper :home="$home" :apartments="$apartments">
 
         @include('pages.home.partials.header')
         @include('pages.home.partials.about')
@@ -16,6 +16,10 @@
 
         @include('pages.home.partials.testimonials')
         @include('pages.home.partials.local-attractions')
+
+
+      
+        
 
     </x-layouts.home-wrapper>
 </x-layouts.home>

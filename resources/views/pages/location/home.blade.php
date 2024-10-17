@@ -3,7 +3,7 @@
 {{$locationPage->meta_title ? $locationPage->meta_title : __('meta.location-index.title')}}"
     description="
 {{$locationPage->meta_desc ? $locationPage->meta_desc : __('meta.location-index.desc')}}">
-    <x-layouts.home-wrapper :home="$home">
+    <x-layouts.home-wrapper :home="$home" :apartments='$apartments'>
 
 
         {{-- HEADER --}}

@@ -1,4 +1,4 @@
-{{-- <script async src="https://app.cookieasy.pl/plugin/gtumi243j6qrr0j.js"></script> --}}
+<script async src="https://app.cookieasy.pl/plugin/k83ly7docars7a4.js"></script>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

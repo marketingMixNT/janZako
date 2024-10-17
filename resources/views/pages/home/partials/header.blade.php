@@ -26,9 +26,51 @@
 
 
         {{-- RESERVATION PANEL --}}
-        <div
+        {{-- <div
             class="be-panel hidden md:block absolute bottom-44 left-0 right-0 md:mx-6  lg:mx-32 2xl:mx-0 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 bg-white">
+        </div> --}}
+
+
+
+<!-- Booking -->
+
+<div class="bottom-panel booking-panel hidden md:block absolute bottom-44 left-0 right-0 md:mx-6  lg:mx-32 2xl:mx-0 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 bg-white">
+
+    <form class="bottom-panel__wrap d-flex justify-content-end p-4">
+
+        <!-- <img src="https://apartamentyjan.com.pl//layout/images/ui/bon-turystyczny@2x.png" style="max-width: 200px; margin: auto;"> -->
+
+        <!-- <div class="be-panel"></div> -->
+
+        <div id="zarezerwuj"></div>
+
+        <div id="s-booking">
+
+            <div class="container">
+
+                <div style="border:0px solid #fff;width:100%;" id="box-booking">
+
+                    <div id="wis2-panel" class="js-wis2-panel">
+
+                        
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
+    </form>
+
+</div>    
+
+<!-- /Booking -->
+
+
+
+
         <x-ui.link-button type='primary' class="md:hidden absolute mt-12 bottom-32 left-1/2 transform -translate-x-1/2"
             href="{{$home->booking_link}}" target="_blank" aria-label="Rezerwuj">Rezerwuj</x-ui.link-button>
 

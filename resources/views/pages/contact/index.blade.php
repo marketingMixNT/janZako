@@ -1,6 +1,6 @@
 <x-layouts.app title="{{__('meta.contact-index.title')}}" description="{{__('meta.contact-index.desc')}}">
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.app-wrapper :apartment="$apartment" :apartments="$apartments" :home="$home">
 
     {{-- HEADER --}}
     <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.contact')}}" bgi="{{asset('storage/' . $apartment->banner_contact)}}" />

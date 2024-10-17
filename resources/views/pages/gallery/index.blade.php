@@ -1,6 +1,6 @@
 <x-layouts.app title="{{__('meta.gallery-index.title')}}" description="{{__('meta.gallery-index.desc')}}">
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.app-wrapper :apartment="$apartment" :apartments="$apartments" :home="$home">
 
     {{-- HEADER --}}
     <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.gallery')}}" bgi="{{asset('storage/' . $apartment->banner_gallery)}}" />

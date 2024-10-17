@@ -1,6 +1,6 @@
 <x-layouts.app title="{{__('meta.safety-index.title')}}" description="{{__('meta.safety-index.desc')}}">
 
-    <x-layouts.app-wrapper :apartment="$apartment">
+    <x-layouts.app-wrapper :apartment="$apartment" :apartments="$apartments" :home="$home">
 
         <x-header subtitle="{{$apartment->title}}" title="{{__('global.headings.safety')}}" bgi="{{asset('assets/images/apartamenty-jan/apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem/apartamenty-jan-apartament-dwuosobowy-z-widokiem-na-gory-i-tarasem-6.webp')}}" />
 

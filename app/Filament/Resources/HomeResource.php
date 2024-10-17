@@ -69,15 +69,29 @@ class HomeResource extends Resource
                                     ->label('Telefon')
                                     ->prefix("+48")
                                     ->placeholder("123456789")
-                                    ->minLength(3)
-                                    ->maxLength(255)
                                     ->required(),
+
+                                Forms\Components\TextInput::make('phone_second')
+                                    ->label('Drugi telefon')
+                                   
+                                    ->prefix("+48")
+                                    ->placeholder("123456789"),
 
                                 Forms\Components\TextInput::make('mail')
                                     ->label('Email')
                                     ->placeholder("test@gmail.com")
+                                    
                                     ->minLength(3)
                                     ->maxLength(255)
+                                    ->columnSpanFull()
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('bank')
+                                    ->label('Bank')
+                                    ->required(),
+
+                                Forms\Components\TextInput::make('bank_account')
+                                    ->label('Numer konta bankowego')
                                     ->required(),
 
                                 Fieldset::make('Rezerwacja')
@@ -316,8 +330,8 @@ class HomeResource extends Resource
                 Tables\Columns\ImageColumn::make('logo')
                     ->label('Logo'),
 
-                    
-                    
+
+
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

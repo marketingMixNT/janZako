@@ -8,7 +8,7 @@ return [
     'headings' => [
         'apartments' => 'Nasze apartamenty',
         'localization' => 'Lokalizacja',
-        'contact' => 'Lokalizacja',
+        'contact' => 'Kontakt',
         'rooms' => "Pokoje",
         'local-attractions' => "Lokalne atrakcje",
         'gallery' => "Galeria",

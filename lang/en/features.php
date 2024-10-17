@@ -6,8 +6,9 @@
     'text-2' => "We invite you to enjoy nutritious and rich buffet-style breakfasts.",
 
     'title-3' => "Excellent Location",
-    'text-3' => "In the heart of the Old Town, 50 meters from the Main Market Square.",
+    'text-3' => "Great views and great location",
 
     'title-4' => "Guest Parking",
-    'text-4' => "Parking available 24/7, guarded, located 450 meters away (5-minute walk).",
+    'text-4' => "We offer free parking for our guests
+",
 ];

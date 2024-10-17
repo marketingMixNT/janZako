@@ -1,6 +1,6 @@
 <x-layouts.home title="{{__('meta.privacy-policy.title')}}" description="{{__('meta.privacy-policy.desc')}}">
 
-    <x-layouts.home-wrapper :home="$home">
+    <x-layouts.home-wrapper :home="$home" :apartments="$apartments">
 
 
         {{-- HEADER --}}

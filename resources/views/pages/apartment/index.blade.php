@@ -2,9 +2,9 @@
 {{$apartmentPage->meta_title ? $apartmentPage->meta_title : __('meta.apartment-index.title')}}" description="
 {{$apartmentPage->meta_desc ? $apartmentPage->meta_desc : __('meta.apartment-index.desc')}}">
 
-    <x-layouts.home-wrapper :home="$home">
+    <x-layouts.home-wrapper :home="$home" :apartments='$apartments'>
         {{-- HEADER --}}
-        <x-header title="{{__('global.headings.apartments')}}" bgi="{{asset($apartmentPage->banner)}}" />
+        <x-header title="{{__('global.headings.apartments')}}" bgi="{{asset('storage/'.$apartmentPage->banner)}}" />
 
 
 

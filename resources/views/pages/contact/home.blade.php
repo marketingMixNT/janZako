@@ -2,11 +2,11 @@
 {{$contactPage->meta_title ? $contactPage->meta_title : __('meta.contact-home.title')}}"
     description="{{$contactPage->meta_desc ? $contactPage->meta_desc : __('meta.contact-home.desc')}}">
 
-    <x-layouts.home-wrapper :home="$home">
+    <x-layouts.home-wrapper :home="$home" :apartments='$apartments'>
 
 
         {{-- HEADER --}}
-        <x-header title="{{__('global.headings.contact')}}" bgi="{{asset($contactPage->banner)}}" />
+        <x-header title="{{__('global.headings.contact')}}" bgi="{{asset('storage/'.$contactPage->banner)}}" />
 
         {{-- MAIN --}}
         <section class="py-20">
