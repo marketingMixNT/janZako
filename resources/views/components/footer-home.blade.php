@@ -126,4 +126,11 @@
         </div>
     </div>
     <!--END CONTAINER-->
+
+    
 </footer>
+
+<div class="flex justify-center items-center max-w-screen-lg mx-auto">
+    <img src="{{asset('assets/pfr.png')}}" alt="" class="md:hidden w-[60%] ">
+    <img src="{{asset('assets/pfr-horizontal.png')}}" alt="" class="hidden md:block">
+</div>

@@ -1,9 +1,8 @@
-<div class="swiper hero-carousel relative w-full h-[90vh]  md:h-screen  ">
+<div class="swiper hero-carousel relative w-full h-[95vh]  md:h-screen  ">
     <div class="swiper-wrapper">
         {{-- HEADING --}}
 
-        <h1 class="absolute top-1/2 left-0 right-0 -translate-y-1/2 px-6 md:px-12 text-center text-5xl md:text-8xl 2xl:text-9xl    font-heading  text-fontWhite  tracking-wide z-50"
-            style="line-height: .6">
+        <h1 class="absolute top-1/2 left-0 right-0 -translate-y-1/2 px-6 md:px-12 text-center text-5xl md:text-8xl 2xl:text-9xl    font-heading  text-fontWhite  tracking-wide z-50">
             {{$home->slider_title}} <br> <span class=" text-xl sm:text-2xl font-text ">
                 {{$home->slider_subtitle}}</span>
         </h1>
@@ -16,7 +15,7 @@
 
 
             <img src="{{asset('storage/' .  $image)}}" alt="apartamenty Jan w Zakopanem"
-                class="absolute inset-0 w-full h-full object-cover hidden sm:block" />
+                class="absolute inset-0 w-full h-full object-cover " />
 
             <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
@@ -25,16 +24,13 @@
 
 
 
-        {{-- RESERVATION PANEL --}}
-        {{-- <div
-            class="be-panel hidden md:block absolute bottom-44 left-0 right-0 md:mx-6  lg:mx-32 2xl:mx-0 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 bg-white">
-        </div> --}}
+      
 
 
 
 <!-- Booking -->
 
-<div class="bottom-panel booking-panel hidden md:block absolute bottom-44 left-0 right-0 md:mx-6  lg:mx-32 2xl:mx-0 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 bg-white">
+<div class="bottom-panel booking-panel hidden sm:block absolute bottom-32 lg:bottom-44 left-0 right-0 mx-6  lg:mx-32 2xl:mx-0 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 bg-white">
 
     <form class="bottom-panel__wrap d-flex justify-content-end p-4">
 
@@ -84,3 +80,5 @@
         </a>
     </div>
 </div>
+
+

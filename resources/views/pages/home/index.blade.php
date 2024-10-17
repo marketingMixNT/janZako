@@ -6,6 +6,10 @@
     <x-layouts.home-wrapper :home="$home" :apartments="$apartments">
 
         @include('pages.home.partials.header')
+
+      
+
+
         @include('pages.home.partials.about')
 
         <x-features />
