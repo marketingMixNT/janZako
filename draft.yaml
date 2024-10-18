@@ -1,19 +1,6 @@
 models:
-  HomeApartmentsPage:
-    meta_title: json nullable
-    meta_desc: json nullable
-    heading: json
-    text: json
-    banner: text
-
-  HomeLocationPage:
-    meta_title: json nullable
-    meta_desc: json nullable
-    heading: json
-    text: json
-    banner: text
-
-  HomeContactPage:
-    meta_title: json nullable
-    meta_desc: json nullable
-    banner: text
+  SocialHome:
+    name: text
+    link: text
+    relationships:
+      belongsTo: Home

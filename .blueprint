@@ -1,13 +1,7 @@
 created:
-    - database/factories/HomeApartmentsPageFactory.php
-    - database/factories/HomeLocationPageFactory.php
-    - database/factories/HomeContactPageFactory.php
-    - database/migrations/2024_10_03_125855_create_home_apartments_pages_table.php
-    - database/migrations/2024_10_03_125856_create_home_location_pages_table.php
-    - database/migrations/2024_10_03_125857_create_home_contact_pages_table.php
-    - app/Models/HomeApartmentsPage.php
-    - app/Models/HomeLocationPage.php
-    - app/Models/HomeContactPage.php
+    - database/factories/SocialHomeFactory.php
+    - database/migrations/2024_10_18_074009_create_social_homes_table.php
+    - app/Models/SocialHome.php
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     Apartment: { meta_title: 'json nullable', meta_desc: 'json nullable', title: 'json unique', slug: 'json unique', map: text, booking_script: text, phone: text, mail: text, address: text, logo: text, gallery: text, sort: 'integer nullable', slider_heading: 'json nullable', slider_images: text, google_reviews: integer, google_reviews_average: integer, google_reviews_link: text, tripadvisor_reviews: integer, tripadvisor_reviews_average: integer, tripadvisor_reviews_link: text, relationships: { hasMany: 'Testimonial, Room, Slides, Social, Gallery' } }
@@ -28,3 +22,4 @@ models:
     HomeApartmentsPage: { meta_title: 'json nullable', meta_desc: 'json nullable', heading: json, text: json, banner: text }
     HomeLocationPage: { meta_title: 'json nullable', meta_desc: 'json nullable', heading: json, text: json, banner: text }
     HomeContactPage: { meta_title: 'json nullable', meta_desc: 'json nullable', banner: text }
+    SocialHome: { name: text, link: text, relationships: { belongsTo: Home } }

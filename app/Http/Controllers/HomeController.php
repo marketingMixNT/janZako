@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $home = Home::firstOrFail();
+        $home = Home::with('socials')->firstOrFail();
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city", 'short_desc','phone','phone_second')->get();
         $cta = Cta::firstOrFail();
         $testimonials = Testimonial::where('home', true)->orderBy("sort")->get();
@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function attractions()
     {
 
-        $home = Home::select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
+        $home = Home::with('socials')->select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
 
         $attractions = LocalAttraction::orderBy('sort')->get();
 
@@ -43,7 +43,7 @@ class HomeController extends Controller
 
     public function location()
     {
-        $home = Home::select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
+        $home = Home::with('socials')->select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
 
         $locationPage = HomeLocationPage::firstOrFail();
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', "city", 'phone','phone_second', 'mail', 'short_desc')->get();
@@ -54,7 +54,7 @@ class HomeController extends Controller
     public function contact()
     {
 
-        $home = Home::select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
+        $home = Home::with('socials')->select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
         $apartments = Apartment::orderBy('sort')->select('title',  'address', "city", 'phone','phone_second')->get();
 
         $contactPage = HomeContactPage::firstOrFail();
@@ -66,7 +66,7 @@ class HomeController extends Controller
     public function privacyPolicy()
     {
 
-        $home = Home::select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
+        $home = Home::with('socials')->select('logo', 'phone','phone_second','mail', 'booking_link','bank','bank_account')->firstOrFail();
 
         $apartments = Apartment::orderBy('sort')->select('title',  'address', "city", 'phone','phone_second')->get();
 

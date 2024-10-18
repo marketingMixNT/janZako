@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Social extends Model
+class SocialHome extends Model
 {
     use HasFactory;
 
@@ -20,7 +20,7 @@ class Social extends Model
     protected $fillable = [
         'name',
         'link',
-        'apartment_id',
+        'home_id',
     ];
 
     /**
@@ -30,16 +30,13 @@ class Social extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'apartment_id' => 'integer',
+        'home_id' => 'integer',
     ];
 
-    public function apartment(): BelongsTo
+    public function home(): BelongsTo
     {
-        return $this->belongsTo(Apartment::class);
+        return $this->belongsTo(Home::class);
     }
-
-   
-
 
     public static function getForm(): array{
         return [
@@ -73,4 +70,3 @@ class Social extends Model
         ];
     }
 }
-

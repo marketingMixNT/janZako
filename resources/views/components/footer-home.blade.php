@@ -4,10 +4,22 @@
     <!--CONTAINER-->
     <div class="max-w-screen-lg mx-auto space-y-10">
 
-        <div class="flex items-start justify-center">
+        {{-- <div class="flex items-start justify-center">
             <a href="{{route('home.index')}}" aria-label="Logo Hotelu Jan w Krakowie">
                 <img src="{{ asset('storage/'.$home->logo) }}" alt="logo Apartamenty Jan" class="w-32 " width="128"
                     height="73" /></a>
+        </div> --}}
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-12 mx-12">
+            <a href="{{route('home.index')}}" aria-label="logo">
+                <img src="{{ asset('storage/'.$home->logo) }}" alt="logo Apartamenty Jan" class="w-32 " width="128"
+                    height="73" /></a>
+
+                    <div class="flex justify-center items-center gap-3">
+                        @foreach ($home->socials as $social)
+                        <x-socials :social="$social" />
+                        @endforeach
+                    </div>
+                    
         </div>
 
         <!--GRID-->

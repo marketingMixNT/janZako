@@ -115,10 +115,10 @@ class ApartmentObserver
         if (!is_null($apartment->banner_contact)) {
             Storage::disk('public')->delete($apartment->getOriginal('banner_contact'));
         }
-        // //banner_location
-        // if (!is_null($apartment->banner_location)) {
-        //     Storage::disk('public')->delete($apartment->getOriginal('banner_location'));
-        // }
+        //banner_location
+        if (!is_null($apartment->banner_location)) {
+            Storage::disk('public')->delete($apartment->getOriginal('banner_location'));
+        }
 
         //slider_images
         if (!is_null($apartment->slider_images)) {

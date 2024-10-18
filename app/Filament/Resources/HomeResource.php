@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Home;
 use Filament\Tables;
+use App\Models\Social;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -13,6 +14,7 @@ use Filament\Forms\Components\Tabs;
 use Livewire\Component as Livewire;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\Component;
 use Illuminate\Database\Eloquent\Builder;
@@ -20,6 +22,7 @@ use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\HomeResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\HomeResource\RelationManagers;
+use App\Models\SocialHome;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Schmeits\FilamentCharacterCounter\Forms\Components\TextInput;
 
@@ -85,6 +88,22 @@ class HomeResource extends Resource
                                     ->maxLength(255)
                                     ->columnSpanFull()
                                     ->required(),
+
+
+                                    Fieldset::make('Social Media')
+                                    ->schema([
+                                        Repeater::make('socials')
+                                            ->schema(SocialHome::getForm())
+                                            ->label('')
+                                            ->relationship()
+                                            ->columnSpanFull()
+                                            ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
+                                            ->addActionLabel('Dodaj social')
+                                            ->collapsed()
+                                            ->collapsible()
+                                            ->grid(2)
+                                            ->defaultItems(0)
+                                    ]),
 
                                 Forms\Components\TextInput::make('bank')
                                     ->label('Bank')

@@ -72,7 +72,10 @@ class Home extends Model
     ];
 
 
-   
+    public function socials(): HasMany
+    {
+        return $this->hasMany(SocialHome::class);
+    }
 
 
     public $translatable = [
