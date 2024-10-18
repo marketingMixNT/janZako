@@ -6,8 +6,8 @@ return [
     'all' => 'Wszystkie',
 
     'headings' => [
-        'apartments' => 'Nasze apartamenty',
-        'localization' => 'Lokalizacja',
+        'apartments' => 'Nasze obiekty',
+        'localization' => 'Gdzie się znajdujemy',
         'contact' => 'Kontakt',
         'rooms' => "Pokoje",
         'local-attractions' => "Lokalne atrakcje",

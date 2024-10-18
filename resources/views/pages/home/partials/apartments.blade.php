@@ -1,4 +1,4 @@
-<section class="pt-16 pb-24">
+<section class="py-12 lg:py-20">
     <x-container class="max-w-screen-2xl 2xl:px-12">
 
         <x-heading-horizontal title="{{$home->rooms_heading}}">

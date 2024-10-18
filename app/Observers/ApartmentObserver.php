@@ -44,7 +44,10 @@ class ApartmentObserver
         }
         // banner_location
         if ($apartment->isDirty(attributes: 'banner_location')) {
-            Storage::disk('public')->delete($apartment->getOriginal('banner_location'));
+            $originalBannerLocation = $apartment->getOriginal('banner_location');
+            if ($originalBannerLocation) {  // Sprawdź, czy nie jest null
+                Storage::disk('public')->delete($originalBannerLocation);
+            }
         }
         // ARRAY
         // about_images

@@ -10,11 +10,11 @@
       
 
 
-        @include('pages.home.partials.about')
-
-        <x-features />
-
         @include('pages.home.partials.apartments')
+        
+        <x-features />
+        
+        @include('pages.home.partials.about')
 
         <x-cta :link="$home->booking_link" :cta="$cta" />
 

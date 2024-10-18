@@ -6,7 +6,9 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
 
-<meta name="author" content="Hotel Jan">
+<meta name="author" content="Apartamenty Jan">
+
+<meta name="keywords" content="">
 
 @if ($noFollow)
 <meta name="robots" content="noindex, nofollow">
@@ -18,6 +20,6 @@
 
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
-<meta property="og:url" content="https://www.jan-krakow.pl">
+<meta property="og:url" content="https://www.apartamenty-jan.com.pl">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{{asset('assets/images/superior/superior-6.webp')}}">
+<meta property="og:image" content="{{asset('assets/images/apartamenty-jan/apartamenty-jan-5.webp')}}">

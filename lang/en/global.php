@@ -7,8 +7,8 @@ return [
 
 
     'headings' => [
-        'apartments' => 'Our apartments',
-        'localization' => 'Localization',
+        'apartments' => 'Our objects',
+        'localization' => 'Where we are',
         'contact' => 'Contact',
         'rooms' => 'Rooms',
         'local-attractions' => "Local attractions",

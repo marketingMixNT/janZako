@@ -17,11 +17,16 @@ class ApartmentController extends Controller
 {
     public function index()
     {
-        $home = Home::select('logo', 'phone', 'phone_second', 'mail', 'booking_link', 'bank', 'bank_account')->firstOrFail();
+        $home = Home::select('logo', 'phone', 'phone_second', 'mail', 'booking_link', 'bank', 'bank_account')
+        ->addSelect(['id'])  // Dodaj 'id', aby relacje mogły się ładować
+        ->with('socials')
+        ->firstOrFail();
 
         $apartmentPage = HomeApartmentsPage::firstOrFail();
 
         $apartments = Apartment::orderBy('sort')->select('title', 'slug', 'thumbnail', 'address', 'city', 'booking_link', 'map_link', 'short_desc', 'phone', 'phone_second')->get();
+
+
 
         return view('pages.apartment.index', compact('apartments', 'apartmentPage', 'home'));
     }
@@ -76,7 +81,7 @@ class ApartmentController extends Controller
         $home = Home::select('phone', 'phone_second', 'mail',  'bank', 'bank_account')->firstOrFail();
 
 
-        $apartment = Apartment::with('socials')->select('id', 'title', 'slug', 'logo', 'phone', 'mail', 'address', 'city', 'map_link', 'banner_contact', 'booking_link')->where("slug->{$locale}", $apartmentSlug)->firstOrFail();
+        $apartment = Apartment::with('socials')->select('id', 'title', 'slug', 'logo', 'phone','phone_second', 'mail', 'address', 'city', 'map_link', 'banner_contact', 'booking_link','map')->where("slug->{$locale}", $apartmentSlug)->firstOrFail();
 
         $apartments = Apartment::orderBy('sort', direction: 'asc')->select('title', 'address', 'city', 'phone', 'phone_second')->get();
 
@@ -114,7 +119,7 @@ class ApartmentController extends Controller
         $apartments = Apartment::orderBy('sort', direction: 'asc')->select('title', 'address', 'city', 'phone', 'phone_second')->get();
 
 
-        return view('pages.safety.index', compact("apartment", 'apartments',));
+        return view('pages.safety.index', compact("apartment", 'apartments','home'));
     }
 
     public function location($apartmentSlug)

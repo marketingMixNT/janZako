@@ -26,6 +26,10 @@
                         <x-contact-box title="{{__('contact.phone')}}">
                             <a class="link-hover--dark text-xl font-light mb-2"
                                 href="tel:+48{{$apartment->phone}}">{{$apartment->phone}}</a>
+                                @if ($apartment->phone_second)
+                                <a class="link-hover--dark text-xl font-light mb-2"
+                                href="tel:+48{{$apartment->phone_second}}">{{$apartment->phone_second}}</a>
+                                @endif
 
                         </x-contact-box>
 

@@ -4,11 +4,11 @@
 
 
         @include('pages.apartment.partials.header')
-        @include('pages.apartment.partials.about')
-
-        <x-features />
-
         @include('pages.apartment.partials.rooms')
+        
+        <x-features />
+        
+        @include('pages.apartment.partials.about')
 
         <x-cta :link="$apartment->booking_link" :cta="$cta"/>
 
