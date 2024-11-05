@@ -11,7 +11,8 @@
 
 
 
-<script src="https://wis.upperbooking.com/63/booking-new?locale=pl" async></script>
+<script src="{{$home->booking_script}}{{ str_replace('_', '-', app()->getLocale()) }}"
+    async></script>
 
 
 

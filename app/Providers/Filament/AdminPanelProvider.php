@@ -34,7 +34,8 @@ class AdminPanelProvider extends PanelProvider
             ->unsavedChangesAlerts()
             ->sidebarCollapsibleOnDesktop()
             ->favicon('/favicon/favicon.ico')
-            ->brandLogo('/assets/logo.svg')
+            ->brandLogo('/assets/logo--dark.png')
+            ->darkModeBrandLogo('/assets/logo.svg')
             ->brandLogoHeight(fn () => auth()->check() ? '40px' : '100px')
             ->colors([
                 'primary' => Color::hex('#c18b52'),

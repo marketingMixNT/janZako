@@ -20,6 +20,8 @@
             target="_blank" rel="noreferrer nofollow">
             {{__('global.book')}}</x-ui.link-button>
 
+
+            <div class="be-panel  "></div> 
     </x-container>
 
 </section>
